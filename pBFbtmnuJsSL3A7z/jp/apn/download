@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache" forua="true" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title></title>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MP2XWZF');
+    </script>
+    <script>
+		!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv='1.0';v.bt=0;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,'script','//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js');
+		gdt('init','1110032816');
+		gdt('track','PAGE_VIEW');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://a.gdt.qq.com/pixel?user_action_set_id=1110032816&action_type=PAGE_VIEW&noscript=1"/>
+	</noscript>
+    <!-- End Google Tag Manager -->
+    <link rel="shortcut icon" href="/jp/images/favicon_2.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" type="text/css" href="/jp/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/frame.css" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/main.css?v=0222" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/frame.css" media="all and (max-width:1023px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/main.css?v=0222" media="all and (max-width:1023px)" />
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP2XWZF"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!--   HEADER   -->
+    <div id="head"></div>
+    <div class="buy-SIM-step">
+        <div class="progress-box">
+            <h1>アクティベーション</h1>
+            <div class="progress-bar progress-bar-two">
+                <div class="step step-two">
+                    <ul class="success-step">
+                        <li class="s-number">1<a>ステップ確認</a></li>
+                        <li class="s-name">ステップ確認</li>
+                    </ul>
+                    <ul class="cur-step">
+                        <li class="s-number">2<a>APNの設定</a></li>
+                        <li class="s-name">APNの設定</li>
+                    </ul>
+                </div>
+                <i class="s-boundary s-success-boundary00"></i>
+                <i class="s-boundary"></i>
+            </div>
+        </div>
+    </div>
+    <!--  APN設定  -->
+    <div class="Apn-setting-box" id="content2_jp"></div>
+    <script id="apnSettings2_jp" type="text/html">
+        <ul class="tab-channel">
+            <li class="iOS-t pitch-on">IOS システム</li>
+            <li class="Android-t">アンドロイド・システム</li>
+        </ul>
+        <div class="Apn-cons">
+            <div class="iOS-con Apn-con">
+                <h2>構成ファイルをダウンロードし、SIMカードをアクティベーションしてください。</h2>
+                <p style="text-align: center;margin-bottom: 3%;width: 90%;margin-left: 5%;">
+                    構成ファイルのダウンロードにはSafariをお使いください。構成ファイルのインストール中に携帯電話のパスワード入力が必要な場合があります。</p>
+                <a class="btn-bg btn-bg-mo" href="{{ios_zip}}">今すぐダウンロード</a>
+
+                <!-- <p class="h80 h30"></p> -->
+                <h2>上記の構成ファイルをダウンロードした後:</h2>
+                <div class="swiper-steps">
+                    <div class="swiper-container swiper" id="swiper_1">
+                        <div class="swiper-wrapper">
+                            {{each ios_setting as step i}}
+                            <div class="swiper-slide">
+                                <div class="box1-text clearfix">
+                                    <ul>
+                                        <li><span>{{i+1}}</span></li>
+                                        <li class="t-01">{{#step.ios_content}}</li>
+                                        <!-- <li class="t-01">{{step.ios_title}}</li> -->
+                                        <!--<li class="t-02">{{step.ios_content}}</li>-->
+                                    </ul>
+                                </div>
+                                <div class="box1 box{{i+2}}">
+                                    <img class="img_responsive" src="{{step.ios_pc_img}}">
+                                </div>
+
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <p class="h80 h30"></p>
+                <div class="thin-banner">
+                    <img class="img_responsive Desktop-thin-banner-bg" src="{{ios_android_pc_bottom_img}}">
+                    <img class="img_responsive Mobile-thin-banner-bg" src="{{ios_android_mobile_bottom}}">
+                    <div class="thin-banner-text">
+                        <dl>
+                            <dt>{{ios_android_title}}</dt>
+                            <dd><a class="btn-bg btn-bg-mo" href="{{ios_download_pdf}}">アクティベーション・ガイドのPDF版をダウンロード</a></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="Green-Bar">
+                    <img class="img_responsive Desktop-Green-Bar-bg" src="{{ios_android_pc_img}}">
+                    <img class="img_responsive Mobile-Green-Bar-bg" src="{{ios_android_mobile_img}}">
+                    <div class="Green-Bar-text">
+                        <p>{{ios_content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="Android-con Apn-con">
+                <h2 class="and-h2">APNのマニュアル設定</h2>
+                <p style="text-align: center;">
+                    <strong>
+							APN: cmlink.com<br/>
+							ユーザー名：cmjp@cmlink.com<br/>
+							パスワード: cmlink
+							</strong>
+                </p>
+                <p style="text-align: center;">下記マニュアルを参考に設定を行ってください。 アンドロイド端末の場合、ユーザーインターフェースと手順が若干異なる場合がございます。サポートが必要な場合は、<a href="/jp/contactus" style="color: #000; text-decoration: underline;">こちら</a>よりお問い合わせください。
+                </p>
+                <div class="swiper-steps">
+                    <div class="swiper-container swiper" id="swiper_2">
+                        <div class="swiper-wrapper">
+                            {{each android_setting as step i}}
+                            <div class="swiper-slide">
+                                <div class="box1-text clearfix">
+                                    <ul>
+                                        <li><span>{{i+1}}</span></li>
+                                        <li class="t-01 t-00{{i+1}}">{{#step.android_content}}</li>
+                                        <!-- <li class="t-01">{{step.android_title}}</li>
+											<li class="t-02">{{#step.android_content}}</li> -->
+                                    </ul>
+                                </div>
+                                <div class="box1 box{{i+2}}">
+                                    <img class="img_responsive" src="{{step.android_pc_img}}">
+                                </div>
+
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <p class="h80 h30"></p>
+                <div class="thin-banner">
+                    <img class="img_responsive Desktop-thin-banner-bg" src="{{ios_android_pc_bottom_img}}">
+                    <img class="img_responsive Mobile-thin-banner-bg" src="{{ios_android_mobile_bottom}}">
+                    <div class="thin-banner-text">
+                        <dl>
+                            <dt>{{ios_android_title}}</dt>
+                            <dd><a class="btn-bg btn-bg-mo" href="{{ios_download_pdf}}">アクティベーション・ガイドのPDF版をダウンロード</a></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="Green-Bar">
+                    <img class="img_responsive Desktop-Green-Bar-bg" src="{{ios_android_pc_img}}">
+                    <img class="img_responsive Mobile-Green-Bar-bg" src="{{ios_android_mobile_img}}">
+                    <div class="Green-Bar-text">
+                        <p>{{#android_content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Bottom-help -->
+    <div class="Bottom-help bor-top-none">
+        <p>
+            <span class="need-help">サポートが必要ですか？</span>
+            <span class="experience-guide"><a href="/jp/faq">体験ガイド</a></span>
+            <span class="telephone"><a href="/jp/contactus">お問い合わせ</a></span>
+        </p>
+    </div>
+
+    <!--   FOOTER   -->
+    <div id="foot"></div>
+
+    <!-- 遮罩 -->
+    <div class="Shade"></div>
+
+    <div class="menuPop conceal" id="menuPop"></div>
+
+    <script language="javascript" type="text/javascript" src="/jp/js/urlConfig.js?v=0222"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/swiper.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/template.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/jquery-3.4.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/jsencrypt.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/ajax-jquery-plugin.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/public.js?v=0228"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/apn2Config.js?v=1124"></script>
+</body>
+
+</html>
