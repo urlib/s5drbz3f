@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China Mobile CMLink JP</title>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MP2XWZF');
+    </script>
+    <script>
+		!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv='1.0';v.bt=0;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,'script','//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js');
+		gdt('init','1110032816');
+		gdt('track','PAGE_VIEW');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://a.gdt.qq.com/pixel?user_action_set_id=1110032816&action_type=PAGE_VIEW&noscript=1"/>
+	</noscript>
+    <!-- End Google Tag Manager -->
+    <link rel="shortcut icon" href="/jp/images/favicon_2.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" type="text/css" href="/jp/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/frame.css" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/style.css?v=0222" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/frame.css" media="all and (max-width:1023px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/style.css?v=0222" media="all and (max-width:1023px)" />
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP2XWZF"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!--   HEADER   -->
+    <div id="head"></div>
+
+    <!--    MAIN    -->
+    <div id="main" class="pdt_45">
+        <div id="faq_banner"></div>
+        <script type="text/html" id="faq_head">
+            <div class="FAQPage_Wrap">
+                <img class="img_responsive desktop-background" src="{{faqbackGroundPcImg}}" alt="">
+                <img class="img_responsive mobile-background" src="{{faqBackGroundMobileImg}}" alt="">
+                <div class="textWrap">
+                    <h3 class="NameStyle">{{#jpfaqtitle}}</h3>
+                    <div class="TextStyle">{{#jpfaqcontent}}</div>
+                </div>
+            </div>
+        </script>
+        <div class="FAQType" id="FAQType"></div>
+        <script id="faq_type" type="text/html">
+            <ul class="clearfix">
+                {{each list as type index}}
+                <li>
+                    <a class="aBlock" onclick="jump('#faq{{index+1}}-detail');">
+                        <span class="imgPic"><img class="img_responsive" src="{{type.categoryIcon}}" alt=""></span>
+                        <span class="text">{{type.jp_categoryname}}</span>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+        </script>
+
+        <div id="faq1-detail"></div>
+        <script id="faq1" type="text/html">
+            <div class="FAQBox">
+                <div class="Head" id="type1"></div>
+                {{each list as question index}} {{if question.faqCategory == 1}}
+                <div class="Note">
+                    <div class="PAQItem">
+                        <div class="PAQItemHead" onclick="OpenSwitch(this);">
+                            <em>Q{{index+1}}</em>
+                            <span>{{#question.jp_question}}</span>
+                            <i></i>
+                        </div>
+                        <div class="PAQItemNote" style="display: none;">
+                            {{#question.jp_answer}}
+                        </div>
+                    </div>
+                </div>
+                {{/if}} {{/each}}
+            </div>
+        </script>
+        <div id="faq2-detail"></div>
+        <script id="faq2" type="text/html">
+            <div class="FAQBox">
+                <div class="Head" id="type2"></div>
+                {{each list as question index}} {{if question.faqCategory == 2}}
+                <div class="Note">
+                    <div class="PAQItem">
+                        <div class="PAQItemHead" onclick="OpenSwitch(this);" id="activateSim{{index+1}}">
+                            <em>Q{{index+1}}</em>
+                            <span>{{#question.jp_question}}</span>
+                            <i></i>
+                        </div>
+                        <div class="PAQItemNote" style="display: none;">
+                            {{#question.jp_answer}}
+                        </div>
+                    </div>
+                </div>
+                {{/if}} {{/each}}
+            </div>
+        </script>
+        <div id="faq3-detail"></div>
+        <script id="faq3" type="text/html">
+            <div class="FAQBox">
+                <div class="Head" id="type3"></div>
+                {{each list as question index}} {{if question.faqCategory == 3}}
+                <div class="Note">
+                    <div class="PAQItem">
+                        <div class="PAQItemHead" onclick="OpenSwitch(this);">
+                            <em>Q{{index+1}}</em>
+                            <span>{{#question.jp_question}}</span>
+                            <i></i>
+                        </div>
+                        <div class="PAQItemNote" style="display: none;">
+                            {{#question.jp_answer}}
+                        </div>
+                    </div>
+                </div>
+                {{/if}} {{/each}}
+            </div>
+        </script>
+        <!-- <div id="faq4-detail"></div>
+        <script id="faq4" type="text/html">
+            <div class="FAQBox">
+                <div class="Head" id="type4"></div>
+                {{each list as question index}} {{if question.faqCategory == 4}}
+                <div class="Note">
+                    <div class="PAQItem">
+                        <div class="PAQItemHead" onclick="OpenSwitch(this);">
+                            <em>Q{{index+1}}</em>
+                            <span>{{#question.jp_question}}</span>
+                            <i></i>
+                        </div>
+                        <div class="PAQItemNote" style="display: none;">
+                            {{#question.jp_answer}}
+                        </div>
+                    </div>
+                </div>
+                {{/if}} {{/each}}
+            </div>
+        </script> -->
+        <div>
+            <a class="btn-back-to-top">
+                <img src="/jp/images/icon-top.png" class="back-to-top">
+            </a>
+        </div>
+    </div>
+
+    <!--   FOOTER   -->
+    <div id="foot"></div>
+
+    <!-- 遮罩 -->
+    <div class="Shade"></div>
+
+    <div class="menuPop conceal" id="menuPop"></div>
+
+    <script language="javascript" type="text/javascript" src="../js/urlConfig.js?v=0222"></script>
+    <script language="javascript" type="text/javascript" src="../js/template.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/jquery-3.4.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/jsencrypt.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/ajax-jquery-plugin.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/swiper.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/public.js?v=0228"></script>
+    <script language="javascript" type="text/javascript" src="../js/faqConfig.js"></script>
+</body>
+
+</html>
