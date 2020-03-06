@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv=X-UA-Compatible content="IE=edge, chrome=1">
+    <meta name="format-detection" content="email=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="keywords" content="和飞信官网,和飞信,考勤,智能考勤,免费电话,多人电话,多方电话,免流量,省话费,
+	电话会议,免费电话会议,移动办公平台,办公协同,移动,移动办公,移动办公解决方案,移动办公软件,移动办公系统,移动审批,
+	免费移动办公,手机办公,手机审批,商务,中小企业,移动OA,手机OA,增强短信,RCS增强短信">
+    <title>中国移动和飞信官网—沟通从新开始！</title>
+    <script src="/new/js/jquery-1.10.2.min.js"></script>
+    <script src="/new/js/fixed-box.js"></script>
+    <link rel="stylesheet" href="/new1/static/resource/swiper.min.css">
+    <link rel="shortcut icon" href="images/fx-ico.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/new1/static/resource/animate.css">
+    <link rel="shortcut icon" href="/new1/fx-ico.png">
+    <script type="text/javascript" src="/new1/assets/js/chunk_vendor.js?c493a698ef4eb916d2c0"></script>
+    <script type="text/javascript" src="/new1/assets/js/chunk_common.js?c493a698ef4eb916d2c0"></script>
+    <script type="text/javascript" src="/new1/assets/js/sidebar_max.js"></script>
+    <link rel="stylesheet" href="/new/css/base.css">
+    <link href="/style_new/style_newPC.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/script_new/mousewheel.js"></script>
+    <script type="text/javascript" src="/script_new/easyscroll.js"></script>
+    <script type="text/javascript" src="/script_new/home-statistics.js"></script>
+    <script type="text/javascript" src="/script_new/webtrends.load.js"></script>
+    <script type="text/javascript" src="/script_new/webtrends.min.js"></script>
+    <link href="/new1/assets/css/min.index.css?c493a698ef4eb916d2c0" rel="stylesheet">
+    <script type="text/javascript" src="/new1/assets/js/index.js?c493a698ef4eb916d2c0"></script>
+    <style type="text/css">
+        .sidebar-wrap {
+            z-index: 9999;
+        }
+        header{
+            background-color:rgba(0,0,0,.28);
+        }
+        .headers{
+            position: inherit;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function(){
+
+            Sidebar({items: [{href: "/links/webNewList", target: "_blank", text: "官网公告", bgImgClass: "notice"}]});
+        });
+    </script>
+</head>
+<body>
+<!--104-->
+<!--top-->
+
+    <style type="text/css">
+    /*固定功能栏*/
+    .fixed-box {
+        position: fixed;
+        right: 7px;
+        bottom: 160px;
+        z-index: 1001;
+    }
+
+    .fixed-box .fb-list li {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        cursor: pointer;
+        background: #282828;
+    }
+
+    .fixed-box .fb-list li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .fixed-box .fb-list li .fb-des {
+        display: block;
+        padding: 6px 8px;
+        font-size: 12px;
+        color: #fff;
+        line-height: 14px;
+        background: #3B3B3B;
+    }
+
+    .fixed-box .fb-list li .fb-img {
+        position: absolute;
+        background-repeat: no-repeat;
+    }
+
+    .fixed-box .fb-list .fb-service .fb-img {
+        top: 9px;
+        left: 9px;
+        width: 22px;
+        height: 22px;
+        background-image: url("/new/images/fixed-box-service.png");
+    }
+
+    .fixed-box .fb-list .fb-notice .fb-img {
+        top: 7px;
+        left: 8px;
+        width: 24px;
+        height: 25px;
+        background-image: url("/new/images/fixed-box-notice.png");
+    }
+
+    .fixed-box .fb-list .fb-to-top .fb-img {
+        top: 10px;
+        left: 9px;
+        width: 22px;
+        height: 20px;
+        background-image: url("/new/images/fixed-box-to-top.png");
+    }
+</style>
+<div id="headers" class="headers">
+    <header class="index-head">
+        <div class="container">
+            <div class="index-head-content">
+                <aside class="index-head-logo clear"></aside>
+                <ul class="clear">
+                    <li>
+                        <a href="/index" class="head-item active">首页</a>
+                    </li>
+                    <li class="has-child">
+                        <a href="javascript:void(0)" class="head-item">产品服务</a>
+                        <div class="animated head-submenu isHide">
+                            <dl>
+                                <dt><h3 class="head-submenu-title">基础产品</h3></dt>
+                                <dd><a href="/hefeixin" class="head-submenu-item">和飞信</a></dd>
+                                <dd><a href="/newMAAP" class="head-submenu-item">增强信息（企业版）</a></dd>
+                                <dd><a href="/newRCS" class="head-submenu-item">增强信息（个人版）</a></dd>
+                                <dd><a href="javascript:void(0)" class="head-submenu-item" title="敬请期待">短信小程序</a></dd>
+                            
+                            </dl>
+                            <dl>
+                                <dt><h3 class="head-submenu-title">开放能力</h3></dt>
+                                <dd><a href="/superMeeting" class="head-submenu-item">超级会议</a></dd>
+                            
+                                <dd><a href="/voice" class="head-submenu-item">语音通知</a></dd>
+                                <dd><a href="/multiput" class="head-submenu-item">群发信使</a></dd>
+                            
+                            </dl>
+                        </div>
+                    </li>
+                    <li class="has-child">
+                        <a href="javascript:void(0)" class="head-item">解决方案</a>
+                        <div class="animated head-submenu isHide" style="min-width: 130px">
+                            <dl style="padding-right: 0">
+                                <dd><a href="/organization" class="head-submenu-item">党建解决方案</a></dd>
+                                <dd><a href="/enterprise" class="head-submenu-item">企业解决方案</a></dd>
+                                <dd><a href="/family" class="head-submenu-item">家庭解决方案</a></dd>
+                                <dd><a href="/school" class="head-submenu-item">校园解决方案</a></dd>
+                                <dd><a href="/government" class="head-submenu-item">政企解决方案</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="https://feixin.10086.cn/rcsbbs/" class="head-item" target="_blank">社区</a>
+
+                    </li>
+                    <li>
+                        <a href="/Views/www/dist/index.html" class="head-item">开发者文档</a>
+
+                    </li>
+                    <li>
+                        <a href="/download" class="head-item">下载和飞信</a>
+                    </li>
+                </ul>
+                <aside class="index-head-login clear">
+                    <a href="https://oa.rcs.10086.cn/work" target="_blank">登录</a>
+                    <a href="/eapply" target="_blank">注册</a>
+                </aside>
+            </div>
+        </div>
+    </header>
+
+    <!--固定功能栏-->
+    
+</div>
+    
+<script type="text/javascript">$(function(){$('.About_text_area .div_scroll').scroll_absolute({arrows:false})});</script>
+<div class="Container clearfix">
+	<ul class="S_menu">
+		<li class="tit">服务规则</li>
+		<li><a href="/links?p=about_feinno">关于和飞信</a></li>
+		<li><a href="/links?p=about_ChinaMobile">关于移动</a></li>
+		<li class="curr"><a href="/links?p=LegalStatement">法律声明</a></li>
+		<li><a href="/links?p=LicenseAgreement">服务许可</a></li>
+	</ul>
+	<div class="About_text_area">
+		<div class="div_scroll">			
+			<h2>法律声明</h2>
+			<div class="text2 pb30">
+				<p>服务条款</p>
+				<p>使用本网站前，请您仔细阅读下述条款。如您不同意本服务条款或中国移动通信网对其进行的修改，您可以主动取消中国移动通信网提供的服务；您一旦使用中国移动通信网提供的服务，即视为您已了解并完全同意本服务条款各项内容，包括中国移动通信网对服务条款所做的任何修改，并成为中国移动通信网的用户（以下简称“用户”）。</p>
+				<p>1、版权归属</p>
+				<p>中国移动通信集团公司独立拥有中国移动通信网相关网页内所有资料的版权，或与中国移动通信网相关网页内的资料提供者共同拥有该网页内资料的版权。未经中国移动通信集团公司的明确书面许可，对于中国移动通信网上的任何内容，任何人不得对其进行复制或在非中国移动通信集团公司所属的服务器上做镜像。</p>
+				<p>2、免责声明</p>
+				<p>（1）本网站所发布的信息中可能没有包含与中国移动通信集团公司及其业务有关的最新信息，对于本网站所发布的信息，本公司不声明或保证其内容之正确性或完整性；对于用户通过本网站有关服务之广告、信息或要约而购买或取得之任何产品、信息或服务，本公司亦不承担质量保证之责任。</p>
+				<p>（2）中国移动通信集团公司对本网站提供的服务不提供任何明示或默示的担保或保证，包含但不限于商业适售性、特定目的之适用性及未侵害他人权利等担保或保证。</p>
+				<p>（3）用户明确了解并同意，基于以下原因而造成的，包括但不限于利润、信誉、应用、数据损失或其他无形损失，中国移动通信集团公司不承担任何直接、间接、附带、特别、衍生性或惩罚性赔偿责任（即使中国移动通信集团公司事先已被告知发生此种赔偿之可能性亦然）：</p>
+				<p>（i）本网站提供服务之使用或无法使用；</p>
+				<p>（ii）为替换通过本网站服务购买或取得之任何商品、数据、信息、服务，或缔结的交易而发生的成本；</p>
+				<p>（iii）您的传输或数据遭到未获授权的存取或篡改；</p>
+				<p>（iv）任何第三方在本服务中所作之声明或行为；</p>
+				<p>（v）与本服务相关的其他事宜，但本服务条款有明确规定的除外。</p>
+				<p>（4）本网站转载的相关文章、资料中表述或暗示的观点不代表中国移动通信集团公司的观点。</p>
+				<p>（5）本网站所提供的信息，若在某地区使用或分发时会违反该地区的法律或规定，则不得在该地区使用或分发本网站信息。</p>
+				<p>（6）本网站遵循互利互惠的原则进行内容合作。所转载的信息都已经过版权所有者的口头或书面的许可，如有遗漏，请与我们联系并提供相应的证明资料。</p>
+				<p>3、隐私权保护</p>
+				<p>（1）用户在匿名的状态下即可访问我们的网站并获取信息。在本网站请求用户提供有关信息之前，本网站会解释这些信息的用途，有些服务需要用户注册后才能够提供。在通常情况下，这类注册只要求用户提供一个电子邮件地址和一些诸如用户的工作、职务一类的基本信息。有时本网站也会请用户提供更多的信息，这样做是为了使本网站更好的理解用户的需求，以便向用户提供更为有效的服务。本网站收集的信息包括姓名，地址和移动电话号码等，用户有权随时决定不接受来自我们的任何资料。</p>
+				<p>（2）用户的注册义务用户如希望使用本网站需注册后才能够提供的服务，应同意以下事项∶依本服务注册表之提示提供您本人真实、正确、最新及完整的资料，并随时更新登记资料，确保其为真实、正确、最新及完整的资料。若您提供任何错误、不实、过时或不完整或具误导性的资料，或者本网站有理由怀疑前述资料为错误、不实、过时或不完整或具误导性的，本网站有权暂停或终止您的帐号，并拒绝您于现在和未来使用本网站所提供服务之全部或任何部分。</p>
+				<p>（3）本网站将采取合理的安全手段保护用户已存储的个人信息，除非根据法律或政府的强制性规定，在未得到用户许可之前，本网站不会将用户的任何个人信息提供给任何无关的第三方（包括公司或个人）。</p>
+				<p>（4）用户应了解：本网站可能会应法律之要求公开个人资料，或者因善意确信这样的作法对于下列各项有其必要性：</p>
+				<p>（i）符合法律公告或遵守适用于中国移动通信网的合法程序；</p>
+				<p>（ii）保护本网站用户的权利或财产；</p>
+				<p>（iii）在紧急的情况下，为了保护本网站及其用户之个人或公众安全。</p>
+				<p>4、预测性陈述</p>
+				<p>本网站所发布的信息中可能会包含某些预测性的陈述。这些陈述本质上具有相当风险和不确定性，对本网站所发布的有关中国移动通信集团公司及相关业务的预测性陈述，目的均是要指明其属预测性陈述，本公司并不打算不断地更新这些预测性陈述。此等预测性陈述反映本公司对未来事件的目前看法，而并非关于将来业务表现的保证。</p>
+				<p>5、知识产权</p>
+				<p>本网站所载述的域名商标、文字、视像及声音内容、图形及图象均受有关商标和著作权的法律保护。未经中国移动通信集团公司事先以书面明确允许，任何企业或个人不得以任何形式复制或传递。“中国移动通信”、“全球通”、“移动梦网”等均为中国移动通信集团公司的注册商标，受中国法律保护。</p>
+			</div>
+		</div>
+	</div>
+</div><!-- //Container -->
+
+
+
+    <!--底部-->
+<head/><div id="footers" class="footers">
+    <footer class="index-foot">
+        <div class="container">
+            <div class="index-foot-content">
+                <nav class="foot-top">
+                    <dl>
+                        <dt>
+                            <h3 class="title">新闻动态</h3>
+                        </dt>
+                        <dd>
+                            <p class="foot-link"><a href="http://www.cctime.com/html/2019-6-26/1456848.htm" target="_blank">中国移动5G消息创新开放实验室成立暨RCS商业富媒体消息发布会在沪召开</a></p>
+                        </dd>
+                        <dd>
+                            <p class="foot-link"><a href="https://www.ifanr.com/app/1229385" target="_blank">5G 时代，我们看到了下一代短信应有的样子</a></p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <h3 class="title">开发者</h3>
+                        </dt>
+                        <dd>
+                            <p class="foot-link"><a href="/Views/www/dist/index.html" target="_blank">开发者文档</a>
+                            </p>
+
+                            <p class="foot-link">
+                                <a href="http://dlrcs.fetion-portal.com/pdf/hfx_android.pdf" target="_blank">和飞信产品介绍（Android版）</a>
+                            </p>
+                            <p class="foot-link">
+                                <a href="http://dlrcs.fetion-portal.com/pdf/hfx_iphone.pdf" target="_blank">和飞信产品介绍（IOS版）</a>
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <h3 class="title">关于我们</h3>
+                        </dt>
+                        <dd>
+                            <p class="foot-link"><a href="/links?p=about_feinno">关于和飞信</a></p>
+                            <p class="foot-link"><a href="/links?p=about_ChinaMobile">关于移动</a></p>
+                            <p class="foot-link"><a href="/links?p=LegalStatemen">法律声明</a></p>
+                            <p class="foot-link"><a href="/links?p=LicenseAgreement">服务许可</a></p>
+
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            
+                            <h3 class="title">用户服务</h3>
+                        </dt>
+                        <dd>
+                            
+                            
+                            
+                            <p class="foot-link"><a href="/faq">服务支持</a></p>
+                            <p class="foot-link"><a href="/deblocking">和飞信用户解封</a></p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <h3 class="title">联系我们</h3>
+                        </dt>
+                        <dd>
+                            <p class="foot-link">邮箱：rcsteam@139.com</p>
+                        </dd>
+                        <dd>
+                            <p class="foot-link">关注和飞信</p>
+                        </dd>
+                        <dd style="position: relative;">
+                            <img src="data:image/png;base64,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" alt="" class="turns">
+                        </dd>
+                    </dl>
+                </nav>
+                <nav class="foot-middle">
+                    <p class="foot-link">
+                        <span>友情链接</span>
+                        <a href="http://cmic.chinamobile.com/" target="_blank">中移互联网有限公司官网</a>
+                    </p>
+                    <p class="foot-link">
+                        <span>语言</span>
+                        <a href="http://feixin.10086.cn/">简体中文</a>
+                        <!-- <a href="#" class="active">English</a> -->
+                    </p>
+                </nav>
+                <nav class="foot-bottom">
+                    <p class="foot-link">京ICP备05002571号 .Copyright © 2017, All Rights Reserved Powered By 和飞信</p>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</div></body>
+</html>
