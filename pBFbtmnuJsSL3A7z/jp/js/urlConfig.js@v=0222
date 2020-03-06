@@ -1,0 +1,83 @@
+var urlMap = {
+	"public" : {
+		"wxJa" : "/jpAdmin/wechat/ja",
+		"wxZh" : "/jpAdmin/wechat/zh",
+		"foot" : "/jpAdmin/footer",
+		"footJa" : "/jpAdmin/zh/footer/jp",
+	  	"data" : "https://www.cmlink.com/mvno-jp/getProduct",
+		"pdfData" : "/jpAdmin/zh/pdfUrl"
+	},
+	"home" : {
+		"mainJa" : "/jpAdmin/home/ja",
+		"mainZh" : "/jpAdmin/home/zh",
+		"voice"  : "https://www.cmlink.com/mvno-jp/getProduct?productType=10011",
+		"data"	 : "https://www.cmlink.com/mvno-jp/getProduct?productType=10004",
+		"diyCard": "/jpAdmin/zh/getProductParam?productType=2",
+		"active" : "https://www.cmlink.com/mvno-jp/getAllActivity",
+		"quest"  : "/jpAdmin/zh/faqWebFormPage?homePage=1"
+	},
+	"buysim" : {
+		"title"     : "/jpAdmin/titles",
+		"optionsJa" : "/jpAdmin/ja/webform_rest/country/fields",
+		"optionsZh" : "/jpAdmin/zh/webform_rest/country/fields",
+		"optionCode": "/jpAdmin/webform_rest/area_code/fields",
+	        "orderFee": "/jpAdmin/getProductTaxFee",
+		"photoJa" : "/jpAdmin/ja/webform_rest/photo_type/fields",
+		"photoZh" : "/jpAdmin/zh/webform_rest/photo_type/fields",
+		"phoneNum"  : "https://www.cmlink.com/mvno-jp/mobile",
+		"promoCode" : "https://www.cmlink.com/mvno-jp/promotionCode",
+    
+		"formSubmit": "https://www.cmlink.com/mvno-jp/sim/preOrder",
+		"paySubmit" : "https://www.cmlink.com/mvno-jp/simcardPay",
+		"uploadImg" : "https://www.cmlink.com/mvno-jp/uploadPhoto",
+		"deletImg" : "https://www.cmlink.com/mvno-jp/deletePhoto",
+		"successZh" : "/jpAdmin/buysuccess/zh",
+		"successJa" : "/jpAdmin/buysuccess/ja",
+		"queryInfo" : "https://www.cmlink.com/mvno-jp/getSim/queryOrder",
+		"checkCode" : "https://www.cmlink.com/mvno-jp/voice/promotionCode2",
+    "queryInfo" : "https://www.cmlink.com/mvno-jp/getSim/queryOrder",
+    "checkEmail": "https://www.cmlink.com/mvno-jp/checkEmail",
+    "memberReg": "https://www.cmlink.com/mvno-jp/voice/memberReg",
+    "checkIdNum": "https://www.cmlink.com/mvno-jp/voice/checkIdentityNo",
+    "checkPortInNum": "https://www.cmlink.com/mvno-jp/voice/checkPortInNum",
+		"referralCode": "https://www.cmlink.com/mvno-jp/checkReferralCode"
+	},
+	"plans" : {
+		"head" : "/jpAdmin/zh/productPageTop",
+		"product" : "https://www.cmlink.com/mvno-jp/getProduct",
+		"faq" : "/jpAdmin/zh/faqWebFormPage?productPage=1"
+	},
+	"promotion" : {
+		"head" : "/jpAdmin/zh/promotion/zh",
+		"promotions" : "https://www.cmlink.com/mvno-jp/getAllActivity"
+	},
+	"apnsetting" : {
+		"step1" : "/jpAdmin/zh/apn/setting",
+		"step2" : "/jpAdmin/zh/product/setting_2"
+	},
+	"contactus" : {
+		"contactInfo" : "/jpAdmin/zh/contactUsPage",
+		"submit" : "/jpAdmin/post",
+		"feedback" : "/jpAdmin/zh/contactUs2"
+	},
+	"getstarted" : {
+		"head" : "/jpAdmin/zh/faq/contentImg",
+		"category" : "/jpAdmin/zh/faqCateger?all",
+		"detail": "/jpAdmin/zh/faqWebFormPage",
+	},
+	"changeoffer" : {
+		"createOrder" : "https://www.cmlink.com/mvno-jp/sim/renewOrder",
+		"queryInfo" : "https://www.cmlink.com/mvno-jp/recharge/queryOrder",
+		"checkPhone" : "https://www.cmlink.com/mvno-jp/mobile/validate",
+		"success" : "/jpAdmin/zh/successPage"
+},
+    "topup" : {
+        "queryUserStatus": "https://www.cmlink.com/mvno-jp/topup/queryUserStatus",
+        "placeOrder": "https://www.cmlink.com/mvno-jp/topup/placeOrder",
+        "topupParam": "https://www.cmlink.com/mvno-jp/topup/getTopupParam",
+        "checkMobileNum": "https://www.cmlink.com/mvno-jp/topup/checkMobileNum",
+        "queryOrder": "https://www.cmlink.com/mvno-jp/topup/queryOrder",
+        "orderPlan": "https://www.cmlink.com/mvno-jp/renew/orderPlan"
+    }
+	
+};
