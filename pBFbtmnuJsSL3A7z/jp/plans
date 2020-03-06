@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>China Mobile CMLink JP</title>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MP2XWZF');
+    </script>
+    <script>
+		!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv='1.0';v.bt=0;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,'script','//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js');
+		gdt('init','1110032816');
+		gdt('track','PAGE_VIEW');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://a.gdt.qq.com/pixel?user_action_set_id=1110032816&action_type=PAGE_VIEW&noscript=1"/>
+	</noscript>
+    <!-- End Google Tag Manager -->
+    <link rel="shortcut icon" href="/jp/images/favicon_2.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" type="text/css" href="/jp/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/frame.css" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/style.css?v=0222" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/frame.css" media="all and (max-width:1023px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/style.css?v=0222" media="all and (max-width:1023px)" />
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP2XWZF" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!--   	HEADER	-->
+    <div id="head"></div>
+    <!--	Banner	-->
+    <div class="Banner pdt_45" id="banner_content"></div>
+    <script id="banner" type="text/html">
+        <img class="img_responsive Desktop-banner-step03" src="{{top_pc_img}}">
+        <img class="img_responsive Mobile-banner-step03" src="{{top_mobile_img}}">
+        <div class="banner-text">
+            <dl>
+                <dt class="des-dt">{{#top_jp_title}}</dt>
+                <dd>{{#jp_top_content}}</dd>
+            </dl>
+        </div>
+    </script>
+    <!--	MAIN	-->
+    <div id="main">
+        <!--<div id="introduction_content"></div>
+			<script id="introduction" type="text/html">
+				<div class="introductionWrap">
+					<h3 class="NameStyle">{{#jp_second_title}}</h3>
+					<div class="TextStyle">{{jp_second_content}}</div>
+					<div class="introductionText">
+						<span class="imgPic"><img class="img_responsive" src="../images/Vector.png" alt=""></span>
+						全世界配送无料
+					</div>
+				</div>
+			</script>-->
+
+        <div class="ProductPlans_Wrap">
+            <div class="circlePlan circleRound_1">
+                <div class="round"></div>
+                <div class="dotRound dotRound_1"></div>
+                <div class="icon icon-mail"><img class="img_responsive" src="../images/icon-email.png"></div>
+                <div class="icon icon-phone"><img class="img_responsive" src="../images/icon-phone.png"></div>
+            </div>
+            <div class="circlePlan circleRound_2">
+                <div class="round"></div>
+                <div class="dotRound dotRound_1"></div>
+                <div class="dotRound dotRound_2"></div>
+                <div class="icon icon-headphone"><img class="img_responsive" src="../images/icon-headphone.png"></div>
+                <div class="icon icon-video"><img class="img_responsive" src="../images/icon-video.png"></div>
+                <div class="icon icon-upload"><img class="img_responsive" src="../images/icon-upload.png"></div>
+            </div>
+            <!--    TAB    -->
+            <div class="TabHead" id="TabHead">
+                <span class="Item on" onclick="tabSwitch(this, 'on', '#TabHead', '#TabNote');">音声データカード</span>
+                <span class="Item" onclick="tabSwitch(this, 'on', '#TabHead', '#TabNote');">データカード</span>
+            </div>
+            <div class="TabNote clearfix" id="TabNote">
+                <div class="dis_block">
+                    <div class="textWrap description">
+                        <span>すでに日本におられ、日本の滞在許可証をお持ちの場合には、いつでもボイス＋データカードをお求めいただくことができ、様々なシームレスのサービスをお楽しみになれます。</span>
+                        <!-- <span id="voice-plan-text1"></span><br> -->
+                        <!-- <span>*契約時には実名認証が必須です。日本以外のパスポートをお持ちの方は日本の居住許可書をご提示ください。</span> -->
+                    </div>
+                    <div class="textWrap">
+                        <img class="img_responsive Desktop-product-bg" src="/jp/Desktop/images/textProductBg.png">
+                        <img class="img_responsive Mobile-product-bg" src="/jp/Mobile/images/textProductBg.png">
+                        <!-- <div class="textNote" id="voice-plan-text2"></div> -->
+                        <div class="textNote">
+                            アカウントに即座にログインして、毎月の請求書を表示し、いつでもデータオーバーレイを購入し、トラフィックを高速に保ちます。
+                        </div>
+                    </div>
+                    <div class="swiper-container ProductWrap" id="ProductWrap">
+                        <div class="swiper-wrapper" id="voice_plan_detail"></div>
+                        <script id="voice_plan" type="text/html">
+                            {{each list as plan i}}
+                            <div class="swiper-slide">
+                                <div class="WrapBg">
+                                    <img class="img_responsive" src="../images/WrapBg.png" alt="">
+                                    <div class="WrapBox">
+                                        <div class="BoxTop">
+                                            <span class="BoxTopLeft">
+                                                <span class="num">{{plan.data_limit}}</span>
+                                                <span class="unit">
+                                                    <span class="dis_block">GB</span>
+                                                    <span class="dis_block">/月</span>
+                                                </span>
+                                            </span>
+                                            <span class="BoxTopRight">
+                                                <span class="Line">ボイス<span>{{plan.voice_duration}}</span>分<span
+                                                        style="font-size: .8em;">#</span></span>
+                                                <span class="Line">SMS<span>{{plan.sms_num}}</span>回</span>
+                                            </span>
+                                        </div>
+                                        <div class="Price">{{plan.product_tax}} 円</div>
+                                        <div class="Tax">({{plan.tax_fee}}円 税込み)</div>
+                                        <div class="ItemBox">
+                                            <span class="Item">
+                                                <span class="ItemPic"><img class="img_responsive"
+                                                        src="../images/videoIcon.png" alt=""></span>
+                                                <span class="ItemText"><span>{{plan.video_num}}</span>本のショート動画</span>
+                                            </span>
+                                            <span class="Item">
+                                                <span class="ItemPic"><img class="img_responsive"
+                                                        src="../images/gamingIcon.png" alt=""></span>
+                                                <span class="ItemText"><span>{{plan.game_hours}}</span>时间の モバイル・ゲーム
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <a class="orderBtn" onclick="buySIM(this);">今すぐ購入</a>
+                                        <input style="display:none;" value="{{plan.product_id}}" />
+                                        <div class="TextBox">
+                                            <span class="TextPic"><img class="img_responsive" src="../images/Vector.png"
+                                                    alt=""></span>
+                                            <span class="TextText">限られた無料のグローバルSIMカード配信</span>
+                                        </div>
+                                        <div class="linkWrap"><a class="linkBtn"
+                                                onclick="showPopup('#TipsPop{{i+1}}');">詳細を使用する</a></div>
+                                    </div>
+                                </div>
+                                <div class="BoxText">
+                                    <!-- <div class="fl">*契約時には実名認証が必須です。日本以外のパスポートをお持ちの方は日本の居住許可書をご提示ください。</div> -->
+                                    <div class="fl">#注文時には本名入りの身分証明書が必要です。日本以外のパスポートをお持ちの方は日本の居住許可書をご提示ください。</div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </script>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="dis_none">
+                    <div class="textWrap description">
+                        <!-- <span id="data-plan-text"></span> -->
+                        <span>
+                            日本へ出発される前に、中国で実名の証明書なしにデータカードをお求めになれます。日本での通信はトラブルフリーを保証。
+                        </span>
+                    </div>
+                    <div id="data_plan_detail"></div>
+                    <script type="text/html" id="data_plan">
+                        <div class="BoxBg single">
+                            <img class="img_responsive BoxPic" src="../images/BoxBg.png" alt="">
+                            <div class="mark">データ専用</div>
+                            <div class="BoxWrap">
+                                <div class="BoxLeft">
+                                    <span class="Time high"><span>{{data_limit}}</span></span>
+                                    <span class="unit">GB/30日间</span>
+                                    <p>データSIMカードをチャージすることで継続しての利用ができます。</br>継続して、データ通信をお楽しみください。</p>
+                                </div>
+                                <div class="BoxRight">
+                                    <span class="ItemBox">
+                                        <span class="Item">
+                                            <span class="ItemPic"><img class="img_responsive"
+                                                    src="../images/videoIcon.png" alt=""></span>
+                                            <span class="ItemText"><span>{{video_num}}</span>本の<br>ショート動画</span>
+                                        </span>
+                                        <span class="Item">
+                                            <span class="ItemPic"><img class="img_responsive"
+                                                    src="../images/gamingIcon.png" alt=""></span>
+                                            <span class="ItemText"><span>{{game_hours}}</span>時間の<br>モバイル・ゲーム</span>
+                                        </span>
+                                    </span>
+                                    <span class="Price">{{product_tax}} 円</span>
+                                    <span class="Tax">({{tax_fee}}円 税込み)</span>
+                                    <a class="orderBtn" onclick="buySIM(this);">今すぐ購入</a>
+                                    <input style="display:none;" value="{{product_id}}" />
+                                    <div class="TextBox">
+                                        <span class="TextPic"><img class="img_responsive" src="/jp/images/Vector.png"
+                                                alt=""></span>
+                                        <span class="TextText">限られた無料のグローバルSIMカード配信</span>
+                                    </div>
+                                    <div class="linkWrap"><a class="linkBtn"
+                                            onclick="showPopup('#TipsPop0');">詳細を使用する</a></div>
+                                </div>
+                            </div>
+                            <!--<div class="BoxText">
+									<div class="fl">*利用規約は一連のルールとガイドラインです</div>
+									<div class="fr">*最高速度<span>500</span>MB</div>
+								</div>-->
+                        </div>
+                    </script>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="FAQ_Wrap">
+            <h3 class="NameStyle">よくある質問</h3>
+            <div class="FAQ_Box">
+                <div class="QuestionWrap">
+                    <div class="QuestionProblem">
+                        <span>Q</span>
+                        <i id="question_1"></i>
+                    </div>
+                    <div class="AnswerWrap">
+                        <p class="textWrap" id="answer_1"></p>
+                        <a href="/jp/faq" class="detailsLink">続きを読む ></a>
+                    </div>
+                </div>
+                <div class="QuestionWrap">
+                    <div class="QuestionProblem">
+                        <span>Q</span>
+                        <i id="question_2"></i>
+                    </div>
+                    <div class="AnswerWrap">
+                        <p class="textWrap" id="answer_2"></p>
+                        <a href="/jp/faq" class="detailsLink">続きを読む ></a>
+                    </div>
+                </div>
+                <div class="QuestionWrap">
+                    <div class="QuestionProblem">
+                        <span>Q</span>
+                        <i id="question_3"></i>
+                    </div>
+                    <div class="AnswerWrap">
+                        <p class="textWrap" id="answer_3"></p>
+                        <a href="/jp/faq" class="detailsLink">続きを読む ></a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="BtnWrap"><a href="/jp/faq" class="BtnStyle">すべての質問</a></div>
+        </div>
+    </div>
+
+    <!--   FOOTER   -->
+    <div id="foot"></div>
+
+    <!-- 遮罩 -->
+    <div class="Shade"></div>
+
+    <div class="menuPop conceal" id="menuPop"></div>
+
+    <!-- 弹窗 -->
+    <div class="layer h70 conceal" id="TipsPop0">
+        <span class="colseBtn" onclick="closePopup('#TipsPop0');"><img class="img_responsive" src="/jp/images/colse.png"
+                alt=""></span>
+        <div class="textWrap" id="dataPlanDetail">
+        </div>
+    </div>
+    <div id="tips_detail"></div>
+    <script id="tips" type="text/html">
+        {{each list as plan i}}
+        <div class="layer h70 conceal" id="TipsPop{{i+1}}">
+            <span class="colseBtn" onclick="closePopup('#TipsPop{{i+1}}');"><img class="img_responsive"
+                    src="../images/colse.png" alt=""></span>
+            <div class="textWrap">
+                {{#plan.jp_pact_content}}
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+    <script language="javascript" type="text/javascript" src="/jp/js/urlConfig.js?v=0222"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/template.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/jquery-3.4.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/jsencrypt.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/ajax-jquery-plugin.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/swiper.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/jp/js/public.js?v=0228"></script>
+    <!-- <script language="javascript" type="text/javascript" src="../js/main.js"></script> -->
+    <script language="javascript" type="text/javascript" src="../js/planConfig.js"></script>
+</body>
+
+</html>
