@@ -1,0 +1,499 @@
+$(document.body).css("display", "none");
+document.onreadystatechange = completeLoading;
+$.ajax({
+    type: "get",
+    url: urlMap.public.foot,
+    //async:false,
+    complete: function (xhr) {
+        var statusCode = xhr.status;
+        if (statusCode == 503) {
+            window.location.href = "/jp/503.html";
+        }
+    }
+});
+
+var switchUrl = "",
+    sideWidget = "",
+    pdfData = "";
+
+//将utm_source改为utm_content,utm_source另作他用
+var utm_source = getQueryString("utm_content");
+if (valIsNotEmpty(utm_source)) {
+    sessionStorage.setItem("mvno_utm_source", utm_source);
+}
+
+var mvno_lang = localStorage.getItem("mvno_lang");
+var loading_flag = sessionStorage.getItem("loading_flag");
+var language = $("html")[0].lang;
+var pathName = window.location.pathname;
+
+
+if (loading_flag != "0" && document.title == "404") {
+    if (language != mvno_lang) {
+        window.location.href = "/jp/zh/404.html";
+    } else {
+        window.location.href = "/jp/404.html";
+    }
+    sessionStorage.setItem("loading_flag", "0");
+} else if (document.title != "404") {
+    sessionStorage.setItem("loading_flag", "1");
+    localStorage.setItem("mvno_lang", language);
+}
+
+//判断是否为桌面PC端
+function isDesktop() {
+    return ($(window).outerWidth() > 1023) ? true : false;
+}
+
+$(function () {
+
+    $(window).scroll(function () {
+        $('.navbarHeader').addClass('fixed');
+        if ($(window).scrollTop() == 0) {
+            $('.navbarHeader').removeClass('fixed');
+        }
+    });
+});
+
+// var tab_flag = 0;
+// Tab切换
+function tabSwitch(obj, on, tab, content) {
+    var tab_index = $(obj).prevAll().length;
+    var $content = $(content).children();
+    $(tab).children().removeClass(on);
+    $(obj).addClass(on);
+    $content.hide();
+    $content.eq(tab_index).show();
+    // if (tab_flag == 0) {
+    //     if (isDesktop()) {
+    //         slideDiv('#ProductWrap', 3, 0);
+    //     } else {
+    //         slideDiv('#ProductWrap', 1.3, 0);
+    //     }
+    //     tab_flag = 1;
+    // }
+}
+
+// 展开收起
+function OpenSwitch(obj) {
+    if ($(obj).children('i').hasClass('up')) {
+        $(obj).children('i').removeClass('up');
+        $(obj).next(".PAQItemNote").stop(true, true).slideUp(200);
+    } else {
+        $("i.up").removeClass('up');
+        $(".PAQItemNote").stop(true, true).slideUp(200);
+        $(obj).children('i').addClass('up');
+        $(obj).next(".PAQItemNote").stop(true, true).slideDown(200);
+    }
+}
+
+//加载底部数据
+function pdfLoad() {
+    if (sideWidget == "") {
+        return;
+    }
+    $("#code_img_down").attr("src", sideWidget[0].code_img);
+    $("#wechat_desc_down").text(sideWidget[0].wechat_desc);
+    if (language == "ja") {
+        //网站使用条款及细则
+        $("#pdf_url_1").attr("href", pdfData[5].policy);
+        //隐私政策
+        $("#pdf_url_2").attr("href", pdfData[2].policy);
+        //产品条款及细则
+        $("#pdf_url_3").attr("href", pdfData[4].policy);
+        $("#switchZh2").attr("href", switchUrl);
+    } else if (language == "zh") {
+        $("#pdf_url_1").attr("href", pdfData[6].policy);
+        $("#pdf_url_2").attr("href", pdfData[2].policy);
+        $("#pdf_url_3").attr("href", pdfData[3].policy);
+        $("#switchJa2").attr("href", switchUrl);
+    }
+}
+
+// 打开弹窗
+function showPopup(obj) {
+    $('.Shade').show();
+    $(obj).removeClass("conceal");
+    $(obj).addClass("show");
+    $('body').css("overflow-y", "hidden");
+
+    if (language == "ja") {
+        $("#switchZh1").attr("href", switchUrl);
+    } else if (language == "zh") {
+        $("#switchJa1").attr("href", switchUrl);
+        $("#switchJa2").attr("href", switchUrl);
+    }
+}
+
+// 关闭弹窗
+function closePopup(obj) {
+    $(obj).removeClass("show");
+    $(obj).addClass("conceal");
+    $('.Shade').hide();
+    $('body').css("overflow-y", "auto");
+}
+
+// 关闭Cookie
+function closeCookie(obj) {
+    $(obj).removeClass("show");
+    $(obj).addClass("conceal");
+}
+
+// 滑动切换
+function slideDiv(obj, n, tab) {
+    if (isDesktop()) {
+        var divSwiper = new Swiper(obj, {
+            slidesPerView: n,
+            spaceBetween: 15,
+            centerInsufficientSlides: true,
+            roundLengths: true,
+            observer: true,
+            observeParents: true,
+        });
+    } else {
+        var divSwiper = new Swiper(obj, {
+            slidesPerView: n,
+            spaceBetween: 10,
+            centeredSlides: true,
+            observer: true,
+            observeParents: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            //pagination: '.swiper-pagination',
+            initialSlide: tab,
+            roundLengths: true
+        });
+    }
+}
+//时间段判断  timeZone距零时区的时差
+function timeSlot(startTime,endTime,timeZone) {
+	if(timeZone === undefined){
+		timeZone = 8; //默认时区设置为中国
+	}
+    var offset = new Date().getTimezoneOffset();
+    var nowDate = new Date().getTime();
+    var targetDate = new Date(nowDate + offset * 60 * 1000 + timeZone * 60 * 60 * 1000);
+    var enTimeoffset = targetDate.getTime();
+    //设置目标时区时间段
+    var beginTime = Date.parse(new Date(startTime));
+    var endTime = Date.parse(new Date(endTime));
+    if ((enTimeoffset > beginTime) && (enTimeoffset < endTime)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function changeMenuPop(){
+	if(timeSlot("2020-01-23 00:00:00","2020-01-24 23:59:59",9)){
+		if (language == "ja") {
+			$("#menuPop-topup").text('チャージボーナス');
+			$("#menuPop-topup").css('color','#e30077');
+		}else if (language == "zh") {
+			$("#menuPop-topup").text('新春充值送');
+			$("#menuPop-topup").css('color','#e30077');
+		}
+	}else{
+		if (language == "ja") {
+			$("#menuPop-topup").text('チャージ');
+			$("#menuPop-topup").css('color','#333');
+		}else if (language == "zh") {
+			$("#menuPop-topup").text('充值');
+			$("#menuPop-topup").css('color','#333');
+		}
+	}
+}
+
+function changeHead(){
+	if(timeSlot("2020-01-23 00:00:00","2020-01-24 23:59:59",9)){
+		if (language == "ja") {
+			$("#header-topup").text('チャージボーナス');
+			$("#header-topup").css('color','#e30077');
+			$("#header-topup").attr('title','チャージボーナス');
+		}else if (language == "zh") {
+			$("#header-topup").text('新春充值送');
+			$("#header-topup").css('color','#e30077');
+			$("#header-topup").attr('title','新春充值送');
+		}
+	}else{
+		if (language == "ja") {
+			$("#header-topup").text('チャージ');
+			$("#header-topup").css('color','#333');
+			$("#header-topup").attr('title','チャージ');
+		}else if (language == "zh") {
+			$("#header-topup").text('充值');
+			$("#header-topup").css('color','#333');
+			$("#header-topup").attr('title','充值');
+		}
+	}
+}
+function changeFoot(){
+	if(timeSlot("2020-01-23 00:00:00","2020-01-24 23:59:59",9)){
+		if (language == "ja") {
+			$("#foot-topup").text('チャージボーナス');
+		}else if (language == "zh") {
+			$("#foot-topup").text('新春充值送');
+		}
+	}else{
+		if (language == "ja") {
+			$("#foot-topup").text('チャージ');
+		}else if (language == "zh") {
+			$("#foot-topup").text('充值');
+		}
+	}
+}
+
+//加载公共区域
+$(function () {
+
+    var index = "";
+    if (language == "ja") {
+        $("#head").load("/jp/common/head.html?v="+ Date.now() +"",function(){
+        	changeHead();
+        });
+        $("#foot").load("/jp/common/foot.html?v="+ Date.now() +"",function(){
+        	changeFoot();
+        });
+        $("#menuPop").load("/jp/common/menuPop.html?v="+ Date.now() +"",function(){
+        	changeMenuPop();
+        });
+		
+        index = pathName.indexOf("/jp");
+        switchUrl = "/jp/zh" + pathName.substring(index + 3);
+
+
+        //微信数据
+        $.ajaxDirect({
+            type: "get",
+            url: urlMap.public.wxJa,
+            afterFn: function (ret) {
+                sideWidget = ret;
+                //$("#code_img_down").attr("src", sideWidget[0].code_img);
+                //$("#wechat_desc_down").text(sideWidget[0].wechat_desc);
+
+                /*$("#switchZh1").attr("href",switchUrl);
+                $("#switchZh2").attr("href",switchUrl);*/
+            }
+        });
+        //pdf模块
+        $.ajaxDirect({
+            type: "get",
+            url: urlMap.public.pdfData,
+            async: false,
+            afterFn: function (ret) {
+				let ret1 = ret.map(function(value){
+				    value.policy = value.policy.replace(/\jpAdmin/g,"jp");
+				    return value
+				});
+                pdfData = ret1;
+                //$("#pdf_url_1").attr("href", pdfData[0].website_terms_and_condition);
+                //$("#pdf_url_2").attr("href", pdfData[0].privacy_policy);
+                //$("#pdf_url_3").attr("href", pdfData[0].product_terms_and_condition);
+
+                //$("#pdf_url_4").attr("href", pdfData[0].membership_terms_and_condition);
+                //$("#pdf_url_5").attr("href", pdfData[0].sales_refunds);
+                //$("#ibosslogo").attr("src", pdfData[0].ibosslogo);
+            }
+        });
+
+    } else if (language == "zh") {
+        $("#head").load("/jp/common/zh/head.html?v="+ Date.now() +"",function(){
+        	changeHead();
+        });
+        $("#foot").load("/jp/common/zh/foot.html?v="+ Date.now() +"",function(){
+        	changeFoot();
+        });
+        $("#menuPop").load("/jp/common/zh/menuPop.html?v="+ Date.now() +"",function(){
+        	changeMenuPop();
+        });
+
+        index = pathName.indexOf("/jp/zh");
+        switchUrl = "/jp" + pathName.substring(index + 6);
+        //微信数据
+        $.ajaxDirect({
+            type: "get",
+            url: urlMap.public.wxZh,
+            afterFn: function (ret) {
+                sideWidget = ret;
+                //$("#code_img_down").attr("src", sideWidget[0].code_img);
+                //$("#wechat_desc_down").text(sideWidget[0].wechat_desc);
+
+                //				$("#switchJa1").attr("href",switchUrl);
+                //				$("#switchJa2").attr("href",switchUrl);
+            }
+        });
+
+        //pdf模块
+        $.ajaxDirect({
+            type: "get",
+            url: urlMap.public.pdfData,
+            async: false,
+            afterFn: function (ret) {
+               	let ret1 = ret.map(function(value){
+				    value.policy = value.policy.replace(/\jpAdmin/g,"jp");
+				    return value
+				});
+                pdfData = ret1;
+                //$("#pdf_url_1").attr("href", pdfData[0].website_terms_and_condition);
+                //$("#pdf_url_2").attr("href", pdfData[0].privacy_policy);
+                //$("#pdf_url_3").attr("href", pdfData[0].product_terms_and_condition);
+
+                //$("#pdf_url_4").attr("href", pdfData[0].membership_terms_and_condition);
+                //$("#pdf_url_5").attr("href", pdfData[0].sales_refunds);
+                //$("#ibosslogo").attr("src", pdfData[0].ibosslogo);
+            }
+        });
+    }
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 0) {
+            pdfLoad();
+        }
+    });
+});
+
+//处理图片src路径
+function imgDeal(src) {
+    if (src != undefined) {
+        var start = src.indexOf("src=");
+        var end = src.indexOf("width=");
+        return src.substring(start + 5, end - 2);
+    }
+}
+
+function completeLoading() {
+    if (document.readyState == "complete") {
+        $(document.body).css("display", "block");
+    }
+}
+//判断是否是微信浏览器
+function isWeiXin() {
+    var ua = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/*
+ 7  * formatMoney(s,type)
+ 8  * 功能：金额按千位逗号分隔
+ 9  * 参数：s，需要格式化的金额数值.
+10  * 参数：type,判断格式化后的金额是否需要小数位.
+11  * 返回：返回格式化后的数值字符串.
+12  */
+function formatMoney(s, type) {
+    if (/[^0-9\.]/.test(s))
+        return "0.00";
+    if (s == null || s == "null" || s == "")
+        return "0.00";
+    s = s.toString().replace(/^(\d*)$/, "$1.");
+    s = (s + "00").replace(/(\d*\.\d\d)\d*/, "$1");
+    s = s.replace(".", ",");
+    var re = /(\d)(\d{3},)/;
+    while (re.test(s))
+        s = s.replace(re, "$1,$2");
+    s = s.replace(/,(\d\d)$/, ".$1");
+    if (type == 0) {
+        var a = s.split(".");
+        if (a[1] == "00") {
+            s = a[0];
+        }
+    }
+    return s;
+}
+
+/*window.onbeforeunload = function() {
+	var scrollPos;   
+	if (typeof window.pageYOffset != 'undefined') {
+	   scrollPos = window.pageYOffset;
+	}
+	else if (typeof document.compatMode != 'undefined' &&
+		 document.compatMode != 'BackCompat') {
+	   scrollPos = document.documentElement.scrollTop;
+	}
+	else if (typeof document.body != 'undefined') {
+	   scrollPos = document.body.scrollTop;
+	}
+	document.cookie="scrollTop="+scrollPos; //存储滚动条位置到cookies中
+    }
+window.onload = function() {
+	if(document.cookie.match(/scrollTop=([^;]+)(;|$)/)!=null){
+		var arr=document.cookie.match(/scrollTop=([^;]+)(;|$)/); //cookies中不为空，则读取滚动条位置
+		document.documentElement.scrollTop=parseInt(arr[1]);
+		document.body.scrollTop=parseInt(arr[1]);
+	}
+}*/
+
+function disabledMouseWheel() {
+    var input1 = document.getElementById('birthDate');
+    var input2 = document.getElementById('reservation-period');
+    if (input1.addEventListener) {
+        input1.addEventListener('DOMMouseScroll', scrollFunc, false);
+    } //W3C
+    input1.onmousewheel = scrollFunc; //IE/Opera/Chrome
+    if (input2.addEventListener) {
+        input2.addEventListener('DOMMouseScroll', scrollFunc, false);
+    } //W3C
+    input2.onmousewheel = scrollFunc; //IE/Opera/Chrome
+}
+
+function scrollFunc(evt) {
+    evt = evt || window.event;
+    if (evt.preventDefault) {
+        // Firefox
+        evt.preventDefault();
+        evt.stopPropagation();
+    } else {
+        // IE
+        evt.cancelBubble = true;
+        evt.returnValue = false;
+    }
+    return false;
+}
+
+
+//cookie添加
+var cookieStr = '';
+function cookieAdd(){
+	if(language == 'zh'){
+		cookieStr = '<div class="cookieWrap show">'
+    		+'<div class="cookieBox cookieBox1 show">'
+    		+'<div class="title" style="font-size:17px"><p>Cookies帮助我们为您提供更好的网站服务</p><p>Cookiesを利用することで、よりよいサービスの提供が可能です</p></div>'
+    		+"<div class='cookieCont'><div class='left'>某些类型的Cookies对使用我们的网站至关重要。要了解有关Cookies的更多信息，包括如何禁用它们，请查看我们的<a href='/jp/cookie/cookie_zh.pdf' target='_blank'>Cookie政策</a> 。点击“我接受”，即表示您同意使用Cookies。您也可选择“我不接受”，网站不会收集包含您个人信息的Cookie。</div>"
+			+'<div class="right"><a href="javascript:void(0);" id="cookieAgree" class="btn">我接受 | 同意する</a><a href="javascript:void(0);" id="cookieDisagree" class="disbtn">我不接受  | 同意しない</a></div>'
+			+'</div></div>'
+			+'<div class="cookieBox cookieBox2"><div class="cookieCont"><div class="left">您可以继续浏览网站，请留意网站不会收集任何包含您个人信息的Cookies。</div><div class="right"><a href="javascript:void(0);" id="cookieUnderstand" class="btn">我已了解</a></div></div>'
+			+'</div></div>'
+	}else{
+		cookieStr = '<div class="cookieWrap show">'
+    		+'<div class="cookieBox cookieBox1 show">'
+    		+'<div class="title" style="font-size:17px"><p>Cookiesを利用することで、よりよいサービスの提供が可能です</p><p>Cookies帮助我们为您提供更好的网站服务</p></div>'
+    		+"<div class='cookieCont'><div class='left'>一部のCookiesはサイトの利用に不可欠です。これらを無効にする方法など、Cookieの詳細については、<a href='/jp/cookie/cookie_jp.pdf' target='_blank'>Cookieポリシ</a>ーを参照してください。「同意する」をクリックすると、Cookieの利用に同意したことになります。個人情報を含むCookieを収集されたくない場合は、「同意しない」を選択することもできます。</div>"
+			+'<div class="right"><a href="javascript:void(0);" id="cookieAgree" class="btn">同意する | 我接受</a><a href="javascript:void(0);" id="cookieDisagree" class="disbtn">同意しない  | 我不接受</a></div>'
+			+'</div></div>'
+			+'<div class="cookieBox cookieBox2"><div class="cookieCont"><div class="left">引き続きサイトの閲覧をする際には、個人情報を含むCookieを収集されないようご注意ください。</div><div class="right"><a href="javascript:void(0);" id="cookieUnderstand" class="btn">はい</a></div></div>'
+			+'</div></div>'
+	}
+	$("#foot").after(cookieStr);
+	$('#cookieAgree').on('click',function(){
+		localStorage.setItem('cookieMessage_jp','jp');
+		$('.cookieWrap').removeClass('show').addClass('hide');
+	})
+	$('#cookieDisagree').on('click',function(){
+		localStorage.setItem('cookieMessage_jp','jp');
+		$('.cookieWrap .cookieBox1').removeClass('show');
+		$('.cookieWrap .cookieBox2').addClass('show');
+	});
+	$("#cookieUnderstand").on('click',function(){
+		localStorage.setItem('cookieMessage_jp','jp');
+		$('.cookieWrap').removeClass('show').addClass('hide');
+		$('.cookieWrap .cookieBox2').removeClass('show');
+	});
+}
+if(!(localStorage.getItem('cookieMessage_jp') == 'jp')){
+	cookieAdd();
+}else{
+	$('.cookieWrap').removeClass('show').addClass('hide');
+}
