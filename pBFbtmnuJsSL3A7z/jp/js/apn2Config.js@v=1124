@@ -1,0 +1,119 @@
+$(function() {
+    var language = $("html")[0].lang;
+    $.ajaxDirect({
+        type: 'GET',
+        url: urlMap.apnsetting.step2,
+        async: false,
+        //loadingType: '0',		
+        afterFn: function(data) {
+            if (language == "zh") {
+                $(document).attr("title", data[1].title)
+                var android_setting = data[1].android_setting;
+                for (x in android_setting) {
+                    //处理图片路径
+                    android_setting[x].android_pc_img = imgDeal(android_setting[x].android_pc_img);
+                }
+                var ios_setting = data[1].ios_setting;
+                for (x in ios_setting) {
+                    //处理图片路径
+                    ios_setting[x].ios_pc_img = imgDeal(ios_setting[x].ios_pc_img);
+                }
+                data[1].ios_download_pdf = pdfData[0].policy;
+                var html = template('apnSettings2_zh', data[1]);
+                document.getElementById('content2_zh').innerHTML = html;
+
+            } else if (language == "ja") {
+                $(document).attr("title", data[0].title)
+                var android_setting = data[0].android_setting;
+                for (x in android_setting) {
+                    //处理图片路径
+                    android_setting[x].android_pc_img = imgDeal(android_setting[x].android_pc_img);
+                }
+                var ios_setting = data[0].ios_setting;
+                for (x in ios_setting) {
+                    //处理图片路径
+                    ios_setting[x].ios_pc_img = imgDeal(ios_setting[x].ios_pc_img);
+                }
+                data[0].ios_download_pdf = pdfData[0].policy;
+                var html = template('apnSettings2_jp', data[0]);
+                document.getElementById('content2_jp').innerHTML = html;
+            }
+        }
+    });
+    $(".Apn-setting-box li").click(function() {
+        $(this).addClass("pitch-on").siblings(".Apn-setting-box li").removeClass("pitch-on");
+        $('.Apn-cons>div:eq(' + $(this).index() + ')').show().siblings().hide();
+    });
+
+
+});
+$(window).on('load', function() {
+    //if( $(window).outerWidth()>=1200 )
+    if (isDesktop()) {
+        var swiper = new Swiper('#swiper_1', {
+            slidesPerView: 3,
+            spaceBetween: 20
+        });
+        var swiper = new Swiper('#swiper_2', {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            paginationClickable: true,
+            spaceBetween: 20,
+            freeMode: false,
+            loop: false,
+            speed: 1000,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            observer: true,
+            observeParents: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    } else {
+        var swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
+            paginationClickable: true,
+            freeMode: false,
+            loop: false,
+            speed: 1000,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            observer: true,
+            observeParents: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    }
+
+});
+(function() {
+    var init = function() {
+        var updateOrientation = function() { //方向改变执行的函数
+            var orientation = window.orientation;
+            switch (orientation) {
+                case 90:
+                case -90:
+                    orientation = 'landscape'; //这里是横屏
+                    break;
+                default:
+                    orientation = 'portrait'; //这里是竖屏
+                    break;
+            }
+        };
+        // 每次旋转，调用这个事件。
+        window.addEventListener('orientationchange', updateOrientation, false);
+        // 事件的初始化
+        updateOrientation();
+    };
+    window.addEventListener('DOMContentLoaded', init, false);
+})();
+
+window.addEventListener('orientationchange', function() {
+    window.location.reload(); //这里可以根据orientation做相应的处理
+}, false);
