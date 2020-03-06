@@ -1,0 +1,228 @@
+var uploader, uploader2;
+var imgTips = "上传失败";
+// 图片上传demo
+$(function () {
+    var validMap = {
+        en: {
+            'data-error': $('#edit-passport').attr('data-error'),
+            'data-passport-error': $('#edit-passport').attr('data-passport-error'),
+            'data-passport-file-error': $('#edit-passport').attr('data-passport-file-error'),
+            'data-upload': $('#edit-passport').attr('data-upload')
+        },
+        zh: {
+            'data-error': $('#edit-passport').attr('data-error-zh'),
+            'data-passport-error': $('#edit-passport').attr('data-passport-error-zh'),
+            'data-passport-file-error': $('#edit-passport').attr('data-passport-file-error-zh'),
+            'data-upload': $('#edit-passport').attr('data-upload-zh')
+        }
+    };
+    var lang = $('html').attr('lang').substring(0, 2);
+    $('.passport-valid-required').text(validMap[lang]['data-passport-error']);
+    $('.file-required').text(validMap[lang]['data-passport-file-error']);
+    $('.passport-required').text(validMap[lang]['data-error']);
+    $('#passportFile #filePicker').text(validMap[lang]['data-upload']);
+    /*
+    <div class="col-xs-9 col-sm-8">
+        <div class="js-form-item form-item clearfix">
+            <input class="form-control form-text form-passport col-xs-9 col-sm-8" id="photoInput1" placeholder="${validMap[lang]['data-placeholder']}" maxlength="20">
+        </div>
+        <p class="hidden passport-required">
+            <span id="cardTip1" class="opa-disnone">
+                ${validMap[lang]['data-error']}
+            </span>
+        </p>
+        <p class="hidden passport-valid-required">
+            <span id="cardTip2" class="opa-disnone">
+                ${validMap[lang]['data-passport-error']}
+            </span>
+        </p>
+        <p class="hidden file-required">
+            <span id="photoTip1" class="opa-disnone">
+                ${validMap[lang]['data-passport-file-error']}
+            </span>
+        </p>
+    </div>
+    <div class="col-xs-3 col-sm-4"><div class="Button upload-btn" id="filePicker">${validMap[lang]['data-upload']}</div></div>
+        <!--dom结构部分-->
+        <div id="uploader-demo" class="inden-pic">
+            <!--用来存放item-->
+            <div id="fileList" class="uploader-list"></div>
+        </div>
+    * */
+    // 默认隐藏，当选择地区为中国是，显示
+    /*$('#passportFile').append(`
+
+    `);*/
+    var $list = $('#fileList'),
+        // 优化retina, 在retina下这个值是2
+        ratio = window.devicePixelRatio || 1,
+
+        // 缩略图大小
+        thumbnailWidth = 100 * ratio,
+        thumbnailHeight = 100 * ratio;
+
+    // Web Uploader实例
+    //uploader;
+
+    // 初始化Web Uploader
+    uploader = WebUploader.create({
+
+        // 自动上传。
+        auto: true,
+
+        // swf文件路径
+        swf: 'Uploader.swf',
+
+        // 文件接收服务端。
+        server: '/uk/cmlink_direct/uploadImage',
+
+        //允许上传图片个数
+        fileNumLimit: 1,
+
+        fileVal: 'file',
+
+        //重复上传
+        duplicate: true,
+
+        // 10 M [默认值：undefined] 验证单个文件大小是否超出限制, 超出则不允许加入队列。
+        fileSingleSizeLimit: 10 * 1024 * 1024,
+
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+        pick: '#filePicker',
+
+        // 只允许选择文件，可选。
+        accept: {
+            title: 'Images',
+            extensions: 'jpg,jpeg,png',
+            mimeTypes: 'image/*'
+        }
+    });
+
+    // 当有文件添加进来的时候
+    uploader.on('fileQueued', function (file) {
+        var $li = $(
+            '<div class="file-item-wrapper" id="' + file.id + 'Wrapper"><div id="' + file.id + '" class="file-item thumbnail">' +
+            '<img class="file-upload-img">' +
+            '<div class="info file-upload-info">' + file.name + '</div>' +
+            '</div></div>'
+            ),
+            $img = $li.find('img');
+
+        $list.append($li);
+
+        // 创建缩略图
+        uploader.makeThumb(file, function (error, src) {
+            if (error) {
+                $img.replaceWith('<span>不能预览</span>');
+                return;
+            }
+            $img.attr('src', src);
+        }, thumbnailWidth, thumbnailHeight);
+    });
+
+    // 文件上传过程中创建进度条实时显示。
+    uploader.on('uploadProgress', function (file, percentage) {
+        var $li = $('#' + file.id),
+            $percent = $li.find('.progress span');
+
+        // 避免重复创建
+        if (!$percent.length) {
+            $percent = $('<p class="progress" style="height:6px;margin-top:-5px;bottom: 0px;right:0px;left:0px;"><span style="margin-left: 0px;margin-top: 0px;height:6px;"></span></p>')
+                .appendTo($li)
+                .find('span');
+        }
+
+        $percent.css('width', percentage * 100 + '%');
+    });
+
+    // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+    uploader.on('uploadSuccess', function (file, response) {
+        if (response.retCode == "0") {//上传成功
+            $('#' + file.id + ' div').css({"background": "url(/uk/themes/chinamobile/images/success.png) no-repeat right bottom rgba(0, 0, 0, 0.6)"});
+            $('#' + file.id).append('<a id="' + response.retMsg + '" class="file-upload-close upload-success" href="javascript:;" file="'+file.id+'" fileid="'+response.retId+'" filename="'+response.result+'">X</a>');
+            $('#' + file.id).attr("data-url", response.retMsg);
+            $('#' + file.id+'Wrapper').attr("data-code", response.retCode);
+            $('#edit-passport-file-id').val(response.retId);
+            $('#edit-passport-file-name').val(response.result);
+        } else {//上传失败
+            $('#' + file.id + ' div').css({"background": "url(/uk/themes/chinamobile/images/error.png) no-repeat right bottom rgba(0, 0, 0, 0.6)"});
+            var $li = $('#' + file.id),
+                $error = $li.find('div.error');
+            // 避免重复创建
+            if (!$error.length) {
+                $error = $('<div class="error"></div>').appendTo($li);
+            }
+            $error.html(imgTips + '<a class="file-upload-close" href="javascript:;" onclick="removeImg(\'#' + file.id + '\');">X</a>')
+        }
+        $('.file-required').addClass('hidden');
+    });
+
+    // 文件上传失败，现实上传出错。
+    uploader.on('uploadError', function (file) {
+        var $li = $('#' + file.id),
+            $error = $li.find('div.error');
+
+        // 避免重复创建
+        if (!$error.length) {
+            $error = $('<div class="error"></div>').appendTo($li);
+        }
+
+        $error.html(imgTips + '<a class="file-upload-close" href="javascript:;" onclick="removeImg(\'#' + file.id + '\');">X</a>')
+    });
+
+    // 完成上传完了，成功或者失败，先删除进度条。
+    uploader.on('uploadComplete', function (file) {
+        $('#' + file.id).find('.progress').remove();
+        $("#photoTip1").css("display", "none");
+        if ($(window).outerWidth() > 1024) {
+            $('#' + file.id).bind("mouseenter", function () { //#0395df
+                $('#' + file.id + ' img').css("border-color", "#0395DF");
+                $('#' + file.id + ' a').fadeIn(500);
+            });
+            $('#' + file.id).bind("mouseleave", function () {
+                $('#' + file.id + ' img').css("border-color", "#a3a2a2");
+                $('#' + file.id + ' a').fadeOut(500);
+            });
+        } else {
+            $('#' + file.id + ' a').css("display", "block");
+        }
+        $('.file-required').addClass('hidden');
+    });
+    uploader.on('ready', function () {
+        $('#edit-passport-information').addClass('hidden');
+        $('#passportFile').addClass('hidden');
+        $('label[for="edit-passport"]').removeClass('js-form-required form-required');
+        $('#edit-passport').removeClass('required').removeAttr('required').removeAttr('aria-required');
+    });
+
+    $('.uploader-list').off().on('click', '.file-upload-close.upload-success', function (e) {
+        removeSucImg($(this).attr('file'), $(this).attr('fileid'), $(this).attr('filename'));
+    });
+
+    // 删除引用
+    delete validMap.en;
+    delete validMap.zh;
+    validMap = null;
+
+});
+
+function removeImg(id) { //删除上传失败图片
+    $(id + 'Wrapper').remove();
+    uploader.trigger('fileDequeued');
+}
+
+function removeSucImg(file, id, name) { //删除已经上传成功的图片
+    $.ajax({
+        type: "post",
+        url: '/uk/cmlink_direct/removeUploadImage',
+        data: {id: id, name: name},
+        success: function (res) {
+            $('#'+file + 'Wrapper').remove();
+            uploader.trigger('fileDequeued');
+        },
+        error: function (res) {
+            console.log(res);
+        }
+    });
+}
