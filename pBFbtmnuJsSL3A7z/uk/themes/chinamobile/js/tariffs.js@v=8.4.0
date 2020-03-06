@@ -1,0 +1,92 @@
+var scrollTopOffset = 0;
+
+function customUpdatePageTopOffset() {
+	var $navbar = $("nav.navbar.header");
+	var $breadcrumb = $('.wrapper-breadcrumb');
+	var $tariffsTab = $('.tab-button');
+
+	var navbarHeight =  $navbar.length ? $navbar.outerHeight() : 0;
+	var breadcrumbHeight = $breadcrumb.length ? $breadcrumb.outerHeight() : 0;
+	var tariffsTabHeight = $tariffsTab.length ? $tariffsTab.outerHeight() : 0;
+	pageTopOffset = navbarHeight + breadcrumbHeight;
+	scrollTopOffset = navbarHeight + breadcrumbHeight + tariffsTabHeight;
+
+	$tariffsTab.css('top', pageTopOffset);
+}
+
+function scrollTo(element_id){
+    $('html, body').animate({
+        scrollTop: $("#"+element_id).offset().top-scrollTopOffset
+    }, 1500);
+}
+
+function updateTariffIDD(countryName){
+	var country = countryDataIDD[countryName];
+	$iddData = $(".content-dropdown-idd");
+	$iddData.find(".data-idd-country-title").html(countryName+" ("+country.IDD+")");
+	$iddData.find(".data-idd-landline").html(country.Landline);
+	$iddData.find(".data-idd-mobile").html(country.Mobile);
+	$iddData.find(".data-idd-text").html(country.Text);
+	$iddData.find(".data-idd-remark").html(country.Remarks);
+	$iddData.fadeIn();
+}
+
+$( document ).ready(function() {
+	
+	$.each(countryDataIDD, function(key, val) {
+		$("select#select-idd-dropdown").append("<option value='"+key+"' zone='"+countryDataIDD[key].Zone+"'>"+key+"</option>");
+	});
+	$.each(countryDataRoaming, function(key, val) {
+		$("select#select-roaming-dropdown").append("<option value='"+key+"' zone='"+countryDataRoaming[key].Zone+"'>"+key+"</option>");
+	});
+	
+	$("select#select-roaming-dropdown").on("change",function(){
+		var selectedOption = $("option:selected", this);
+		var zone = selectedOption.attr("zone");
+		$(".content-dropdown-roaming .payg-rates").hide();
+		$(".content-dropdown-roaming .payg-rates[cmi_data_zone='"+zone+"']").fadeIn();
+	});
+	
+	$("select#select-idd-dropdown").on("change",function(){
+		updateTariffIDD($(this).val());
+	});
+
+	$('#to-local').on('click', function() {
+		scrollTo('local');
+	});
+
+	$('#to-call-abroad-from-uk').on('click', function() {
+		scrollTo('call-abroad-from-uk');
+	});
+
+	$('#to-roaming').on('click', function() {
+		scrollTo('roaming');
+	});
+});
+
+$(window).scroll(function() {
+    var windscroll = $(window).scrollTop();
+    if (windscroll >= 100) {
+        $('.wrapper-tariffs .section').each(function(i) {
+            if ($(this).position().top <= windscroll - 20) {
+            	$('.tab-button a.active').removeClass('active');
+
+                $('.tab-button a').eq(i).addClass('active');    
+            }
+        });
+
+    } else {
+
+        $('.tab-button a.active').removeClass('active');
+
+        $('.tab-button a:first').addClass('active');
+    }
+
+}).scroll();
+
+$(window).on('load', function(){
+	customUpdatePageTopOffset();
+});
+$(window).on('resize', function(){
+	customUpdatePageTopOffset();
+});
