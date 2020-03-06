@@ -1,0 +1,32 @@
+
+$(document).ready(function(){ 
+	$(".view-details").hide();
+//	if (isMobile()){
+//		$('.promotion-package-title').hide();
+//	} else {
+//		$('.promotion-package-title').show();
+//	}
+});
+
+//$('.view-promotion-details').on('click', function (e) {
+//	e.preventDefault();
+//	if ($(this).hasClass('active')) {
+//	  $(this).removeClass('active').parents('.promotion-package').find(".view-details").slideUp();	  
+//	  $(this).parents('.promotion-package').css('border-bottom', 'unset');
+//	} else {
+//	  $(this).addClass('active').parents('.promotion-package').find(".view-details").slideDown();	  
+//	  $(this).parents('.promotion-package').css('border-bottom', '1px solid #000000');
+//	  
+//	}
+//});
+$('.promotion-package .view-promotion-details').on('click', function (e) {		
+	e.preventDefault();
+	var doc = $(this).parents('.wrapper-banner').siblings(".view-details");
+	if ($(this).hasClass('active')) {
+	    $(this).removeClass('active');
+	    doc.slideUp();
+	} else {
+	    $(this).addClass('active');
+	    doc.slideDown();
+	}
+});
