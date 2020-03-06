@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache" forua="true" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>China Mobile CMLink JP</title>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MP2XWZF');
+    </script>
+    <script>
+		!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv='1.0';v.bt=0;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,'script','//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js');
+		gdt('init','1110032816');
+		gdt('track','PAGE_VIEW');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://a.gdt.qq.com/pixel?user_action_set_id=1110032816&action_type=PAGE_VIEW&noscript=1"/>
+	</noscript>
+    <!-- End Google Tag Manager -->
+    <link rel="shortcut icon" href="/jp/images/favicon_2.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" type="text/css" href="/jp/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/frame.css" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Desktop/css/main.css?v=0222?v=1115" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/frame.css" media="all and (max-width:1023px)" />
+    <link rel="stylesheet" type="text/css" href="/jp/Mobile/css/main.css?v=0222?v=1115" media="all and (max-width:1023px)" />
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP2XWZF"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!--   HEADER   -->
+    <div id="head"></div>
+
+    <!--  Banner  -->
+    <div class="Banner promotion-Banner" id="banner"></div>
+    <script id="banner_jp" type="text/html">
+        <img class="img_responsive Desktop-banner-step03" src="{{promotionPcBanner}}">
+        <img class="img_responsive Mobile-banner-step03" src="{{promotionMobileBanner}}">
+        <div class="banner-text">
+            <dl>
+                <dt class="des-dt">{{promotionBanner}}</dt>
+                <dt class="mo-dt">{{promotionBanner}}</dt>
+
+                <dd>{{promotionBannerContent}}</dd>
+            </dl>
+        </div>
+    </script>
+
+    <!--  promotion Details -->
+    <div id="promotions"></div>
+    <script id="promotions_jp" type="text/html">
+        {{each list as promotion index}}
+        <div class="Promotion-Details-box Promotion-Details0{{index+1}}">
+            <div class="details-banner-box">
+                <img class="des-de-bg01 img_responsive" src="{{promotion.pcImg}}">
+                <img class="mo-de-bg01 img_responsive" src="{{promotion.mobileImg}}">
+                <div class="details-banner-text">
+                    <dl>
+                        <dt>{{#promotion.jpActivityTitle}}</dt>
+                        <dd class="mo-dd">{{promotion.jpActivityContent}}</dd>
+                    </dl>
+                </div>
+            </div>
+            <p class="mo-p">{{promotion.jpActivityContent}}</p>
+            <div class="Promotion-Details-text Promotion-Details-text0{{index+1}}" style="display:none">
+                <input style="display:none;" value="{{promotion.activityCode}}" />
+                <!--<h2>詳細</h2>-->
+                {{#promotion.jpActivityDetail}}
+            </div>
+            <div class="contractile-button contractile-button0{{index+1}}">
+                <p>詳細はこちら</p>
+                <i class="IconSwitch">
+							<a class="IconUnfold"><img class="img_responsive" src="../images/icon_unfold.png"></a>
+							<a class="IconPackup"><img class="img_responsive" src="../images/icon_packup.png"></a>
+						</i>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+	    
+
+    <!--   FOOTER   -->
+    <div id="foot"></div>
+
+    <!-- 遮罩 -->
+    <div class="Shade"></div>
+
+    <div class="menuPop conceal" id="menuPop"></div>
+
+    <script language="javascript" type="text/javascript" src="../js/urlConfig.js?v=0222"></script>
+    <script language="javascript" type="text/javascript" src="../js/template.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/jquery-3.4.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/jsencrypt.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/ajax-jquery-plugin.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/public.js?v=0228"></script>
+    <script language="javascript" type="text/javascript" src="../js/promotionConfig.js"></script>
+</body>
+
+</html>
