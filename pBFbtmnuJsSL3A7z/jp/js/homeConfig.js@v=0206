@@ -1,0 +1,686 @@
+//三个套餐的产品模块数据
+var product_type3 = "";
+var product_id3_1 = "";
+var sim_fee3_1 = "";
+var product_id3_2 = "";
+var sim_fee3_2 = "";
+var product_id3_3 = "";
+var sim_fee3_3 = "";
+
+//一个套餐产品
+var product_type1 = "";
+var product_id1_1 = "";
+var sim_fee1_1 = "";
+
+//产品价格
+var product_price3_1 = "";
+var product_price3_2 = "";
+var product_price3_3 = "";
+var product_price1_1 = "";
+
+/**
+ * 给图片元素加data
+ * @param img id
+ * @param deskSrc
+ * @param mobSrc
+ */
+function imgBind(id, deskSrc, mobSrc) {
+    //var elem = document.getElementById(id);
+    var dSrc = imgDeal(deskSrc);
+    var mSrc = imgDeal(mobSrc);
+    $("#" + id).attr("data-desktop", dSrc);
+    $("#" + id).attr("data-mobile", mSrc);
+    //	elem.dataset.desktop = dSrc;
+    //	elem.dataset.mobile = mSrc;
+    if (isDesktop()) {
+        //elem.src = dSrc;
+        $("#" + id).attr("data-original", dSrc);
+    } else {
+        //elem.src = mSrc;
+        $("#" + id).attr("data-original", mSrc);
+    }
+}
+
+
+function isIE() { //ie?
+    if (!!window.ActiveXObject || "ActiveXObject" in window) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+$(function () {
+
+    $('.Shade').show();
+
+    /*$(window).load(function(){
+        //$(".BoxBg .BoxWrap .BoxLeft").css("height", $(".BoxPic").height() + "px");
+
+	});*/
+    $(".Shade").click(function () {
+        closePopup('#menuPop');
+        closePopup('.textPopup');
+        $("#proTips,.layer").removeClass("show").addClass("conceal");
+        $("#proTips").removeClass("show").addClass("conceal");
+    });
+    if (isIE()) {
+        if (isDesktop()) {
+            $(".CMLinkUSP_Wrap .CMLinkUSP_PicWrap_1").css("right", "21%");
+            $(".floatingContact .contact .WeChatPop").css("top", "166%");
+            $(".BoxBg .BoxWrap .unit").css("margin-top", "-12%");
+        }
+    }
+    //判断是否是桌面
+    if ($(window).outerWidth() > 1024) {
+        $("#topclick").click(function () {
+            $("html, body").animate({
+                scrollTop: ($(".CMLinkUSP_Wrap").offset().top - 30)
+            }, 400);
+        });
+        $(".WeChatHover").hover(function () {
+            $(this).addClass('hover');
+        }, function () {
+            $(this).removeClass('hover');
+        });
+
+        /*var mImags = document.querySelectorAll(".switch");
+        [].forEach.call(mImags, function(img) {
+        	var srcV = img.dataset.desktop;
+        	img.src = srcV;
+        });*/
+        $(".switch2").attr("data-original", $(".switch2").attr("data-desktop"));
+
+    } else {
+        // 二维码弹出
+        $(".WeChatHover").click(function () {
+            $(this).toggleClass('hover');
+        });
+        $("#topclick").click(function () {
+            $("html, body").animate({
+                scrollTop: ($(".CMLinkUSP_Wrap").offset().top - 30)
+            }, 400);
+        });
+        /*var mImags = document.querySelectorAll(".switch");
+        [].forEach.call(mImags, function(img) {
+        	var srcV = img.dataset.mobile;
+        	img.src = srcV;
+        });*/
+        if ($(window).outerWidth() >= 750) {
+            $(".switch2").attr("data-original", $(".switch2").attr("data-desktop"));
+        } else {
+            $(".switch2").attr("data-original", $(".switch2").attr("data-mobile"));
+        }
+    }
+
+
+    $('.tab span').off().on('click', function () {
+        // console.log('run')
+        $(this).addClass('change').siblings().removeClass('change');
+    });
+
+});
+window.onload = function () {
+    document.getElementsByClassName('content')[0].scrollTop = 0;
+    var recommendTop = $('#top').get(0).offsetTop;
+    var bottomTop = $('#recommend').get(0).offsetTop;
+    $('.content').on('scroll', function () {
+    	var currentTop = $(this).get(0).scrollTop;
+        if (isDesktop()) {
+    	// if(true){
+            if($('.tab span').length==3) {
+                var warmTop = $('#warm-tip').get(0).offsetTop;
+                var recommend = 20;
+                // var isDesk = isDesktop()?300:400;
+                if($(window).outerWidth() <= 479) {
+                    isDesk = 200;
+                }else if($(window).outerWidth() > 479 && $(window).outerWidth() <= 768) {
+                    isDesk = 400;
+                }else if($(window).outerWidth() > 768 && $(window).outerWidth() <= 991) {
+                    isDesk = 450;
+                    recommend = 54;
+                }else if($(window).outerWidth() > 991 && $(window).outerWidth() <= 1199) {
+                    isDesk = 400;
+                }else if($(window).outerWidth() > 1199) {
+                    isDesk = 300;
+                }
+                if (currentTop >= warmTop - recommend) {
+                    $('.tab span:eq(0)').addClass('change').siblings().removeClass('change');
+                }
+
+                if(currentTop >= recommendTop - recommend){
+                    $('.tab span:eq(1)').addClass('change').siblings().removeClass('change');
+                }
+                if(currentTop >= bottomTop - isDesk){
+                    $('.tab span:eq(2)').addClass('change').siblings().removeClass('change');
+                }
+            }else {
+                if (currentTop < recommendTop - 20) {
+                    $('.tab span:eq(0)').addClass('change').siblings().removeClass('change');
+                }
+                var isDesk = 700;
+                if(currentTop >= bottomTop - isDesk){
+                    $('.tab span:eq(1)').addClass('change').siblings().removeClass('change');
+                }
+            }
+        }else {
+            if (currentTop < recommendTop - 30) {
+                $('.tab span:eq(0)').addClass('change').siblings().removeClass('change');
+            }
+            if(currentTop >= recommendTop - 30){
+            	$('.tab span:eq(1)').addClass('change').siblings().removeClass('change');
+            }
+            if(currentTop >= bottomTop-300){
+                $('.tab span:eq(2)').addClass('change').siblings().removeClass('change');
+            }
+        }
+    });
+    // 判断节假日
+    if(!isHoliday()) {
+        $('.tab span:eq(0)').remove();
+        $('.tab span:eq(0)').addClass('change');
+        $('#warm-tip').css('display', 'none');
+    }
+    function isHoliday() {
+        // 日本，东九区
+        var timezone = 9; //目标时区时间，零时区
+        var offset = new Date().getTimezoneOffset();
+        var nowDate = new Date().getTime();
+        var targetDate = new Date(nowDate + offset * 60 * 1000 + timezone * 60 * 60 * 1000);
+        var enTimeoffset = targetDate.getTime();
+        var ele_beginTime = Date.parse(new Date("2020/2/5 00:00:00"));
+        var ele_endTime = Date.parse(new Date("2022/02/06 23:59:59"));
+        if ((enTimeoffset > ele_beginTime) && (enTimeoffset < ele_endTime)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    // 重要通知页面更新
+//     updatedTime()
+//     function updatedTime() {
+//         //当前时间
+//     	var  currentTime=new Date().getTime()
+     
+//     // 第一次更新时间时间戳
+// //  var  firstUpdateTime_start=new Date( 1573171200000 ).getTime();
+// //  var  firstUpdateTime_end=new Date(1573182000000 ).getTime();
+//     var  secondUpdateTime_start=new Date(1573516800000 ).getTime();
+//     var  secondUpdateTime_end=new Date(1573527600000).getTime();
+//     var  firstUpdateTime_start = new Date("2019/11/20 08:00:00").getTime();
+//     var  firstUpdateTime_end = new Date("2019/11/20 11:00:00").getTime();
+//     //if(currentTime>=firstUpdateTime_start){
+//         // 更新期间重要通知内容
+//         if(firstUpdateTime_start<=currentTime && firstUpdateTime_end>=currentTime){           
+//              //$(' .textPopup ').css('height','580px');
+//             var text=(language == "zh")?"尊敬的客户，日本时间11月20日9:00-12:00客服热线08001008600将进行系统升级，您或将无法拨打热线。建议您稍后再拨，或者发送邮件至csjp@cmlink.com  联系我们。给您带来不便请谅解，感谢您对CMLink的支持！":
+//             "ユーザの皆様、日本時間11月20日9:00-12:00のカスタマーサポート08001008600への電話は、更新のため、つながらなくなります。この時間をさけてお電話いただくか、csjp@cmlink.com にメールを送付ください。ご不便をおかけいたしますが、引き続きCMLinkをどうぞよろしくお願いいたします。（なお、カスタマーサポートの電話は英語もしくは中国語のみの対応となります）"
+            
+//             $('#buttom .text').html(`<p class="upgrade">`+text+`</p>`)
+//         }else if(secondUpdateTime_start<=currentTime&&secondUpdateTime_end>=currentTime){
+//             //$(' .textPopup ').css('height','580px');
+//             var text=(language == "zh")?"尊敬的客户，日本时间11月12日9:00-12:00客服热线08001008600将进行系统升级，您或将无法拨打热线。建议您稍后再拨，或者发送邮件至csjp@cmlink.com  联系我们。给您带来不便请谅解，感谢您对CMLink的支持！":
+//             "ユーザの皆様、日本時間11月12日9:00-12:00のカスタマーサポート08001008600への電話は、更新のため、つながらなくなります。この時間をさけてお電話いただくか、csjp@cmlink.com にメールを送付ください。ご不便をおかけいたしますが、引き続きCMLinkをどうぞよろしくお願いいたします。（なお、カスタマーサポートの電話は英語もしくは中国語のみの対応となります）"
+            
+//             $('#buttom .text').html(`<p class="upgrade">`+text+`</p>`)         
+//         }else{
+//             //$('.tab').hide();
+//             $('.tab span:eq(3)').hide();
+//             $('#buttom').css('display','none');
+//             //$(' .textPopup').css('overflow','auto');
+//             //$('.content').css('height','auto');
+//             //$('#top').css('border','none'); 
+//             var imgTips = (language == "zh") ? "失敗" : "上传失败";
+//         }
+
+//     //}
+//     }
+    /*var span=document.getElementsByClassName("tab")[0].children;
+    for (var i = 0; i < span.length; i++) {
+        span[i].addEventListener('click', function (event) {
+            for (var j = 0; j < span.length; j++) {
+                span[j].children[0].className = "";
+            }
+            event.target.className = "change";
+        })
+    }*/
+}
+
+/**
+ * 当屏幕发生改变时切换背景图片
+ */
+$(window).resize(function () {
+    //$(".BoxBg .BoxWrap .BoxLeft").css("height", $(".BoxPic").height() + "px");
+    //控制box
+    if ($(window).outerWidth() > 750 && $(window).outerWidth() < 1024) {
+        $(".BoxBg .BoxWrap .BoxLeft .Time").css("margin-top", "25%");
+        $(".BoxBg .BoxWrap .unit").css("margin-top", "-10%");
+        $(".BoxBg .BoxWrap .BoxLeft .PartingLine").css("margin-top", "4%");
+        $(".BoxBg .BoxWrap .BoxLeft .line").css("margin-top", "20%");
+        //$(".BoxBg .BoxWrap .BoxRight .Price").css("margin-top","4%");
+        //$(".BoxBg .BoxWrap .BoxRight .Tax").css("margin-top","-1%");
+        $(".BoxBg .BoxWrap .BoxRight .orderBtn").css("margin-top", "4%");
+    }
+
+
+    //判断是否是桌面
+    if (isDesktop()) {
+        var mImags = document.querySelectorAll(".switch");
+        [].forEach.call(mImags, function (img) {
+            var srcV = img.dataset.desktop;
+            img.src = srcV;
+        });
+        mImags = $("#main_images_05");
+        mImags.css("background-image", "url(" + mImags[0].dataset.desktop + ")");
+        //语言卡上方图片
+        $("#cnmgd").attr("src", $("#cnmgd").attr("data-desktop"));
+        $("#cnmgd").attr("data-original", $("#cnmgd").attr("data-desktop"));
+
+        // 推广活动滑动切换
+        slideDiv('#PromotionWrap', 2, 0);
+    } else {
+        var mImags = document.querySelectorAll(".switch");
+        [].forEach.call(mImags, function (img) {
+            var srcV = img.dataset.mobile;
+            img.src = srcV;
+        });
+        mImags = $("#main_images_05");
+        mImags.css("background-image", "url(" + mImags[0].dataset.mobile + ")");
+
+        // 推广活动滑动切换
+        slideDiv('#PromotionWrap', 1.1, 0);
+
+        if ($(window).outerWidth() >= 750) {
+            var BannerImgUrl = "/jp/Mobile/images/Banner_2.png";
+            $("#main_images_01").attr("src", BannerImgUrl);
+            $("#cnmgd").attr("data-original", $("#cnmgd").attr("data-desktop"));
+        } else {
+            $("#cnmgd").attr("src", $("#cnmgd").attr("data-mobile"));
+            $("#cnmgd").attr("data-original", $("#cnmgd").attr("data-mobile"));
+        }
+    }
+});
+
+var promotionNameValue = "";
+
+var homeUrl = (language == "ja") ? urlMap.home.mainJa : urlMap.home.mainZh;
+$.ajax({
+    type: "get",
+    url: homeUrl,
+    success: function (allData) {
+        var data = allData[0];
+        document.title = data["title"];
+        var main = data["home"];
+
+        //第一个模块=====================================================
+        var main_01 = main[0];
+        imgBind("main_images_01", main_01.pc_img, main_01.mobile_img);
+        setTimeout(function () {
+            if ($(window).outerWidth() >= 750 && $(window).outerWidth() < 1024) {
+                var BannerImgUrl = "/jp/Mobile/images/Banner_2.png";
+                $("#main_images_01").attr("src", BannerImgUrl);
+            } else {
+                $("#main_images_01")[0].src = $("#main_images_01").attr('data-original');
+            }
+        }, 1000);
+
+        //
+
+        $("#icon_desc").html(main_01.icon_desc);
+        $("#icon_title").html(main_01.icon_title);
+        $("#banner_title").html(main_01.title);
+        $("#banner_desc").html(main_01.banner_desc);
+        //remark
+        $("#remarkText,#remarkTextM").html(main_01.remark);
+
+        //第2个模块=====================================================
+        var main_02 = main[1];
+        imgBind("main_images_02", main_02.benefits_sub1_pc_img, main_02.benefits_sub1_mobile_img);
+
+        $("#benefits_title").html(main_02.benefits_title);
+        $("#benefits_sub1_title").html(main_02.benefits_sub1_title);
+        $("#benefits_sub1_desc").html(main_02.benefits_sub1_desc);
+        $("#comment_steve").html(main_02.comment_steve);
+        $("#comment_linda").html(main_02.comment_linda);
+
+        imgBind("main_images_03", main_02.benefits_sub2_pc_img, main_02.benefits_sub2_mobile_img);
+        $("#benefits_sub2_title").html(main_02.benefits_sub2_title);
+        $("#benefits_sub2_desc").html(main_02.benefits_sub2_desc);
+
+        //第3个模块=====================================================
+        var main_03 = main[2];
+        $("#plan_block_title").html(main_03.plan_block_title);
+        $("#plan_block_subhead").html(main_03.plan_block_subhead);
+        $("#plan_block_desc").html(main_03.plan_block_desc);
+
+        //$("#plan_block_title2").html(main_03.plan_block_title);
+        //$("#plan_block_desc2").html(main_03.plan_block_desc);
+
+        //第4个模块语音=====================================================
+        var main_04 = main[3];
+        $("#plan_block_title2").html(main_04.voice_headline);
+        $("#plan_block_desc2").html(main_04.voice_desc);
+        $("#voice_offer_box").html(main_04.voice_offer_box);
+
+        //第5个模块=====================================================
+        var main_05 = main[4];
+        $("#sim_block_title").html(main_05.sim_block_title);
+        $("#sim_block_desc").html(main_05.sim_block_desc);
+        imgBind("main_images_04", main_05.sim_pc_img, main_05.sim_mobile_img);
+
+        //第6个模块====活动=================================================
+        promotionNameValue = main[5].block_cap;
+        $("#promotionNameValue").html(promotionNameValue);
+
+        //第7个模块=====================================================
+        var main_07 = main[6];
+        $("#bottom_block_title").html(main_07.bottom_block_title);
+        $("#bottom_block_desc").html(main_07.bottom_block_desc);
+        //修改css的背景图片路径
+        var bottom_pcsrc = imgDeal(main_07.bottom_pc_img);
+        var bottom_mbsrc = imgDeal(main_07.bottom_mobile_img);
+        $("#main_images_05").attr("data-desktop", bottom_pcsrc);
+        $("#main_images_05").attr("data-mobile", bottom_mbsrc);
+        if (isDesktop()) {
+            $("#main_images_05").css("background-image", "url(" + bottom_pcsrc + ")");
+        } else {
+            $("#main_images_05").css("background-image", "url(" + bottom_mbsrc + ")");
+        }
+    },
+    error: function (allData) {
+        console.log("allData数据配置有问题！");
+    }
+});
+
+//微信数据
+$.ajax({
+    type: "get",
+    url: (language == "ja") ? urlMap.public.wxJa : urlMap.public.wxZh,
+    success: function (sideWidget) {
+        $("#code_img_up")[0].src = sideWidget[0].code_img;
+        //$("#wechat_desc_up").text(sideWidget[0].wechat_desc);
+    },
+    error: function (sideWidget) {
+        console.log("sideWidget数据配置有问题！");
+    }
+});
+
+//三个套餐的产品模块
+$.ajaxDirect({
+    type: "get",
+    url: urlMap.public.data,
+    param: "productType=10011",
+    afterFn: function (productData3) {
+        productData3 = productData3.result;
+        if (productData3.length < 3) {
+            return false;
+        }
+        product_type3 = productData3[0].product_type;
+
+        product_id3_1 = productData3[0].product_id;
+        $("#data_limit3_1").text(productData3[0].data_limit);
+        $("#voice_duration3_1").text(productData3[0].voice_duration);
+        $("#sms_num3_1").text(productData3[0].sms_num);
+        $("#video_num3_1").text(productData3[0].video_num);
+        $("#game_hours3_1").text(productData3[0].game_hours);
+
+        var moneyJp = productData3[0].product_tax; //日本价格
+        product_price3_1 = moneyJp;
+        $("#product_price3_1").text((language == "ja") ? formatMoney(moneyJp, 0) : moneyJp);
+
+        $("#product_tax3_1").text(productData3[0].tax_fee);
+        sim_fee3_1 = productData3[0].sim_fee;
+
+        product_id3_2 = productData3[1].product_id;
+        $("#data_limit3_2").text(productData3[1].data_limit);
+        $("#voice_duration3_2").text(productData3[1].voice_duration);
+        $("#sms_num3_2").text(productData3[1].sms_num);
+        $("#video_num3_2").text(productData3[1].video_num);
+        $("#game_hours3_2").text(productData3[1].game_hours);
+
+        moneyJp = productData3[1].product_tax; //日本价格
+        product_price3_2 = moneyJp;
+        $("#product_price3_2").text((language == "ja") ? formatMoney(moneyJp, 0) : moneyJp);
+
+        $("#product_tax3_2").text(productData3[1].tax_fee);
+        sim_fee3_2 = productData3[1].sim_fee;
+
+        product_id3_3 = productData3[2].product_id;
+        $("#data_limit3_3").text(productData3[2].data_limit);
+        $("#voice_duration3_3").text(productData3[2].voice_duration);
+        $("#sms_num3_3").text(productData3[2].sms_num);
+        $("#video_num3_3").text(productData3[2].video_num);
+        $("#game_hours3_3").text(productData3[2].game_hours);
+
+        moneyJp = productData3[2].product_tax; //日本价格
+        product_price3_3 = moneyJp;
+        $("#product_price3_3").text((language == "ja") ? formatMoney(moneyJp, 0) : moneyJp);
+
+        $("#product_tax3_3").text(productData3[2].tax_fee);
+        sim_fee3_3 = productData3[2].sim_fee;
+    },
+    error: function (productData3) {
+        console.log("productData3数据配置有问题！");
+    }
+});
+
+//一个套餐的产品模块
+$.ajaxDirect({
+    type: "get",
+    url: urlMap.public.data,
+    param: "productType=10004",
+    afterFn: function (productData1) {
+        productData1 = productData1.result;
+        if (productData1.length < 1) {
+            return false;
+        }
+        product_type1 = productData1[0].product_type;
+
+        product_id1_1 = productData1[0].product_id;
+        $("#data_limit1_1").text(productData1[0].data_limit);
+        $("#video_num1_1").text(productData1[0].video_num);
+        $("#game_hours1_1").text(productData1[0].game_hours);
+        var moneyJp = productData1[0].product_tax; //日本价格
+        product_price1_1 = moneyJp;
+        $("#product_price1_1").text((language == "ja") ? formatMoney(moneyJp, 0) : moneyJp);
+        $("#product_tax1_1").text(productData1[0].tax_fee);
+        sim_fee1_1 = productData1[0].sim_fee;
+
+    },
+    /*error:function(productData1){
+    	console.log("productData1数据配置有问题！");
+    }*/
+});
+
+
+//活动模块
+$.ajaxDirect({
+    type: "get",
+    url: urlMap.home.active,
+    afterFn: function (sellData) {
+        sellData = sellData.result;
+        var len = sellData.length;
+        var sellHtml = "";
+        var linkData = (language == "ja" ? "详细はこちら >" : "查看详情 >");
+        var link = (language == "ja" ? "/jp/promotion" : "/jp/zh/promotion");
+//      if (len == 0) {
+//          $("#Promotion_body")[0].style.display = "none";
+//      } else if (len == 1) {
+//          sellHtml += '<div class="PromotionWrap">';
+//          sellHtml += '<img class="img_responsive switch" src="' + (isDesktop() ? sellData[0].pcImg : sellData[0].mobileImg) + '" data-desktop="' + sellData[0].pcImg + '" data-mobile="' + sellData[0].mobileImg + '" alt="" style="border-radius:20px;">';
+//          sellHtml += '<span class="title">' + (language == "ja" ? sellData[0].jpActivityTitle : sellData[0].activityTitle) + '</span>';
+//          sellHtml += '<span class="details">' + (language == "ja" ? sellData[0].jpActivityContent : sellData[0].activityContent) + '</span>';
+//          sellHtml += '<a href="' + link + '" class="link">' + linkData + '</a>';
+//          sellHtml += '</div>';
+//      } else if (len == 3) {
+//          sellHtml += '<div class="PromotionWrap">';
+//          sellHtml += '<img class="img_responsive switch" src="' + (isDesktop() ? sellData[2].pcImg : sellData[2].mobileImg) + '" data-desktop="' + sellData[2].pcImg + '" data-mobile="' + sellData[2].mobileImg + '" alt="" style="border-radius:20px;">';
+//          sellHtml += '<span class="title">' + (language == "ja" ? sellData[2].jpActivityTitle : sellData[2].activityTitle) + '</span>';
+//          sellHtml += '<span class="details">' + (language == "ja" ? sellData[2].jpActivityContent : sellData[2].activityContent) + '</span>';
+//          sellHtml += '<a href="' + link + '" class="link">' + linkData + '</a>';
+//          sellHtml += '</div>';
+//      } else {
+//          sellHtml += '<div class="swiper-container" id="PromotionWrap"><div class="swiper-wrapper">';
+//          for (var i = 0; i < len; i++) {
+//              sellHtml += '<div class="swiper-slide">';
+//              sellHtml += '<div class="PromotionWrap">';
+//              sellHtml += '<img class="img_responsive switch" src="' + (isDesktop() ? sellData[i].pcImg : sellData[i].mobileImg) + '" data-desktop="' + sellData[i].pcImg + '" data-mobile="' + sellData[i].mobileImg + '" alt="" style="border-radius:20px;">';
+//              sellHtml += '<span class="title">' + (language == "ja" ? sellData[i].jpActivityTitle : sellData[i].activityTitle) + '</span>';
+//              sellHtml += '<span class="details">' + (language == "ja" ? sellData[i].jpActivityContent : sellData[i].activityContent) + '</span>';
+//              sellHtml += '<a href="' + link + '" class="link">' + linkData + '</a>';
+//              sellHtml += '</div>';
+//              sellHtml += '</div>';
+//          }
+//          sellHtml += '</div><div class="swiper-pagination"></div></div>';
+//      }
+//      $("#Promotion_body").append(sellHtml);
+//      if (!isDesktop()) {
+//          $("#Promotion_body .details")[0].style.display = "none";
+//      }
+
+    },
+    /*error:function(sellData){
+    	console.log("sellData数据配置有问题！");
+    }*/
+});
+
+//问题模块
+$.ajax({
+    type: "get",
+    url: urlMap.home.quest,
+    success: function (questionData) {
+        var len = questionData.length;
+        var faqHtml = "";
+        for (var i = 0; i < len; i++) {
+            if (i < 3) {
+                if (language == "ja") {
+                    faqHtml += '<div class="QuestionWrap">';
+                    faqHtml += '<div class="QuestionProblem"><span>Q</span>' + questionData[i].jp_question + '</div>';
+                    faqHtml += '<div class="AnswerWrap">';
+                    var anshtml = questionData[i].jp_answer;
+                    if (anshtml.indexOf('<ul><li>') == -1) {
+                        faqHtml += '<p class="textWrap">' + anshtml + '</p><a href="/jp/faq" class="detailsLink">続きを読む ></a>';
+                    } else {
+                        anshtml = anshtml.substring(anshtml.indexOf('<ul><li>') + 8, anshtml.indexOf('</li>'));
+                        faqHtml += '<p class="textWrap">' + anshtml + '</p><a href="/jp/faq" class="detailsLink">続きを読む ></a>';
+                    }
+                    faqHtml += '</div>';
+                    faqHtml += '</div>';
+                } else {
+                    faqHtml += '<div class="QuestionWrap">';
+                    faqHtml += '<div class="QuestionProblem"><span>Q</span>' + questionData[i].zh_question + '</div>';
+                    faqHtml += '<div class="AnswerWrap">';
+                    var anshtml = questionData[i].zh_answer;
+                    if (anshtml.indexOf('<ul><li>') == -1) {
+                        faqHtml += '<p class="textWrap">' + anshtml + '</p><a href="/jp/zh/faq" class="detailsLink">查看更多 ></a>';
+                    } else {
+                        anshtml = anshtml.substring(anshtml.indexOf('<ul><li>') + 8, anshtml.indexOf('</li>'));
+                        faqHtml += '<p class="textWrap">' + anshtml + '</p><a href="/jp/zh/faq" class="detailsLink">查看更多 ></a>';
+                    }
+                    faqHtml += '</div>';
+                    faqHtml += '</div>';
+                }
+            }
+        }
+        $("#faq_body").html(faqHtml);
+    },
+    error: function (questionData) {
+        console.log("questionData数据配置有问题！");
+    }
+});
+
+
+//计算自定组合价格
+function calPrice() {
+    //获取输入的天数
+    var day = parseInt($("#inpDay").val());
+    if (day >= 30 && day <= 365) {
+        $("#use_days2").text(day);
+        $("#product_price2").text(day * product_price2);
+        $("#product_tax2").text(day * product_tax2);
+    }
+}
+
+//跳转购买页面
+function buySimFun(tt) {
+    var arr = [];
+    if (tt == "p3_1") { //三个套餐的产品1
+        arr.push("p3_1");
+        arr.push(product_type3);
+        arr.push(product_id3_1);
+        arr.push($("#data_limit3_1").text());
+        arr.push($("#voice_duration3_1").text());
+        arr.push($("#sms_num3_1").text());
+        arr.push(product_price3_1);
+        arr.push($("#product_tax3_1").text());
+        arr.push(sim_fee3_1);
+
+    } else if (tt == "p3_2") { //三个套餐的产品2
+        arr.push("p3_2");
+        arr.push(product_type3);
+        arr.push(product_id3_2);
+        arr.push($("#data_limit3_2").text());
+        arr.push($("#voice_duration3_2").text());
+        arr.push($("#sms_num3_2").text());
+        arr.push(product_price3_2);
+        arr.push($("#product_tax3_2").text());
+        arr.push(sim_fee3_2);
+
+    } else if (tt == "p3_3") { //三个套餐的产品3
+        arr.push("p3_3");
+        arr.push(product_type3);
+        arr.push(product_id3_3);
+        arr.push($("#data_limit3_3").text());
+        arr.push($("#voice_duration3_3").text());
+        arr.push($("#sms_num3_3").text());
+        arr.push(product_price3_3);
+        arr.push($("#product_tax3_3").text());
+        arr.push(sim_fee3_3);
+
+    } else if (tt == "p1_1") { //一个套餐的产品1
+        arr.push("p1_1");
+        arr.push(product_type1);
+        arr.push(product_id1_1);
+        arr.push($("#data_limit1_1").text());
+        arr.push(product_price1_1);
+        arr.push($("#product_tax1_1").text());
+        arr.push(sim_fee1_1);
+
+    }
+    sessionStorage.buydata = arr;
+    if (language == "ja") {
+        window.location.href = "/jp/get-sim/";
+    } else {
+        window.location.href = "/jp/zh/get-sim";
+    }
+}
+
+//使用条款
+var plansData = "";
+
+function showPTips(t) {
+    $('.Shade').show();
+    $("#proTips").removeClass("conceal");
+    $("#proTips").addClass("show");
+    $('body').css("overflow-y", "hidden");
+
+    $.ajaxDirect({
+        type: 'GET',
+        url: urlMap.public.data,
+        param: (t = 'dCard') ? "productType=10004" : "productType=10011",
+        afterFn: function (ref) {
+            plansData = ref.result;
+            inText(t);
+        }
+    });
+}
+
+function inText(t) {
+    if (t == "voice1" || t == "dCard") {
+        $("#proTipText").html((language == "ja") ? plansData[0].jp_pact_content : plansData[0].zh_pact_content);
+    } else if (t == "voice2") {
+        $("#proTipText").html((language == "ja") ? plansData[1].jp_pact_content : plansData[1].zh_pact_content);
+    } else if (t == "voice3") {
+        $("#proTipText").html((language == "ja") ? plansData[2].jp_pact_content : plansData[2].zh_pact_content);
+    }
+}
