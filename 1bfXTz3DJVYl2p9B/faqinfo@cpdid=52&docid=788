@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="keywords" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7"/>
+    <title>和飞信常见问题—中国移动飞信</title>
+    <link rel="shortcut icon" href="images/fx-ico.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
+    <link rel="stylesheet" type="text/css" href="style/reset.css"/>
+    <link href="/static-res/css/basic.css?186205950" rel="stylesheet" type="text/css"/>
+    <link href="/static-res/css/service/style.css?186205950" rel="stylesheet" type="text/css"/>
+    <link href="/static-res/css/global/global.css?186205950" rel="stylesheet" type="text/css"/>
+    <meta name="keywords" content="和飞信常见问题、帮助、客服"/>
+
+    
+    
+    <script src="/new/js/jquery-1.10.2.min.js"></script>
+    
+    <script src="/new/js/fixed-box.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.get('searchvm', function (data) {
+                $('.svc_search').html(data);
+            })
+            $.get('questiontree', function (data) {
+                $('#divRight').before(data);
+
+            });
+
+            /*$('.nav li a').removeAttr('class');
+            $('.nav li:eq(3)').find('a').attr('class', 'on');*/
+
+
+            $(".move-wire").width(0);
+            // 导航
+            /*$(".nav ul li").on("mouseenter", function(){
+                var targetLeft = $(this).position().left;
+                var targetWidth = $(this).innerWidth();
+                $(".move-wire").stop().width(targetWidth).animate({left: targetLeft});
+            });
+            $(".nav ul li").on("mouseleave", function(){
+                $(".move-wire").width(0);
+            });*/
+           /* $(".nav .nav-link").on("mouseenter", function(){
+                var targetLeft = $(this).position().left;
+                var targetWidth = $(this).innerWidth();
+                $(this).find("ul").show();
+                $(".move-wire").stop().width(targetWidth).animate({left: targetLeft});
+
+            })
+            $(".nav .nav-link").on("mouseleave", function(){
+                var targetWidth = $(".nav .nav-link").eq(0).innerWidth();
+                $(this).find("ul").hide();
+                $(".move-wire").stop().width(targetWidth).animate({left: 0});
+            })*/
+            Sidebar({items: [{href: "/links/webNewList", target: "_blank", text: "官网公告", bgImgClass: "notice"}]});
+        });
+    </script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146966490-1"></script>
+    <link rel="stylesheet" href="/new1/static/resource/animate.css">
+    <link rel="stylesheet" href="/new1/static/resource/swiper.min.css">
+    <script type="text/javascript" src="/new1/assets/js/chunk_common.js?c493a698ef4eb916d2c0"></script>
+    <link href="/new1/assets/css/min.index.css?c493a698ef4eb916d2c0" rel="stylesheet">
+    <script type="text/javascript" src="/new1/assets/js/index.js?c493a698ef4eb916d2c0"></script>
+    <script type="text/javascript" src="/new1/assets/js/chunk_vendor.js?c493a698ef4eb916d2c0"></script>
+    <script type="text/javascript" src="/new1/assets/js/sidebar_max.js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-146966490-1');
+
+    </script>
+    <style>
+        .nav li a:hover,.nav li a.on {
+            background: url("") repeat-x;
+        }
+        .nav li a{
+            font-size: 16px;
+        }
+        /*.header{
+            background-color: #5126BA;
+        }*/
+        .wrap {
+            position: relative;
+            width: 1110px;
+            margin: 0 auto;
+        }
+        /*banner*/
+        .banner {
+            width: 100%;
+            height: 480px;
+            background: url("../images/bg1-banner.jpg") no-repeat;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        .banner .container {
+            position: relative;
+            padding-top: 124px;
+            color: #fff;
+        }
+        .banner .container .left {
+            margin-top: 12px;
+            float: left;
+            width: 517px;
+        }
+        .banner .container .left .intro {
+            width: 100%;
+            height: 160px;
+            line-height: 80px;
+            font-size: 50px;
+        }
+        .banner .container .left .intro div:last-child {
+            text-align: right;
+        }
+        .banner .container .left .teamdown {
+            margin: 55px 0 0 158px;
+            font-size: 0;
+        }
+        .banner .container .left .teamdown a {
+            display: inline-block;
+            width: 198px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            border: 1px solid #fff;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            font-size: 18px;
+            color: #fff;
+        }
+        .banner .container .left .teamdown a:last-child {
+            margin-right: 0;
+        }
+        .banner .container .right {
+            float: right;
+            width: 500px;
+            height: 295px;
+            padding: 15px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.19);
+            border-radius: 13px;
+        }
+        .banner .container .right video {
+            width: 100%;
+            height: 100%;
+        }
+        /*固定功能栏*/
+        .fixed-box {
+            position: fixed;
+            right: 7px;
+            bottom: 160px;
+            z-index: 1001;
+        }
+        .fixed-box .fb-list li {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            cursor: pointer;
+            background: #282828;
+        }
+        .fixed-box .fb-list li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .fixed-box .fb-list li .fb-des {
+            display: block;
+            padding: 6px 8px;
+            font-size: 12px;
+            color: #fff;
+            line-height: 14px;
+            background: #3B3B3B;
+        }
+        .fixed-box .fb-list li .fb-img {
+            position: absolute;
+            background-repeat: no-repeat;
+        }
+        .fixed-box .fb-list .fb-service .fb-img {
+            top: 9px;
+            left: 9px;
+            width: 22px;
+            height: 22px;
+            background-image: url("/new/images/fixed-box-service.png");
+        }
+        .fixed-box .fb-list .fb-notice .fb-img {
+            top: 7px;
+            left: 8px;
+            width: 24px;
+            height: 25px;
+            background-image: url("/new/images/fixed-box-notice.png");
+        }
+        .fixed-box .fb-list .fb-to-top .fb-img {
+            top: 10px;
+            left: 9px;
+            width: 22px;
+            height: 20px;
+            background-image: url("/new/images/fixed-box-to-top.png");
+        }
+        .clear {
+            clear: inherit;
+            overflow: inherit;
+        }
+        /*.sidebar-wrap .sidebar .clear{
+            height: 44px;
+        }*/
+        /*.sidebar-wrap {
+            z-index: 9999;
+        }*/
+    </style>
+</head>
+<body>
+
+    
+
+<div id="headers" class="headers">
+    <header class="index-head" style="background-color:rgba(0,0,0,.28);">
+        <div class="container">
+            <div class="index-head-content">
+                <aside class="index-head-logo clear"></aside>
+                <ul class="clear">
+                    <li>
+                        <a href="/" class="head-item">首页</a>
+                    </li>
+                    <li class="has-child">
+                        <a href="javascript:void(0)" class="head-item">产品服务</a>
+                        <div class="animated head-submenu isHide">
+                            <dl>
+                                <dt><h3 class="head-submenu-title">基础产品</h3></dt>
+                                <dd><a href="/hefeixin" class="head-submenu-item">和飞信</a></dd>
+                                <dd><a href="/newMAAP" class="head-submenu-item">MAAP</a></dd>
+                                <dd><a href="/newRCS" class="head-submenu-item">RCS智能短信</a></dd>
+                                <dd><a href="javascript:void(0)" class="head-submenu-item" title="敬请期待">短信小程序</a></dd>
+                            
+                            </dl>
+                            <dl>
+                                <dt><h3 class="head-submenu-title">开放能力</h3></dt>
+                                <dd><a href="/superMeeting" class="head-submenu-item">超级会议</a></dd>
+                            
+                                <dd><a href="/voice" class="head-submenu-item">语音通知</a></dd>
+                                <dd><a href="/multiput" class="head-submenu-item">群发信使</a></dd>
+                            
+                            </dl>
+                        </div>
+                    </li>
+                    <li class="has-child">
+                        <a href="javascript:void(0)" class="head-item">解决方案</a>
+                        <div class="animated head-submenu isHide" style="min-width: 130px">
+                            <dl style="padding-right: 0">
+                                <dd><a href="/organization" class="head-submenu-item">党建解决方案</a></dd>
+                                <dd><a href="/enterprise" class="head-submenu-item">企业解决方案</a></dd>
+                                <dd><a href="/family" class="head-submenu-item">家庭解决方案</a></dd>
+                                <dd><a href="/school" class="head-submenu-item">校园解决方案</a></dd>
+                                <dd><a href="/government" class="head-submenu-item">政企解决方案</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="https://feixin.10086.cn/rcsbbs/" class="head-item" target="_blank">社区</a>
+
+                    </li>
+                    <li>
+                        <a href="http://feixin.10086.cn/Views/www/dist/index.html" class="head-item">开发者文档</a>
+                    </li>
+                    <li>
+                        <a href="/download" class="head-item">下载和飞信</a>
+                    </li>
+                </ul>
+                <aside class="index-head-login clear">
+                    <a href="https://oa.rcs.10086.cn/work" target="_blank">登录</a>
+                    <a href="/eapply" target="_blank">注册</a>
+                </aside>
+            </div>
+        </div>
+    </header>
+
+    <!--固定功能栏-->
+    
+</div>
+<div class="wrap" style="/*top: 80px;margin-top: 60px;*/padding-top: 70px;">
+    <div class="fm950 pt10 pb10 clearfix">
+
+        <div id="divRight" class="fm695 fr">
+            <div class="svc_search"></div>
+            <div id="divRight_content"><script type="text/javascript">
+        var documentId = 0;
+        var cpdCode="";
+        var CpdID="0";
+        var CpdStep="0";
+    </script>
+    <script type="text/javascript">
+        function postdatas() {
+            //处理页面帮助问题
+            var isResolved;
+            var reason = $('#reason').val();
+            if ($(':radio[@checked]').val() == 1) {
+                isResolved = 1;
+            }
+            else {
+
+                if (reason == 0 || reason == undefined) {
+                    alert('请选择原因!');
+                    return;
+                }
+                isResolved = 0;
+            }
+            return jQuery.ajax(
+                {
+                    url: "SaveEvaluation",
+                    dataType: 'json',
+                    type: "POST",
+                    async: true,
+                    data: {IsResolved: isResolved, DocumentId: documentId, Reason: reason },
+                    beforeSend: function () {
+                        $('.solve_feedback').hide();
+                        $('#resolvedEnd').show();
+                        $('#resolvedEnd').html("<div  style='width:100%;padding:30px 0;text-align:center;'><img src='/static-res/img/service/loading.gif?186205939'/></div>");
+                    },
+                    success: function (data) {
+                            $('#resolvedEnd').html("<dt>您的反馈信息已成功提交，谢谢您的反馈。</dt>");
+                    }
+                }
+            );
+        }
+
+    </script>
+    
+   <div  id="divRightBar" class="bread_crumbs">
+       位置 > 融合通信RCS增强短信介绍 
+    </div>
+    
+    <div class="solve_title">
+        
+            <h2 title=""></h2>
+        <p class="solve_info">已帮助<em id="resovedCount">0</em>人解决问题  浏览：<em>0</em>次</p>
+
+    </div>
+    <div class="solve_con">
+        <p>
+            
+        </p>
+
+    </div>
+    <dl class="solve_feedback">
+        <dt>以上信息是否已解决您的问题？</dt>
+        <dd>
+            <input name="IsResovled" type="radio" id="IsResovled1" value="1" checked onclick="$('.ipth').hide()" />
+            <label for="IsResovled1">是，已经解决</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<input name="IsResovled" type="radio" id="IsResovled2" value="0" onclick="$('.ipth').show()" />
+            <label for="IsResovled2">否，尚未解决</label>
+            <em class="ipth none">
+                <select id="reason" class="goinput ts12">
+                    <option value="0">请选择原因</option>
+                    <option value="1">描述不太清晰</option>
+                    <option value="2">内容太多我不想看</option>
+                    <option value="3">不是我想看的问题</option>
+                    <option value="4">内容不正确</option>
+                </select>
+            </em>
+        </dd>
+        <dd>
+            <a href="javascript:void(0)" onclick="postdatas()" class="btn_47x22">提交</a>
+        </dd>
+    </dl>
+    <dl class="solve_feedback" id="resolvedEnd" style="display: none">
+        <dt>您的反馈信息已成功提交，谢谢您的反馈。</dt>
+    </dl>
+    <div class="related_issues">
+        <h2>相关问题</h2>
+        <ul class="related_con" id="ulRelateDoc">
+                 </ul>
+        <!-- <div class="solve_qa_back"><a id="top" onclick="GoTop();" class="btn_64x20" style="cursor: pointer">回到顶部</a></div> -->
+    </div></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        //回到页首
+        function GoTop() {
+            $('html,body').animate({
+                scrollTop: '0px'
+            }, 700)
+        }
+        ;
+    </script>
+
+    <!--底部 -->
+
+    <!--底部 end -->
+</div>
+
+</body>
+</html>
