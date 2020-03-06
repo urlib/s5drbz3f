@@ -1,0 +1,112 @@
+$(function() {
+    $(window).on('load', function() {
+
+        if ($(window).scrollTop() == 0) {
+            $("#header>div").removeClass("whiteBg");
+        }
+        $("img.lazy").lazyload({
+            threshold: 200
+        });
+
+        setTimeout(function() {
+            $("#main_images_04").attr("src", $("#main_images_04").attr("data-original"));
+            if (isDesktop()) {
+                $("#main_images_04").height($(".Activate_Wrap").height() - 50);
+            }
+        }, 5000);
+    });
+    
+    $(window).on('scroll',function() {
+            var start = $("[data-section-start]").offset().top,
+                end = $("[data-section-end]").offset().top - 80,
+                he = $("[data-plane]").height();
+                o = $("[data-section-end]").offset().top - 80,
+                u = $("[data-line]").offset().top,
+                h = $("[data-line]").find(".section-2").offset().top,
+                c = o - u;
+
+			$(".BoxPic").attr("src", $(".BoxPic").eq(0).attr("data-original"));
+	        $(".lazy1").attr("src", $(".lazy1").eq(0).attr("data-original"));
+	        $(".lazy2").attr("src", $(".lazy2").eq(0).attr("data-original"));
+	        
+            var t = $(this).scrollTop();
+            //控制顶部菜单背景
+            if (t == 0) {
+                $("#header>div").removeClass("whiteBg");
+            }
+            if (t > 10) {
+                $("#main_images_02").attr("src", $("#main_images_02").attr("data-original"));
+
+            }
+            //加载手机gif
+            var phh = $(".Activate_Wrap").offset().top;
+            if (t > (phh - 700)) {
+                $("#main_images_04").attr("src", $("#main_images_04").attr("data-original"));
+                if (isDesktop()) {
+                    $("#main_images_04").height($(".Activate_Wrap").height() - 50);
+                } else {
+                    $("#main_images_04").css({
+                        "width": "100%",
+                        "max-width": "100%",
+                        "height": "auto"
+                    });
+                }
+
+            }
+            //懒加载卡片背景
+            if (t >= start) {
+//              $(".BoxPic").attr("src", $(".BoxPic").eq(0).attr("data-original"));
+//              $(".lazy1").attr("src", $(".lazy1").eq(0).attr("data-original"));
+//              $(".lazy2").attr("src", $(".lazy2").eq(0).attr("data-original"));
+
+                if (isDesktop()) {
+                    // 推广活动滑动切换
+                    slideDiv('#PromotionWrap', 2, 0);
+
+                    var a = $(".FAQ_Wrap .QuestionProblem").eq(0).height();
+                    var b = $(".FAQ_Wrap .QuestionProblem").eq(1).height();
+                    var cc = $(".FAQ_Wrap .QuestionProblem").eq(2).height();
+                    var d = a > b ? a : b;
+                    var e = d > cc ? d : cc; //最终高度
+                    $(".FAQ_Wrap .QuestionProblem").height(e);
+
+                    a = $(".FAQ_Wrap .AnswerWrap").eq(0).height();
+                    b = $(".FAQ_Wrap .AnswerWrap").eq(1).height();
+                    cc = $(".FAQ_Wrap .AnswerWrap").eq(2).height();
+                    d = a > b ? a : b;
+                    e = d > cc ? d : cc; //最终高度
+                    $(".FAQ_Wrap .AnswerWrap").height(e);
+                } else {
+                    // 推广活动滑动切换
+                    slideDiv('#PromotionWrap', 1.1, 0);
+                }
+            }
+
+            //飞机效果图
+            if (t >= start && t <= (end - he)) {
+                var p = t - start - he,
+                    l = t - start - he;
+                if (p < 0)
+                    p = 0;
+                $("[data-line]").find(".section-2").css({
+                    transform: "translate(-50%, ".concat(c, "px)")
+                });
+                $("[data-plane]").css({
+                    transform: "translate(-50%, ".concat(p, "px)")
+                });
+                if (l > o)
+                    l = o;
+                $("[data-line]").find(".section-1").css({
+                    height: "".concat(l, "px")
+                });
+                if (t > h) {
+                    var n = t - o;
+                    $("[data-line]").find(".section-2").css({
+                        height: "".concat(n, "px")
+                    });
+                }
+            } else {
+                return;
+            }
+        });
+});
