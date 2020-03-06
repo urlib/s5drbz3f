@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>团队沟通信赖和飞信</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7"/>
+    <meta name="keywords"
+          content="和飞信官网,和飞信,考勤,智能考勤,免费电话,多人电话,多方电话,免流量,省话费,电话会议,免费电话会议,移动办公平台,办公协同,移动,移动办公,移动办公解决方案,移动办公软件,移动办公系统,移动审批,免费移动办公,手机办公,手机审批,商务,中小企业,移动OA,手机OA,增强短信,RCS增强短信">
+    <meta name="description" content="个性工作台提供超级会议、语音通知、群发信使等便捷强大的移动办公应用；全新升级消息、通话、及联系人沟通体验，新用户首月可领取300分钟多方通话，畅享免费打电话！">
+    <link rel="shortcut icon" href="images/fx-ico.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/fx-ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/new/css/base.css">
+    <style type="text/css">
+        .layer_cont{width:288px;height:238px;background:#FFF;display:none;position:fixed;top:50%;left:50%;z-index:99999;-webkit-box-shadow:0px 0px 20px #000;-moz-box-shadow:0px 0px 20px #000;box-shadow:0px 0px 20px #000;}
+        .layer_cont h6{text-align:center;font-size:16px;padding:50px 0 26px;}
+        .layer_cont a{display:block;background:url(/new/images/btn2.png) no-repeat;width:148px;height:34px;margin:0 auto;}
+        .layer_cont a.b2{margin-top:10px;background-position:0 -35px;}
+    </style>
+
+
+
+    
+    <script src="/new/js/jquery-1.10.2.min.js"></script>
+    <script src="/new/js/fixed-box.js"></script>
+    <script type="text/javascript" src="/script_new/home-statistics.js"></script>
+    <script type="text/javascript" src="/script_new/webtrends.load.js"></script>
+    <script type="text/javascript" src="/script_new/webtrends.min.js"></script>
+    <script>
+
+        var _udata = _udata || [];
+        var _udataProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _udataProtocol +
+                "da.mmarket.com/udata/udata.js%3faid%3d300010226393' type='text/javascript'%3E%3C/script%3E"));
+
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d7bc9e10bfc11b2c89e5a1ef45f87da6";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<!--导航-->
+
+
+<div class="header">
+    <div class="container">
+        <a class="logo" href="/index" title="和飞信官网">
+            <img src="/new/images/logo.png" width="95" height="37" alt="和飞信官网">
+        </a>
+        <div class="nav">
+            <span class="move-wire"></span>
+            <ul class="clearfix nav-primary">
+                <li class="nav-link">
+                    <a class="nav-link-a" href="/index" class="on" id="index">和飞信</a>
+                    <ul class="dropdown">
+                        <li class="dropwown-list">
+                            <a href="/teamwork">团队解决方案</a>
+                        </li>
+                        <li class="dropwown-list">
+                            <a href="http://oa.rcs.10086.cn/rcsoa.enterpriseadmin/login/login.jsp" target="_blank">团队管理后台</a>
+                        </li>
+                        <li class="dropwown-list">
+                            <a class="team" href="/eapply" target="_blank">创建和飞信团队</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-link nav-link-rcs">
+                    
+                        <a class="nav-link-a" href="/smsRcsE" id="teamwork">和飞信增强信息</a>
+                    <ul class="dropdown">
+                        <li class="dropwown-list">
+                            <a href="/smsRcs">个人用户</a>
+                        </li>
+                        <li class="dropwown-list">
+                            <a href="/smsRcsE" >企业用户</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-link">
+                    <a class="nav-link-a" href="/rcsbbs/" target="_blank" id="funs">和飞信社区</a>
+                </li>
+                <li class="nav-link">
+                    <a class="nav-link-a" href="https://webim.feixin.10086.cn/" target="_blank">和飞信网页版</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--固定功能栏-->
+<div class="fixed-box">
+    <ul class="fb-list">
+        
+        <li class="fb-notice">
+            <a href="/links/webNewList">
+                <span class="fb-des" style="display:none;">官网公告</span>
+                <span class="fb-img"></span>
+            </a>
+        </li>
+        <li class="fb-to-top" style="display:none;">
+            <span class="fb-des" style="display:none;">回到顶部</span>
+            <span class="fb-img"></span>
+        </li>
+    </ul>
+</div>
+
+<link rel="stylesheet" href="/new/css/case.css">
+<!--banner-->
+<div class="banner">
+    <div class="container">
+        <h2>服务案例</h2>
+    </div>
+</div>
+<!--案例-->
+<div class="case">
+    <div class="container">
+        <div id="gov" class="content">
+            <h3>潮州某村居</h3>
+            <div class="case-bg"></div>
+            <div class="article">
+                <p><span>背景：</span><br>潮州某村居位于潮州市枫溪区下的一个村居，现有村民4392人。村目前拥有各类企业352家，其中规模以上企业4家，年产值6000万元，2017年获评第五届全国文明村镇。为了不断完善和健全社会保障和福利，让群众共享发展成果，联合和飞信打造承载村居党建党务和村务公告新闻的党建信息化管理工具，在村委工作上传下达过程初步彰显效果。</p>
+                <table border="1">
+                    <tr>
+                        <th>痛点</th>
+                        <th>解决方案</th>
+                        <th>效果</th>
+                    </tr>
+                    <tr>
+                        <td>政府政策，村居通知公告，上传下达不及时，经常有人没看到</td>
+                        <td>和飞信消息，新闻公告，公告信息，直接推送到手机，已读未读一目了然，还可消息提醒</td>
+                        <td>手机端加载信息交流互动，足不出户就可知全村事轻松解决上传下达难题</td>
+                    </tr>
+                    <tr>
+                        <td>村居办事找人，几经转折才能找到关键人电话，如何保障电话号码安全性</td>
+                        <td>和飞信企业通讯录分级别查看权限和权限范围</td>
+                        <td>沟通突破地域界限，效率大幅提高，避免信息外漏。</td>
+                    </tr>
+                    <tr>
+                        <td>分支机构多，需要准确有效的沟通方式</td>
+                        <td>通过和飞信消息聊天，已读未读，钉住，超级会议等改善沟通效率问题</td>
+                        <td>沟通效率提升，是否传达到位一目了然</td>
+                    </tr>
+                </table>
+                <p><span>和飞信如何满足需求痛点？</span></p>
+                <p>一.公告信息：村居内部通知栏<br>使用前：<br>原来村委要发布一个通知公告，下达之前需要传真到各村居小组办公室，由每个小组去通知，再到村委公告栏，不仅浪费人力、物力，也造成了时间上的拖沓。<br>使用后：<br>和飞信公告信息，移动端展示上传下达，让之前繁琐的工作变得简单明了。</p>
+                <div class="img img1 clearfix">
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>二、通讯录：3秒找到任意村民<br>原来随着村居组织越来越庞大，村民入党的人员也就越来越多，如今电话号码频繁迭代的时代里，政府、村委要聚集所有村居内的党员，需要一个一个的邀请，成本高，效率低，并且难免有疏漏的情况，非常不便于管理。<br> 使用和飞信通讯录导入党组织成员与普通村民电话号码，可设置党员的可见性权限，人员自动更新迭代，无需人工干预，可批量对党员通讯录内的人员批量发起通知邀请，沟通突破地域界限，效率大幅提高。</p>
+                <div class="img img2 clearfix">
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>三、通讯专区：沟通效率大幅提升<br>在使用和飞信以前，村委简会需要村居各个分支小组聚集讨论，每个分支小组是分离的，如此一来，便会产生很多不必要的时间和费用，若不召开简会，那么日常的工作沟通，便会导致效率低下的问题。<br>和飞信汇聚消息聊天，群聊、超级会议、视频会议，群发信使等各类CT应用，改变村委日常沟通方式，成本高，效率低下的现状。
+                </p>
+                <ul class="clearfix">
+                    <li>支持最高64路的电话会议</li>
+                    <li>随时随地，短信群发</li>
+                    <li>基于通讯录发起视频通话</li>
+                </ul>
+                <div class="img img3 clearfix">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <p><span>总结：</span><br>村居建设离不开全体村民，通过和飞信基础应用和CT类应用的使用，内外部的管理，更加方便，连接了村居的每一角落，改善了村居里每一个人的生活。</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/new/js/case.js"></script>
+
+
+<!--底部-->
+<div class="footer">
+    <div class="clearfix container">
+        <ul class="help-list clearfix">
+            <li>
+                <dl>
+                    <dt>服务规则</dt>
+                    <dd><a href="/links?p=about_feinno">关于和飞信</a></dd>
+                    <dd><a href="/links?p=about_ChinaMobile">关于移动</a></dd>
+                    <dd><a href="/links?p=LegalStatement">法律声明</a></dd>
+                    <dd><a href="/links?p=LicenseAgreement">服务许可</a></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>产品资料</dt>
+                    <dd><a href="javascript:" rel="popuprel" class="popup">产品介绍</a></dd>
+                    <dd><a href="/faq" target="_blank">服务支持</a></dd>
+                    <dd><a href="/Views/www/dist/index.html" target="_blank">开发者文档</a></dd>
+                    <dd><a href="/deblocking">和飞信用户解封</a></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>更多</dt>
+                    <dd><a href="http://cmic.chinamobile.com" target="_blank">中移互联网有限公司官网</a></dd>
+                    <dd><a href="/links/webNewList">网站公告</a></dd>
+                    <dd><a href="/gzPortal" target="_blank">公众平台</a></dd>
+                    <dd><a href="http://pim.10086.cn/views/index.html" target="_blank">个人通讯录管理</a></dd>
+
+                </dl>
+            </li>
+        </ul>
+        <div class="connect">
+            <ul class="QR-code clearfix">
+                <li class="weixin">
+                    <span></span>
+                    <img src="/new/images/wx.jpg" alt="微信">
+                </li>
+                <li class="weibo">
+                    <span></span>
+                    <img src="/new/images/wb.jpg" alt="微博">
+                </li>
+                <li class="hfx">
+                    <span></span>
+                    <img src="/new/images/fx.jpg" alt="和飞信">
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <p class="info"><i></i>京ICP备05002571号 .Copyright © 2017, All Rights Reserved Powered By 和飞信</p>
+</div>
+
+<div class="layer_cont" id="popuprel">
+    <h6>请选择版本</h6>
+    <a href="http://dlrcs.fetion-portal.com/pdf/hfx_android.pdf" class="b1" target="_blank"></a>
+    <a href="http://dlrcs.fetion-portal.com/pdf/hfx_iphone.pdf" class="b2" target="_blank"></a>
+</div>
+<div id="mask_layer"></div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('a.popup').click(function() {
+            var popupid = $(this).attr('rel');
+            $('#' + popupid).fadeIn();
+            $('body').append('<div id="mask_layer"></div>');
+            $('#mask_layer').css({'filter' : 'alpha(opacity=40)'}).fadeIn();
+            var popuptopmargin = ($('#' + popupid).height() + 10) / 2;
+            var popupleftmargin = ($('#' + popupid).width() + 10) / 2;
+            $('#' + popupid).css({
+                'margin-top' : -popuptopmargin,
+                'margin-left' : -popupleftmargin,
+            });
+        });
+        $('#mask_layer').click(function() {
+            $('#mask_layer , #popuprel').fadeOut()
+            return false;
+        });
+    });
+</script></body>
+</html>
