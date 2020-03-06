@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PTB2MDZ');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <title></title>
+    <link rel="shortcut icon" id="shortcut">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width">    
+    <link rel="stylesheet" href="/id/main/main-695ce5a3.css"/>
+    
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTB2MDZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="app" id="app"></div>
+<script src="/id/static/conf/app-conf.js"></script>
+
+<script src="/id/vendor/base-ac8bbb74.js"></script>
+<script src="/id/main/main-695ce5a3.js"></script>
+
+<script>
+  var url = window.location.protocol + "//" + window.location.host+'/id'+'/static/images/demo/favicon.ico';  
+  document.getElementById('shortcut').href=url;
+  var lang = window.localStorage.getItem('lang')
+  //console.log(lang)
+  if (lang === 'zh-CN') {
+      document.title = "CMLink会员计划";
+  } else {
+      document.title = "CMLink Membership";
+  }
+</script>
+</body>
+</html>
