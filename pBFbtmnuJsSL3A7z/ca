@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>China Mobile CMLink CA</title>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PTB2MDZ');
+    </script>
+    <!-- End Google Tag Manager -->
+    <link rel="shortcut icon" href="/ca/images/favicon.ico" type="image/vnd.microsoft.icon">
+    <script language="javascript" type="text/javascript" src="/ca/js/jquery-3.4.0.min.js"></script>
+    <script src="/ca/js/jsencrypt.min.js"></script>
+    <script src="/ca/js/ajax-jquery-plugin.js"></script>
+    <script>
+        var browserLang = (navigator.language || navigator.browserLanguage).toLowerCase();
+        var flag = sessionStorage.getItem("flag");
+        console.log(browserLang);
+        // if (flag != 0) {
+        var orgUrl = location.href;
+        if (valIsNotEmpty(orgUrl.split('?')[1])) {
+            if (browserLang.indexOf("zh") >= 0) {
+                window.location.href = "/ca/zh" + '?' + orgUrl.split('?')[1];
+            } else if (browserLang.indexOf("en") >= 0) {
+                window.location.href = "/ca/en" + '?' + orgUrl.split('?')[1];
+            } else if (browserLang.indexOf("fr") >= 0) {
+                window.location.href = "/ca/fr" + '?' + orgUrl.split('?')[1];
+            }
+        } else {
+            if (browserLang.indexOf("zh") >= 0) {
+                window.location.href = "/ca/zh";
+            } else if (browserLang.indexOf("en") >= 0) {
+                window.location.href = "/ca/en";
+            } else if (browserLang.indexOf("fr") >= 0) {
+                window.location.href = "/ca/fr";
+            }
+        }
+        sessionStorage.setItem("flag", "0");
+        // }
+    </script>
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTB2MDZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>
