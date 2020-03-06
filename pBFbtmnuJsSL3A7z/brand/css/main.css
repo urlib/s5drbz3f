@@ -1,0 +1,387 @@
+@charset "utf-8";
+
+	.Banner{
+        position: relative;
+        color:#fff;
+    }
+	 .Apn-Banner,.promotion-Banner{
+        color:#000;
+    }
+    .Mobile-banner-step03{
+        display: none;
+    }
+    .Banner .banner-text{
+        position: absolute;
+        top:50%;
+        left:0;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+    }
+    .Banner .banner-text dl dt{
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin:0 0 1% 0;
+    }
+    .Banner .banner-text dl{
+        width: 70%;
+        margin: auto;
+    }
+    .Banner .banner-text dl dd{
+        text-align: center;
+        margin-bottom:0.5%;
+    }
+    .promotion-Banner{
+        margin-top:74px;
+    }
+
+/* Entrance*/
+    /* Entrance navbarHeader */
+    .navbarHeader .language{
+        float: right;
+        line-height: 36px;
+    }
+    .navbarHeader .language .present-use{
+        color:#e30077;
+    }
+    .navbarHeader .language a:hover{
+        color:#e30077;
+        cursor: pointer;
+    }
+    .navbarHeader .language span{
+        margin:0 8px 0 8px;
+        font-weight: 600;
+    }
+    [lang=jp] .navbarHeader .language{
+        font-family: "Rounded Mplus 1c Medium";
+    }
+    /* Entrance-Banner */
+    .Entrance-Banner .banner-text dl dt{
+        margin:7% 0 0 0;
+        font-size: 3.4rem;
+        font-weight: bold;
+    }
+    .Entrance-Banner .banner-text dl dd{
+        text-align: center;
+        margin: auto;
+        font-size: 1.4rem;
+        line-height: 28px;
+    }
+    /*  Entrance-footer  */
+    .Entrance-footer-box{
+        padding:2% 0 2% 0;
+    }
+    .footer_Wrap .Entrance-footer{
+        text-align: center;
+    }
+    .footer_Wrap .Entrance-footer .Company-infor-link a{
+        color:#fff;
+    }
+    .footer_Wrap .Entrance-footer .Company-infor-link span{
+        margin:0 8px 0 8px;
+    }
+    .footer_Wrap .Entrance-footer .copyright{
+        margin-top:10px;
+    }
+    /* Selection-entrance */
+    .Selection-entrance {
+        width: 90%;
+        margin: 50px auto 30px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: stretch;
+        overflow: hidden;
+    }
+    .Selection-entrance .geo-box{
+        text-align: center;
+        display: block;
+        width: 47%;
+        margin-bottom: 40px;
+        border-left:2px solid #a1a1a1;
+        border-right:2px solid #a1a1a1;
+        border-bottom:2px solid #a1a1a1;
+        border-bottom-left-radius:8px;
+            -webkit-border-bottom-left-radius: 8px;
+            -moz-border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+            -webkit-border-bottom-right-radius: 8px;
+            -moz-border-bottom-right-radius: 8px;
+        padding-top:80px;
+    }
+    .Selection-entrance  .top-blue{
+        border-top:10px solid #2484c5;
+        border-radius: 8px;
+        -webkit-border-radius:8px;
+        -moz-border-radius:8px;
+    }
+    .Selection-entrance  .top-red{
+        border-top:10px solid #e40077;
+        border-radius: 8px;
+        -webkit-border-radius:8px;
+        -moz-border-radius:8px;
+    }
+    .Selection-entrance dl{
+        width: 90%;
+        margin: auto;
+        margin-bottom:60px;
+        line-height: 18px;
+        font-size: 0.9rem;
+    }
+    .Selection-entrance dt{
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom:15px;
+    }
+    .Selection-entrance .geo-pic dt dd{
+        line-height: 22px;
+    }
+    .Selection-entrance  .top-blue dt{
+        color:#2484c5;
+    }
+    .Selection-entrance  .top-red dt{
+        color:#e40077;
+    }
+    .Selection-entrance .geo-pic{
+        width: 100%;
+    }
+    .Selection-entrance .geo-pic i{
+        width: 70px;
+        display: block;
+        margin: auto;
+        margin-bottom:30px;
+    }
+    .Selection-entrance .top-blue .learn-more a{
+        color:#2484c5;
+        background: url("../images/learn-more-blue.png") 0 0 no-repeat;
+    }
+    .Selection-entrance .top-blue .learn-more a:hover{
+        color:#1a608f;
+    }
+    .Selection-entrance .top-red .learn-more a{
+        color:#e40077;
+        background: url("../images/learn-more-red.png") 0 0 no-repeat;
+    }
+    .Selection-entrance .top-red .learn-more a:hover{
+        color:#353132;
+    }
+    .Selection-entrance .geo-box .learn-more a{
+        font-weight: bold;
+        background-position: right center;
+        background-size: 6%;
+        padding-right: 20px;
+        height: 60px;
+        line-height: 60px;
+    }
+
+/* Sitemap */
+    .Sitemap{
+        width: 100%;
+        margin-top:74px;
+        border-top:1px solid #d3d3d3;
+    }
+    .sitemap-list{
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+        margin-bottom:30px;
+    }
+    .sitemap-list dl{
+        float: left;
+        width: 32%;
+    }
+    .sitemap-list dl.SIM-Product{
+        margin-left: 20px;
+    }
+    .sitemap-list h2{
+        font-weight: bold;
+        margin:20px 0 30px 0;
+    }
+    .sitemap-list dt{
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+    .sitemap-list dd{
+        line-height: 34px;
+        font-size: 1.0rem;
+        color:#e40077;
+        float: left;
+        width: 100%;
+    }
+    .sitemap-list dd:hover{
+        color:#be1e58;
+        cursor: pointer;
+    }
+    .sitemap-list dd span{
+        font-size: 1.8rem;
+        color:#bebebe;
+        float: left;
+        width:20px;
+    }
+    .sitemap-list dd a{
+        color: #e30077;
+    }
+/*  Failure  */
+    .Failure{
+        position: fixed;
+        bottom:0;
+        left: 0;
+        width: 100%;
+        padding:20px 0 20px 0;
+        overflow: hidden;
+        background:#262626;
+        color:#fff;
+        font-size: 14px;
+        opacity: 0.9;
+        display: none;
+    }
+    .failure-content{
+        width: 90%;
+        margin:auto;
+    }
+    .Failure span{
+        background-image: url("../../images/tishi-w.png");
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding:5px 40px 5px 30px;
+        background-size: 4%;
+    }
+    .Failure a{
+        background-color:#262626;
+        background-image: url("../../images/more-w.png");
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 10px;
+        background-size: 6%;
+        font-size: 14px;
+        color:#fff;
+    }
+    .Failure a:hover{
+        background-color:#262626;
+        background-image: url("../../images/more.png");
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 10px;
+        background-size: 6%;
+        font-size: 14px;
+        color:#e40077;
+    }
+    .Failure i{
+        background:url("../../images/fail-icon-w.png") 0 0 no-repeat;
+        background-size: 100%;
+        float: right;
+        width: 25px;
+        height: 25px;
+    }
+    .Failure i:hover{
+        cursor: pointer;
+        background:url("../../images/fail-icon-r.png") 0 0 no-repeat;
+        background-size: 100%;
+        float: right;
+        width: 25px;
+        height: 25px;
+    }
+
+
+/*
+ * Animation
+ */
+@-webkit-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+                transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@-moz-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -moz-transform: translate(-50%, -50%) rotate(0deg);
+             transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -moz-transform: translate(-50%, -50%) rotate(180deg);
+             transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+             transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@-o-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -o-transform: translate(-50%, -50%) rotate(0deg);
+           transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -o-transform: translate(-50%, -50%) rotate(180deg);
+           transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -o-transform: translate(-50%, -50%) rotate(360deg);
+           transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+           -moz-transform: translate(-50%, -50%) rotate(0deg);
+             -o-transform: translate(-50%, -50%) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+           -moz-transform: translate(-50%, -50%) rotate(180deg);
+             -o-transform: translate(-50%, -50%) rotate(180deg);
+                transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+           -moz-transform: translate(-50%, -50%) rotate(360deg);
+             -o-transform: translate(-50%, -50%) rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.Continued-card-buy .Continued-card-fillinfor .con-set-meal-dele .choice ul li span{
+    width: auto;
+}
+.continued-s02{
+    display: none;
+}
+.continued-s03{
+    display:none;
+}
+
+@media  screen and (min-width:1024px) and (max-width:1265px){
+    .form-infor-con ul li span{
+        width: 32%;
+    }
+    .form-infor-con ul li input, .form-infor-con ul li select, .form-infor-con ul li select option, .form-infor-con ul li textarea{
+        width: 62%;
+    }
+    .form-infor-con .number ul li.nub-select input{
+        width: 34%;
+    }
+    .form-infor-con .number ul li.nub-select input.mar-btom{
+        width: 22%;
+    }
+    .form-infor-con .number i{
+        right: 44%;
+    }
+    .form-infor-con .propaganda input{
+        width: 35%;
+    }
+    .Detailed-purchase-infor ul{
+        width: 30%;
+    }
+    .Detailed-purchase-infor ul li span{
+        width: 44%;
+    }
+}
