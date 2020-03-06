@@ -1,0 +1,104 @@
+/*! 中国移动和飞信官网:2019-11-7 14:29:46 */
+!function (e) {
+    function t(t) {
+        for (var a, i, l = t[0], s = t[1], c = t[2], f = 0, p = []; f < l.length; f++) i = l[f], Object.prototype.hasOwnProperty.call(o, i) && o[i] && p.push(o[i][0]), o[i] = 0;
+        for (a in s) Object.prototype.hasOwnProperty.call(s, a) && (e[a] = s[a]);
+        for (u && u(t); p.length;) p.shift()();
+        return r.push.apply(r, c || []), n()
+    }
+
+    function n() {
+        for (var e, t = 0; t < r.length; t++) {
+            for (var n = r[t], a = !0, l = 1; l < n.length; l++) {
+                var s = n[l];
+                0 !== o[s] && (a = !1)
+            }
+            a && (r.splice(t--, 1), e = i(i.s = n[0]))
+        }
+        return e
+    }
+
+    var a = {}, o = {8: 0}, r = [];
+
+    function i(t) {
+        if (a[t]) return a[t].exports;
+        var n = a[t] = {i: t, l: !1, exports: {}};
+        return e[t].call(n.exports, n, n.exports, i), n.l = !0, n.exports
+    }
+
+    i.m = e, i.c = a, i.d = function (e, t, n) {
+        i.o(e, t) || Object.defineProperty(e, t, {enumerable: !0, get: n})
+    }, i.r = function (e) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
+    }, i.t = function (e, t) {
+        if (1 & t && (e = i(e)), 8 & t) return e;
+        if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+        var n = Object.create(null);
+        if (i.r(n), Object.defineProperty(n, "default", {
+                enumerable: !0,
+                value: e
+            }), 2 & t && "string" != typeof e) for (var a in e) i.d(n, a, function (t) {
+            return e[t]
+        }.bind(null, a));
+        return n
+    }, i.n = function (e) {
+        var t = e && e.__esModule ? function () {
+            return e.default
+        } : function () {
+            return e
+        };
+        return i.d(t, "a", t), t
+    }, i.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t)
+    }, i.p = "./";
+    var l = window.webpackJsonp = window.webpackJsonp || [], s = l.push.bind(l);
+    l.push = t, l = l.slice();
+    for (var c = 0; c < l.length; c++) t(l[c]);
+    var u = s;
+    r.push([16, 1, 0]), n()
+}({
+    16: function (e, t, n) {
+        "use strict";
+        n.r(t);
+        n(17);
+        var a = n(0), o = n.n(a), r = n(1), i = n(2), l = n(4), s = n.n(l), c = n(3), u = n(5), f = n.n(u);
+        window, document.addEventListener("DOMContentLoaded", function () {
+            /*o()("#headers").load("./assets/html/Header.html", function () {
+                Object(r.a)(), Object(i.b)() || (o()(".head-item.active").removeClass("active"), o()(".head-submenu-item").each(function (e, t) {
+                    o()(t).prop("href").indexOf(location.pathname) > -1 && o()(t).addClass("active")
+                }))
+            }), o()("#footers").load("./assets/html/Footer.html");*/
+
+            Object(r.a)(), Object(i.b)() || (o()(".head-item.active").removeClass("active"), o()(".head-submenu-item").each(function (e, t) {
+                o()(t).prop("href").indexOf(location.pathname) > -1 && o()(t).addClass("active")
+            }))
+            var e = {
+                autoplay: {delay: 4e3, stopOnLastSlide: !1, disableOnInteraction: !1},
+                effect: "fade",
+                loop: !0,
+                pagination: {el: ".swiper-pagination", clickable: !0},
+                autoHeight: !0
+            }, t = o()("#swiper_top");
+            t.find("img").length < 1 && delete(e = Object.assign(e, {autoplay: !1, loop: !1})).pagination;
+            var n = new s.a(".swiper-container", e);
+            if (t.mouseenter(function () {
+                    n.autoplay.stop()
+                }).mouseleave(function () {
+                    n.autoplay.start()
+                }), Object(i.a)()) {
+                var a = o()("img.img-cover");
+                f()(a)
+            }
+            var l = o()(".el-tabs--nav"), u = o()(".el-tabs--content").children();
+            l.on("click", ".el-tabs--item", function () {
+                var e = o()(this);
+                if (!e.hasClass("active")) {
+                    e.siblings().removeClass("active").end().addClass("active");
+                    var t = e.index();
+                    u.hide().eq(t).show()
+                }
+            })/*, Object(c.a)({items: [{href: "./Proclaim.html", target: "_blank", text: "官网公告", bgImgClass: "notice"}]})*/
+        })
+    }, 17: function (e, t, n) {
+    }
+});
