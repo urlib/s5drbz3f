@@ -1,0 +1,51 @@
+//切换英文
+$("#toEn").click(function () {
+	$("#toZh").removeClass('present-use');
+	$(this).addClass('present-use');
+	$(".arcmain").text("To link means to connect. And as part of the world’s largest telecommunications company, CMLink is proud to connect the world. Through innovative technology, services and a deep passion, we empower people and businesses to interact and share their experiences, no matter where life takes them.");
+	$("#globalSim").text("Global Data SIM");
+	$("#jpSim").text("Japan Mobile Service");
+	$("#ukSim").text("UK Mobile Service");
+	$("#thaiSim").text("Thai Mobile Service");
+	$("#caSim").text("Canada Mobile Service");
+	$("#sgSim").text("Singapore Mobile Service");
+
+	$("#globalText").text("One SIM is all you need to unlock unforgettable experiences across multiple countries");
+	$("#jpText").text("Choose flexible data or data & voice plans to suit the length of your stay");
+	$("#ukText").text("Chat, browse and share across the UK with extra data free every month");
+	$("#caText").text("Stay connected across the globe with data sharing and free calls between China and Canada");
+	$("#thaiText").text("Link your China and Thai numbers so you don’t miss messages from either home");
+	$("#sgText").text("The Best Link between China and Singapore, enjoy a real high-speed network.");
+	$(".learnMore").text("LEARN MORE");
+
+	$("#sgHref").attr("href", "https://www.cmlink.com/sg/?lang=en-us");
+
+	$("#chinaMob").text("China Mobile International Limited");
+	$("#contactUs").text("Contact us");
+});
+
+//切换中文
+$("#toZh").click(function () {
+	$("#toEn").removeClass('present-use');
+	$(this).addClass('present-use');
+	$(".arcmain").text("CMLink是中国移动走向世界的全新业务品牌。背靠母公司的雄厚实力，CMLink满怀热情与活力，向企业客户及消费者提供高效通信服务，打造快速沟通的通信世界。");
+	$("#globalSim").text("全球数据卡");
+	$("#jpSim").text("日本移动服务");
+	$("#ukSim").text("英国移动服务");
+	$("#thaiSim").text("泰国会员服务");
+	$("#caSim").text("加拿大移动业务");
+	$("#sgSim").text("新加坡移动业务");
+
+	$("#globalText").text("无需换卡即可通行多国，轻松连接世界，让旅途每一秒皆成珍忆！");
+	$("#jpText").text("数据卡与语音数据卡灵活套餐，可根据留日时间和需求随心挑选，实惠又称心").height($("#globalText").height());
+	$("#ukText").text("英国境内免费拨打回国，还可赚取多倍流量，多国漫游共享！").height($("#globalText").height());
+	$("#thaiText").text("办理关联家乡号服务，泰国卡可接收国内移动号的短信，沟通时刻在线！").height($("#globalText").height());
+	$("#caText").text("通过数据共享及中国、加拿大间的免费通话，与全球保持联系。").height($("#globalText").height());
+	$("#sgText").text("连接新加坡与中国，共享优质高速网络。").height($("#globalText").height());
+	$(".learnMore").text("了解更多");
+
+	$("#sgHref").attr("href", "https://www.cmlink.com/sg/?lang=zh-cn");
+
+	$("#chinaMob").text("中国移动国际有限公司");
+	$("#contactUs").text("联系我们");
+});
