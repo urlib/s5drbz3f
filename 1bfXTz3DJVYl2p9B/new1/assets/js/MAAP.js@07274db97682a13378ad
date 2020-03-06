@@ -1,0 +1,103 @@
+/*! 中国移动和飞信官网:2019-11-13 14:43:31 */
+!function (e) {
+    function t(t) {
+        for (var a, i, l = t[0], s = t[1], c = t[2], f = 0, p = []; f < l.length; f++) i = l[f], Object.prototype.hasOwnProperty.call(r, i) && r[i] && p.push(r[i][0]), r[i] = 0;
+        for (a in s) Object.prototype.hasOwnProperty.call(s, a) && (e[a] = s[a]);
+        for (u && u(t); p.length;) p.shift()();
+        return o.push.apply(o, c || []), n()
+    }
+
+    function n() {
+        for (var e, t = 0; t < o.length; t++) {
+            for (var n = o[t], a = !0, l = 1; l < n.length; l++) {
+                var s = n[l];
+                0 !== r[s] && (a = !1)
+            }
+            a && (o.splice(t--, 1), e = i(i.s = n[0]))
+        }
+        return e
+    }
+
+    var a = {}, r = {9: 0}, o = [];
+
+    function i(t) {
+        if (a[t]) return a[t].exports;
+        var n = a[t] = {i: t, l: !1, exports: {}};
+        return e[t].call(n.exports, n, n.exports, i), n.l = !0, n.exports
+    }
+
+    i.m = e, i.c = a, i.d = function (e, t, n) {
+        i.o(e, t) || Object.defineProperty(e, t, {enumerable: !0, get: n})
+    }, i.r = function (e) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
+    }, i.t = function (e, t) {
+        if (1 & t && (e = i(e)), 8 & t) return e;
+        if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+        var n = Object.create(null);
+        if (i.r(n), Object.defineProperty(n, "default", {
+                enumerable: !0,
+                value: e
+            }), 2 & t && "string" != typeof e) for (var a in e) i.d(n, a, function (t) {
+            return e[t]
+        }.bind(null, a));
+        return n
+    }, i.n = function (e) {
+        var t = e && e.__esModule ? function () {
+            return e.default
+        } : function () {
+            return e
+        };
+        return i.d(t, "a", t), t
+    }, i.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t)
+    }, i.p = "./";
+    var l = window.webpackJsonp = window.webpackJsonp || [], s = l.push.bind(l);
+    l.push = t, l = l.slice();
+    for (var c = 0; c < l.length; c++) t(l[c]);
+    var u = s;
+    o.push([20, 1, 0]), n()
+}({
+    20: function (e, t, n) {
+        "use strict";
+        n.r(t);
+        n(21);
+        var a = n(0), r = n.n(a), o = n(1), i = n(2), l = n(4), s = n.n(l), c = n(3);
+        window, document.addEventListener("DOMContentLoaded", function () {
+            /*r()("#headers").load("./assets/html/Header.html", function () {
+
+            }), r()("#footers").load("./assets/html/Footer.html"), Object(c.a)({
+                items: [{
+                    href: "./Proclaim.html",
+                    target: "_blank",
+                    text: "官网公告",
+                    bgImgClass: "notice"
+                }]
+            });*/
+            Object(o.a)(), Object(i.b)() || (r()(".head-item.active").removeClass("active"), r()(".head-submenu-item").each(function (e, t) {
+                r()(t).prop("href").indexOf(location.pathname) > -1 && r()(t).addClass("active")
+            }))
+            var e = {
+                autoplay: {delay: 3e3, stopOnLastSlide: !1, disableOnInteraction: !1},
+                effect: "fade",
+                pagination: {el: ".swiper-pagination", clickable: !0}
+            }, t = r()("#swiper_top");
+            t.find("img").length < 1 && delete(e = Object.assign(e, {autoplay: !1, loop: !1})).pagination;
+            var n = new s.a(".swiper-container", e);
+            t.mouseenter(function () {
+                n.autoplay.stop()
+            }).mouseleave(function () {
+                n.autoplay.start()
+            });
+            var a = r()(".el-tabs--nav"), l = r()(".el-tabs--content").children();
+            a.on("click", ".el-tabs--item", function () {
+                var e = r()(this);
+                if (!e.hasClass("active")) {
+                    e.siblings().removeClass("active").end().addClass("active");
+                    var t = e.index();
+                    l.hide().eq(t).show()
+                }
+            })
+        })
+    }, 21: function (e, t, n) {
+    }
+});
