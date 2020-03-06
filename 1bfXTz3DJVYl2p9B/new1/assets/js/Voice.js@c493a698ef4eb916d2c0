@@ -1,0 +1,86 @@
+/*! 中国移动和飞信官网:2019-11-7 14:29:46 */
+!function (e) {
+    function t(t) {
+        for (var r, u, i = t[0], l = t[1], s = t[2], f = 0, d = []; f < i.length; f++) u = i[f], Object.prototype.hasOwnProperty.call(o, u) && o[u] && d.push(o[u][0]), o[u] = 0;
+        for (r in l) Object.prototype.hasOwnProperty.call(l, r) && (e[r] = l[r]);
+        for (c && c(t); d.length;) d.shift()();
+        return a.push.apply(a, s || []), n()
+    }
+
+    function n() {
+        for (var e, t = 0; t < a.length; t++) {
+            for (var n = a[t], r = !0, i = 1; i < n.length; i++) {
+                var l = n[i];
+                0 !== o[l] && (r = !1)
+            }
+            r && (a.splice(t--, 1), e = u(u.s = n[0]))
+        }
+        return e
+    }
+
+    var r = {}, o = {15: 0}, a = [];
+
+    function u(t) {
+        if (r[t]) return r[t].exports;
+        var n = r[t] = {i: t, l: !1, exports: {}};
+        return e[t].call(n.exports, n, n.exports, u), n.l = !0, n.exports
+    }
+
+    u.m = e, u.c = r, u.d = function (e, t, n) {
+        u.o(e, t) || Object.defineProperty(e, t, {enumerable: !0, get: n})
+    }, u.r = function (e) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
+    }, u.t = function (e, t) {
+        if (1 & t && (e = u(e)), 8 & t) return e;
+        if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+        var n = Object.create(null);
+        if (u.r(n), Object.defineProperty(n, "default", {
+                enumerable: !0,
+                value: e
+            }), 2 & t && "string" != typeof e) for (var r in e) u.d(n, r, function (t) {
+            return e[t]
+        }.bind(null, r));
+        return n
+    }, u.n = function (e) {
+        var t = e && e.__esModule ? function () {
+            return e.default
+        } : function () {
+            return e
+        };
+        return u.d(t, "a", t), t
+    }, u.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t)
+    }, u.p = "./";
+    var i = window.webpackJsonp = window.webpackJsonp || [], l = i.push.bind(i);
+    i.push = t, i = i.slice();
+    for (var s = 0; s < i.length; s++) t(i[s]);
+    var c = l;
+    a.push([30, 1, 0]), n()
+}({
+    30: function (e, t, n) {
+        "use strict";
+        n.r(t);
+        n(31);
+        var r = n(0), o = n.n(r), a = n(1), u = n(2), i = n(3);
+        window, document.addEventListener("DOMContentLoaded", function () {
+            /*o()("#headers").load("./assets/html/Header.html", function () {
+                Object(a.a)(), Object(u.b)() || (o()(".head-item.active").removeClass("active"), o()(".head-submenu-item").each(function (e, t) {
+                    o()(t).prop("href").indexOf(location.pathname) > -1 && o()(t).addClass("active")
+                }))
+            }), o()("#footers").load("./assets/html/Footer.html"), o()("#user-guide").load("./assets/html/UserGuide.html", function () {
+                Object(a.b)();
+                var e = o()("#user-guide").find(".groups-signs");
+                e.eq(2).text("语音通知"), e.eq(3).text("创建语音通知")
+            }), Object(i.a)({items: [{href: "./Proclaim.html", target: "_blank", text: "官网公告", bgImgClass: "notice"}]})*/
+
+            Object(a.a)(), Object(u.b)() || (o()(".head-item.active").removeClass("active"), o()(".head-submenu-item").each(function (e, t) {
+                o()(t).prop("href").indexOf(location.pathname) > -1 && o()(t).addClass("active")
+            }))
+
+            Object(a.b)();
+            var e = o()("#user-guide").find(".groups-signs");
+            e.eq(2).text("语音通知"), e.eq(3).text("创建语音通知")
+        })
+    }, 31: function (e, t, n) {
+    }
+});
