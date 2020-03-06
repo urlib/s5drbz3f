@@ -1,0 +1,546 @@
+/*导航*/
+.header .container .nav .move-wire {
+  left: 100px;
+  width: 132px;
+}
+/*banner*/
+.banner {
+  width: 100%;
+  height: 480px;
+  background: url("../images/rcs-banner.png") no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.banner .container {
+  padding-top: 125px;
+  color: #fff;
+}
+.banner .container .left {
+  padding-top: 40px;
+}
+.banner .container .left .intro {
+  width: 400px;
+  line-height: 60px;
+}
+.banner .container .left .intro h2 {
+  font-size: 50px;
+  font-weight: normal;
+}
+.banner .container .left .des {
+  margin-top: 33px;
+  width: 502px;
+  text-align: justify;
+  line-height: 30px;
+  font-size: 18px;
+}
+.banner .container .right {
+  float: right;
+  width: 500px;
+  height: 295px;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.19);
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  border-radius: 13px;
+}
+.banner .container .right video {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  border-radius: 13px;
+}
+/*传统短信升级*/
+.upgrade {
+  width: 100%;
+}
+.upgrade .ug-title {
+  padding: 40px 0;
+  background: #fff;
+  -webkit-box-shadow: 0 4px 8px 0 #E5E9EE;
+  -moz-box-shadow: 0 4px 8px 0 #E5E9EE;
+  box-shadow: 0 4px 8px 0 #E5E9EE;
+}
+.upgrade .ug-title .container h3 {
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  font-size: 50px;
+  color: #333333;
+}
+.upgrade .ug-title .container p {
+  margin-top: 2px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 18px;
+  color: #333333;
+}
+.upgrade .container .ug-des h4 {
+  height: 50px;
+  line-height: 50px;
+  font-size: 36px;
+  color: #008DFF;
+}
+.upgrade .container .ug-des .ug-des-detail {
+  margin: 30px 0 46px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 18px;
+  color: #2D6DA1;
+}
+.upgrade .container .ug-des .ug-des-detail span {
+  color: #FF7500;
+}
+.upgrade .container .ug-des .ug-des-icons div {
+  float: left;
+  width: 41px;
+  height: 41px;
+  background-image: url("../images/rcs-ug-icon.png");
+  background-repeat: no-repeat;
+}
+.upgrade .ug-new-msg {
+  background: #F7F8FA;
+}
+.upgrade .ug-new-msg .container {
+  padding-top: 70px;
+}
+.upgrade .ug-new-msg .container .ug-des {
+  padding-top: 130px;
+  margin-left: 100px;
+  width: 440px;
+  text-align: center;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons div {
+  margin-right: 25px;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons .ug-des-icon1 {
+  background-position: -72px -56px;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons .ug-des-icon2 {
+  background-position: -374px -56px;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons .ug-des-icon3 {
+  background-position: -223px -56px;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons .ug-des-icon4 {
+  margin-right: 26px;
+  background-position: -450px -56px;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons .ug-des-icon5 {
+  width: 42px;
+  background-position: -530px -56px;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons .ug-des-icon6 {
+  background-position: -299px -56px;
+}
+.upgrade .ug-new-msg .container .ug-des .ug-des-icons .ug-des-icon7 {
+  margin-right: 0;
+  background-position: -148px -56px;
+}
+.upgrade .ug-new-msg .container .ug-pic {
+  margin-right: 30px;
+  width: 500px;
+  height: 530px;
+  background: url("../images/rcs-ug-new-msg.png") no-repeat;
+}
+.upgrade .ug-flow {
+  background: #fff;
+}
+.upgrade .ug-flow .container {
+  padding: 120px 0 114px;
+}
+.upgrade .ug-flow .container .ug-pic {
+  margin-left: 100px;
+  width: 461px;
+  height: 366px;
+  background: url("../images/rcs-ug-flow.png") no-repeat;
+}
+.upgrade .ug-flow .container .ug-des {
+  padding-top: 80px;
+  margin-right: 100px;
+  width: 417px;
+}
+.upgrade .ug-flow .container .ug-des h4 {
+  text-align: center;
+}
+.upgrade .ug-flow .container .ug-des .ug-des-detail {
+  text-align: center;
+}
+.upgrade .ug-flow .container .ug-des .ug-scan-qrcode {
+  position: relative;
+  margin: 0 auto;
+  width: 250px;
+}
+.upgrade .ug-flow .container .ug-des .ug-scan-qrcode a {
+  display: block;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  background: #008DFF;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+  cursor: pointer;
+}
+.upgrade .ug-group-send {
+  background: #F7F8FA;
+}
+.upgrade .ug-group-send .container {
+  padding-top: 70px;
+}
+.upgrade .ug-group-send .container .ug-des {
+  padding-top: 130px;
+  margin-left: 215px;
+  width: 325px;
+  text-align: center;
+}
+.upgrade .ug-group-send .container .ug-des .ug-des-icons .ug-des-icon1 {
+  margin-left: 39px;
+  background-position: -71px -150px;
+}
+.upgrade .ug-group-send .container .ug-des .ug-des-icons .ug-des-icon2 {
+  margin: 0 62px;
+  background-position: -147px -150px;
+}
+.upgrade .ug-group-send .container .ug-des .ug-des-icons .ug-des-icon3 {
+  margin-right: 39px;
+  background-position: -222px -150px;
+}
+.upgrade .ug-group-send .container .ug-pic {
+  margin-right: 30px;
+  width: 500px;
+  height: 530px;
+  background: url("../images/rcs-ug-group.png") no-repeat;
+}
+.upgrade .ug-nolimit-num {
+  background: #fff;
+}
+.upgrade .ug-nolimit-num .container {
+  padding: 120px 0 114px;
+}
+.upgrade .ug-nolimit-num .container .ug-pic {
+  margin-left: 100px;
+  width: 461px;
+  height: 366px;
+  background: url("../images/rcs-ug-nolimit.png") no-repeat;
+}
+.upgrade .ug-nolimit-num .container .ug-des {
+  padding-top: 80px;
+  margin-right: 100px;
+  width: 417px;
+  text-align: center;
+}
+.upgrade .ug-nolimit-num .container .ug-des .ug-des-icons .ug-des-icon1 {
+  margin-left: 90px;
+  background-position: -72px -249px;
+}
+.upgrade .ug-nolimit-num .container .ug-des .ug-des-icons .ug-des-icon2 {
+  margin: 0 62px;
+  background-position: -144px -249px;
+}
+.upgrade .ug-nolimit-num .container .ug-des .ug-des-icons .ug-des-icon3 {
+  width: 42px;
+  background-position: -222px -249px;
+}
+.upgrade .ug-exempt-app {
+  background: #F7F8FA;
+}
+.upgrade .ug-exempt-app .container {
+  padding: 65px 0 73px;
+}
+.upgrade .ug-exempt-app .container .ug-des {
+  padding-top: 135px;
+  margin-left: 100px;
+  width: 467px;
+  text-align: center;
+}
+.upgrade .ug-exempt-app .container .ug-des .ug-des-icons .ug-des-icon1 {
+  margin-left: 90px;
+  background-position: -72px -249px;
+}
+.upgrade .ug-exempt-app .container .ug-des .ug-des-icons .ug-des-icon2 {
+  margin: 0 62px;
+  background-position: -148px -342px;
+}
+.upgrade .ug-exempt-app .container .ug-des .ug-des-icons .ug-des-icon3 {
+  width: 42px;
+  background-position: -222px -249px;
+}
+.upgrade .ug-exempt-app .container .ug-pic {
+  margin-right: 100px;
+  width: 329px;
+  height: 462px;
+  background: url("../images/rcs-ug-exempt.png") no-repeat;
+}
+/*使用RCS*/
+.openRCS {
+  width: 100%;
+  height: 1220px;
+  background: url("../images/rcs-bg.jpg") no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.openRCS .container {
+  padding-top: 42px;
+}
+.openRCS .container h3 {
+  width: 471px;
+  height: 100px;
+  margin: 0 auto;
+  line-height: 50px;
+  text-align: center;
+  font-size: 36px;
+  color: #fff;
+}
+.openRCS .container .part {
+  margin: 9px 0 86px;
+  text-align: center;
+  line-height: 22px;
+  font-size: 16px;
+  color: #fff;
+}
+.openRCS .container ul li {
+  position: relative;
+  float: left;
+  width: 260px;
+  height: 370px;
+  margin-right: 53px;
+  background: #fff;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 14px;
+  -webkit-box-shadow: 0 4px 8px 0 #2898E5;
+  -moz-box-shadow: 0 4px 8px 0 #2898E5;
+  box-shadow: 0 4px 8px 0 #2898E5;
+}
+.openRCS .container ul li .pic {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: #fff;
+}
+.openRCS .container ul li .pic .logo {
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.openRCS .container ul li .phone {
+  padding-top: 54px;
+}
+.openRCS .container ul li .phone h4 {
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 18px;
+  color: #333333;
+}
+.openRCS .container ul li .phone .step {
+  margin: 15px 40px 0;
+}
+.openRCS .container ul li .phone .step p {
+  position: relative;
+  width: 180px;
+  height: 20px;
+  padding: 5px 0;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+}
+.openRCS .container ul li .phone .step p:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
+}
+.openRCS .container ul li .phone .step p:last-child {
+  margin-bottom: 0;
+}
+.openRCS .container ul li .phone .step p:last-child:after {
+  width: 0;
+  height: 0;
+  background: none;
+}
+.openRCS .container ul .huawei {
+  margin-bottom: 87px;
+}
+.openRCS .container ul .huawei .pic .logo {
+  background: url("../images/rcs-l-huawei.png") no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.openRCS .container ul .huawei .phone .step p {
+  margin-bottom: 44px;
+  background: #FFF2F2;
+  color: #C40000;
+}
+.openRCS .container ul .huawei .phone .step p:after {
+  bottom: -35px;
+  width: 12px;
+  height: 25px;
+  background: url("../images/rcs-icon.png") -52px -892px no-repeat;
+}
+.openRCS .container ul .xiaomi {
+  margin-bottom: 87px;
+}
+.openRCS .container ul .xiaomi .pic .logo {
+  background: url("../images/rcs-l-xiaomi.png") no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.openRCS .container ul .xiaomi .phone .step p {
+  background: #FFF7F2;
+  color: #D85C00;
+}
+.openRCS .container ul .xiaomi .phone1 .step p {
+  margin-bottom: 81px;
+}
+.openRCS .container ul .xiaomi .phone1 .step p:after {
+  bottom: -60px;
+  width: 12px;
+  height: 40px;
+  background: url("../images/rcs-icon.png") -95px -892px no-repeat;
+}
+.openRCS .container ul .meizu {
+  margin-bottom: 87px;
+}
+.openRCS .container ul .meizu .pic .logo {
+  background: url("../images/rcs-l-meizu.png") no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.openRCS .container ul .meizu .phone .step p {
+  margin-bottom: 43px;
+  background: #EBF9FF;
+  color: #078FC3;
+}
+.openRCS .container ul .meizu .phone .step p:after {
+  bottom: -34px;
+  width: 12px;
+  height: 25px;
+  background: url("../images/rcs-icon.png") -265px -892px no-repeat;
+}
+.openRCS .container ul .oppo {
+  float: right;
+  margin-right: 0;
+}
+.openRCS .container ul .oppo .pic .logo {
+  background: url("../images/rcs-l-oppo.png") no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.openRCS .container ul .oppo .phone .step p {
+  margin-bottom: 80px;
+  background: #E6F8F2;
+  color: #007149;
+}
+.openRCS .container ul .oppo .phone .step p:after {
+  bottom: -60px;
+  width: 13px;
+  height: 41px;
+  background: url("../images/rcs-arrow-op.png") no-repeat;
+}
+.openRCS .container ul .sanxing .pic .logo {
+  background: url("../images/rcs-l-san.png") no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.openRCS .container ul .sanxing .phone .step p {
+  margin-bottom: 25px;
+  background: #F4F5FD;
+  color: #13227A;
+}
+.openRCS .container ul .sanxing .phone .step p:after {
+  bottom: -21px;
+  width: 12px;
+  height: 17px;
+  background: url("../images/rcs-icon.png") -180px -892px no-repeat;
+}
+.openRCS .container ul .hisense .pic .logo {
+  background: url("../images/rcs-l-hisense.png") no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.openRCS .container ul .hisense .phone .step p {
+  margin-bottom: 80px;
+  background: #EAFFFF;
+  color: #009D9F;
+}
+.openRCS .container ul .hisense .phone .step p:after {
+  bottom: -60px;
+  width: 12px;
+  height: 41px;
+  background: url("../images/rcs-icon.png") -222px -892px no-repeat;
+}
+.openRCS .container ul .SecurityMax .pic .logo {
+  background: url("../images/rcs-l-360.png") no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.openRCS .container ul .SecurityMax .phone .step p {
+  margin-bottom: 43px;
+  background: #EDFBF0;
+  color: #1E8306;
+}
+.openRCS .container ul .SecurityMax .phone .step p:after {
+  bottom: -35px;
+  width: 12px;
+  height: 25px;
+  background: url("../images/rcs-icon.png") -308px -892px no-repeat;
+}
+.openRCS .container ul .more {
+  float: right;
+  margin-right: 0;
+  background: #c7e2fd;
+}
+.openRCS .container ul .more p {
+  margin-top: 145px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 20px;
+  color: #005DB8;
+}
+.openRCS .container .expenses {
+  margin: 42px auto 0;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  background: #0069FF;
+  -webkit-box-shadow: 0 2px 4px 0 #28A5E9;
+  -moz-box-shadow: 0 2px 4px 0 #28A5E9;
+  box-shadow: 0 2px 4px 0 #28A5E9;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
