@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+    <!-- / 清理缓存-->
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
+    <!-- / 清理缓存-->
+    <title>China Mobile CMLink SG</title>
+    <link rel="shortcut icon" href="/sg/images/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="/sg/css/common.css?v=20200305?v=20200305" />
+    <link rel="stylesheet" href="/sg/css/desktop/style.css?v=20200305?v=20200305" media="all and (min-width:1024px)" />
+    <link rel="stylesheet" href="/sg/css/mobile/style.css?v=20200305?v=20200305" media="all and (max-width:1023px)" />
+</head>
+
+<body>
+
+    <div id="app"></div>
+    
+    <script type="x-template" id="home">
+        <div class="container">
+            <my-header :showPop="showPop" @toggleMenuPop="toggleMenuPop"></my-header>
+            <!-- 遮罩 -->
+            <div class="Shade" v-show="showPop" style="display: block;" @click="handleShadeClick"></div>
+            <transition name="slide">
+                <my-menu-pop v-show="showPop" :showPop="showPop" @toggleMenuPop="toggleMenuPop"></my-menu-pop>
+            </transition>
+            <!--    MAIN    -->
+            <div id="main" class="pdTop home-wrapper">
+                <!--    country province    -->
+                <div class="regionSelect" id="regionSelect" v-html="homepage.regionSelect"></div>
+                <!--    Promotional    -->
+                <div class="promoWrap hidden" v-html="homepage.promoWrap"></div>
+                <!--    floor 1    -->
+                <div class="floorWrap floor_1">
+                    <img class="img_responsive is-pc" v-lazy="homepage.bannerImage || ''" alt="">
+                    <img class="img_responsive is-mobile" v-lazy="homepage.bannerMobileImage || ''" alt="">
+                    <div class="dataWrap" v-html="banner.flow"></div>
+                    <div class="explainWrap">
+                        <div class="explainNote">
+                            <div class="textWrap">
+                                <div class="text" v-html="banner.title"></div>
+                                <div class="desc">{{banner.content}}</div>
+                            </div>
+                            <div class="btnWrap" v-html="banner.link"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--    floor 2    -->
+                <div class="floorWrap floor_2">
+                    <div class="textWrap">
+                        <div class="text">{{homepage.planTitle}}</div>
+                        <div class="desc" v-html="homepage.planContent"></div>
+                    </div>
+                    <div class="cardWrapBg">
+                        <div class="leftHearts"><embed class="svgPic" type="image/svg+xml" src="/sg/images/svg/LeftHearts.svg"></div>
+                        <div class="rightHearts"><embed class="svgPic" type="image/svg+xml" src="/sg/images/svg/RightHearts.svg"></div>
+                        <div class="cardWrap">
+                            <div v-for="(item, index) in plansList" :class="['cardBox', plansColorList[index]]">
+                                <i class="mark" v-if="item.recommend === '1'"></i>
+                                <div class="topWrap">
+                                    <span class="price">
+                                        <span class="icon">$</span>
+                                        <span class="num">{{item.product_fee / 100}}</span>
+                                    </span>
+                                    <span class="unit">
+                                        <span class="fb">{{item.data || 0}}GB</span>
+                                        <span>/{{$t('sg.home.perMonth')}}</span>
+                                    </span>
+                                </div>
+                                <div class="bottomWrap">
+                                    <span class="bottomNum">
+                                        <span>{{item.voice_local || 0}}</span>
+                                        <span>{{item.voice_hk || 0}}</span>
+                                    </span>
+                                    <span class="bottomDesc">
+                                        <span v-html="$t('sg.home.localMins')"></span>
+                                        <span v-html="$t('sg.home.cn_hk_idd')"></span>
+                                    </span>
+                                    <!-- <span class="bottomLine">
+                                        <span class="num">{{item.voice_local}}</span>
+                                        <span class="desc">{{$t('sg.home.localMins')}}</span>
+                                    </span>
+                                    <span class="bottomLine">
+                                        <span class="num">{{item.voice_hk}}</span>
+                                        <span class="desc">{{$t('sg.home.cn_hk_idd')}}</span>
+                                    </span>   -->              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnWrap" v-html="homepage.planLink"></div>
+                </div>
+                <!--    floor 3    -->
+                <div class="floorWrap floor_3">
+                    <div class="textWrap">
+                        <div class="text"><span>{{homepage.whyTitle}}</span></div>
+                    </div>
+                    <div class="iconWrap">
+                        <div class="iconItem" v-for="(item, index) in homepage.whyList">
+                            <span class="imgBox"><img class="img_responsive" :src="homepage.whyImgList[index]" alt=""></span>
+                            <span class="text" v-html="item"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--    floor 4    -->
+                <div class="floorWrap floor_4">
+                    <div class="clearfix"></div>
+                    <div class="boxWrap">
+                        <div class="textWrap">
+                            <div class="text" v-html="homepage.freeTitle"></div>
+                            <div class="desc" v-html="homepage.freeContent"></div>
+                            <div class="btnWrap" v-html="homepage.freeLink"></div>
+                        </div>
+                        <div class="imgbox">
+                            <img class="img_responsive is-pc" v-lazy="homepage.freeImage || ''" alt="">
+                            <img class="img_responsive is-mobile" v-lazy="homepage.freeImageMobile || ''" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!--    floor 5    -->
+                <div class="floorWrap helpWrap">
+                    <div class="itemBox greenBg">
+                        <div class="titleWrap">
+                            <div class="textWrap" v-html="homepage.contactTitle"></div>
+                        </div>
+                        <div class="noteWrap">
+                            <div class="notePic">
+                                <!-- <img class="img_responsive" src="/sg/images/helpIcon_1.png" alt=""> -->
+                                <embed class="svgPic" type="image/svg+xml" src="/sg/images/svg/phone.svg">
+                            </div>
+                            <div class="noteText" v-html="homepage.contactContent"></div>
+                        </div>
+                        <div class="openWrap" v-html="homepage.contactList"></div>
+                        <div class="openWrap setBottom" v-html="homepage.contactLink"></div>
+                    </div>
+                    <div class="itemBox greenLightBg mrg">
+                        <div class="titleWrap">
+                            <div class="textWrap" v-html="homepage.faqTitle"></div>
+                        </div>
+                        <div class="noteWrap">
+                            <div class="notePic">
+                                <!-- <img class="img_responsive" src="/sg/images/helpIcon_2.png" alt=""> -->
+                                <embed class="svgPic" type="image/svg+xml" src="/sg/images/svg/contactus.svg">
+                            </div>
+                            <div class="noteText" v-html="homepage.faqContent"></div>
+                        </div>
+                        <div class="openWrap" v-for="(item, index) in faqList" :key="item.faq_order" @click="OpenSwitch('#faqLinkBtn'+index, '#faqHelpOpen'+index);">
+                            <a href="javascript:void(0);" class="linkBtn" :id="'faqLinkBtn' + index">{{item.faq_title}}<i class="arrow"></i></a>
+                            <div class="helpOpen Bg" :id="'faqHelpOpen'+index" v-html="item.faq_content"></div>
+                        </div>
+                        <div class="openWrap setBottom" v-html="homepage.faqLink"></div>
+                    </div>
+                </div>
+                <!--    floor 6    -->
+                <div class="floorWrap picWrap floor_6">
+                    <img class="img_responsive is-pc" v-lazy="homepage.bottomImage || ''" alt="">
+                    <img class="img_responsive is-mobile" v-lazy="homepage.bottomMobileImage || ''" alt="">
+                    <div class="textPic">
+                        <div class="TextStyle" v-html="homepage.bottomTitle"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- loading -->
+            <div id="loading" class="loading">
+                <div class="loader"></div>
+            </div>
+            <my-footer></my-footer>
+        </div>
+    </script>
+    <script src="/sg/js/lib/require.js"></script>
+    <script src="/sg/js/lib/require.config.js"></script>
+    <script src="/sg/js/busiController/home.js?v=1.0.3"></script>
+
+</body>
+
+</html>
