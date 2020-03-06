@@ -1,0 +1,154 @@
+
+var pageTopOffset = 0;
+var CMSToolbarOffset = 0;
+var lang = "";
+
+function getUrlVars()
+	{
+	    var vars = [], hash;
+	    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	    for(var i = 0; i < hashes.length; i++)
+			{
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
+	}
+	
+function updatePageTopOffset() {
+	var $cssMarginTopOffset = $(".cssMarginTopOffset");
+	var $cssTopOffset = $(".cssTopOffset");
+	var $navbar = $("nav.navbar.header");
+	var $breadcrumb = $('.wrapper-breadcrumb');
+	var $spring = $('.spring-notice');
+	var $CMSToolbar = $('#toolbar-bar');
+	var $CMSToolbarTray = $("#toolbar-item-administration-tray.toolbar-tray-horizontal");
+	
+	var navbarHeight =  $navbar.length ? $navbar.outerHeight() : 0;
+	var breadcrumbHeight =  $breadcrumb.outerHeight();
+	var springHeight =  $spring.outerHeight();
+	var CMSToolbarHeight =  $CMSToolbar.length ? $CMSToolbar.outerHeight() : 0;
+	var CMSToolbarTrayHeight =  $CMSToolbarTray.length ? $CMSToolbarTray.outerHeight() : 0;
+	var breadcrumbHeight = $breadcrumb.length ? $breadcrumb.outerHeight() : 0;
+	
+	CMSToolbarOffset = CMSToolbarHeight + CMSToolbarTrayHeight;
+	pageTopOffset = navbarHeight + breadcrumbHeight;
+
+	$navbar.animate({'top': CMSToolbarOffset}).slideDown('fast', function() {
+		$breadcrumb.animate({'top': CMSToolbarOffset + navbarHeight});
+		//新春通知
+		$spring.animate({'top': breadcrumbHeight + navbarHeight});
+		if($spring){
+			if(!timeSlot("2020-2-5 00:00:00","2022-2-6 23:59:59",0)){
+				$(".spring-notice").hide();
+				$('.container-main-content').css('padding-top','0px');
+			}else{
+				$('.container-main-content').css('padding-top',springHeight + 'px');
+			}
+		}
+		//新春优惠时间
+		
+		$cssTopOffset.animate({'top': pageTopOffset});
+		$cssMarginTopOffset.animate({'margin-top': pageTopOffset});
+	});
+	
+	$.fn.validator.Constructor.FOCUS_OFFSET = pageTopOffset + 35;
+}
+//时间段判断  timeZone距零时区的时差
+function timeSlot(startTime,endTime,timeZone) {
+	if(timeZone === undefined){
+		timeZone = 8; //默认时区设置为中国
+	}
+    var offset = new Date().getTimezoneOffset();
+    var nowDate = new Date().getTime();
+    var targetDate = new Date(nowDate + offset * 60 * 1000 + timeZone * 60 * 60 * 1000);
+    var enTimeoffset = targetDate.getTime();
+    //设置目标时区时间段
+    var beginTime = Date.parse(new Date(startTime));
+    var endTime = Date.parse(new Date(endTime));
+    if ((enTimeoffset > beginTime) && (enTimeoffset < endTime)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+$(document).on('click', '.spring_colse', function (event) {
+    $(".spring-notice").hide();
+    $('.container-main-content').css('padding-top','0px');
+});
+
+function scrollTo(element_id){
+    $('html, body').animate({
+        scrollTop: $("#"+element_id).offset().top-pageTopOffset
+    }, 1500);
+}
+
+$( document ).ready(function() {
+	console.log(document.cookie);
+	lang = $("html").attr("lang");
+	$(".lang_switch a[hreflang='"+lang+"']").addClass("font-red");
+	
+	$(".checkbox span.cr").on("click",function(){
+		$(this).siblings("input[type=checkbox]").trigger('click'); 
+	})
+	
+	var lang = $('html').attr('lang').substring(0, 2);
+	$("input[data-error-"+lang+"]").each(function(){
+		$(this).attr("data-error",$(this).attr("data-error-"+lang));
+	});
+	$("input[data-pattern-error-"+lang+"]").each(function(){
+		$(this).attr("data-pattern-error",$(this).attr("data-pattern-error-"+lang));
+	});
+	$("textarea[data-error-"+lang+"]").each(function(){
+		$(this).attr("data-error",$(this).attr("data-error-"+lang));
+	});
+	$("textarea[data-pattern-error-"+lang+"]").each(function(){
+		$(this).attr("data-pattern-error",$(this).attr("data-pattern-error-"+lang));
+	});
+	$('#to-top').on('click', function() {
+		scrollTo('header');
+	});
+	$('#port-in').click( function(e) {
+		console.log('port in')
+		e.preventDefault(); /*your_code_here;*/ 
+		scrollTo('footer');
+		$('#port-in-open').click();
+		return false; 
+	});
+});
+
+$(window).on('load', function(){
+	updatePageTopOffset();
+});
+$(window).on('resize', function(){
+	updatePageTopOffset();
+});
+
+function cookiesRedirect(node){
+	window.location = '../' + node;
+}
+
+//$(".form-group input[type=checkbox]").after("<span class='cr'><i class='cr-icon'></i></span>")
+
+/* CSD-182 Mobile Menu will now also use same Desktop Menu
+var mobile_menu_state = true;
+$('.navbar-toggle').on('click', function(){
+	if(mobile_menu_state){
+		$('.cross.mobile').show();
+		$('.hamburger-menu-mobile').hide();
+		if(!$('#mobile-free-sim-id').hasClass('hide-mobile-free-sim')){
+			$('.free-sim-menu-button.mobile').hide();
+		}
+		mobile_menu_state = false;
+
+	} else {
+
+		$('.cross.mobile').hide();
+		$('.hamburger-menu-mobile').css('display', 'inline');
+		if(!$('#mobile-free-sim-id').hasClass('hide-mobile-free-sim')){
+			$('.free-sim-menu-button.mobile').show();
+		}
+		mobile_menu_state = true;
+	}
+});*/
