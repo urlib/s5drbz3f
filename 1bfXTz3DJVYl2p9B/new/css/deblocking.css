@@ -1,0 +1,194 @@
+/*导航*/
+.header .container .nav .move-wire {
+  width: 0;
+}
+.deblocking {
+  width: 100%;
+}
+.deblocking .container {
+  margin: 130px auto 100px;
+  width: 800px;
+}
+.deblocking .container h3 {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 36px;
+  color: #333;
+}
+.deblocking .container .article {
+  margin-top: 38px;
+}
+.deblocking .container .article .title {
+  height: 25px;
+  line-height: 25px;
+  font-size: 18px;
+  color: #333;
+}
+.deblocking .container .article .detail {
+  position: relative;
+  line-height: 28px;
+  font-size: 14px;
+  color: #333;
+}
+.deblocking .container .article .detail span {
+  position: absolute;
+  left: -29px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background: #929292;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.deblocking .container .article .deblock-common {
+  margin: 22px 0 0 20px;
+  width: 140px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  background: #487DFC;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+.deblocking .container .article button {
+  outline: none;
+}
+.deblocking .container .article .article1 .title {
+  margin-bottom: 18px;
+}
+.deblocking .container .article .article2 {
+  margin-top: 42px;
+}
+.deblocking .container .article .article2 .detail {
+  margin-left: 29px;
+  line-height: 20px;
+}
+.deblocking .container .article .article2 .how1 {
+  position: relative;
+  margin: 24px 0 40px;
+}
+.deblocking .container .article .article2 .how1:after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 3px;
+  height: 93px;
+  border-left: 1px dashed #e5e5e5;
+}
+.deblocking .container .article .article2 .how2 {
+  position: relative;
+}
+.deblocking .container .article .article2 .how2:after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 3px;
+  height: 93px;
+  border-left: 1px dashed #e5e5e5;
+}
+.deblocking .container .article .article2 .how2 .sample-pic {
+  display: none;
+  position: absolute;
+  top: -350px;
+  left: 162px;
+  width: 600px;
+  height: 642px;
+  background: url("../images/deblocking-sample.png") no-repeat;
+  z-index: 100;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.deblocking .container .article .article2 .how3 {
+  margin-top: 40px;
+}
+.deblocking .container .article .article2 .how3 .operation {
+  position: relative;
+  height: 100px;
+  margin-top: 22px;
+}
+.deblocking .container .article .article2 .how3 .operation .upload-pic {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 140px;
+}
+.deblocking .container .article .article2 .how3 .operation .upload-pic img {
+  width: 140px;
+  height: 70px;
+}
+.deblocking .container .article .article2 .how3 .operation .upload-pic p {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.deblocking .container .article .article2 .how3 .operation .upload-btn {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  margin: 0;
+}
+.deblocking .container .article .article2 .how3 .operation .upload-btn .upload {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 140px;
+  height: 30px;
+  color: transparent;
+  opacity: 0;
+}
+.deblocking .container .article .article2 .how3 .operation .submit {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  margin: 0;
+}
+.deblocking .container .article .article2 .no-click {
+  background: #C4C4C4;
+}
+#choiceWindow input[type='button']{
+    font-size: 15px;
+    color: white;
+    border: 0px;
+    width: 115px;
+    height: 45px;
+    background: url("../images/btn2.png");
+    background-position: 0 -70px;
+}
+#phone{
+    width: 200px;
+    box-sizing: border-box;
+    height: 55px;
+    display: inline-block;
+    border: 3px solid #2F96EF;
+    border-radius: 5px;
+    padding: 0 15px;
+    margin: 10px 0;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+#mask_layer1 {
+    display:none;
+    background:#000;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    opacity:.40;
+    z-index:9999;
+}
