@@ -1,0 +1,440 @@
+var pageTopOffset = 0;
+
+function scrollTo(element_id) {
+    $('html, body').animate({
+        scrollTop: $("#" + element_id).offset().top - pageTopOffset
+    }, 100);
+}
+
+function getParmas(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = decodeURI(window.location.search).substr(1).match(reg);
+    if (r != null) return unescape(r[2]).replace("$BM$", "&");
+    return null;
+}
+
+var st;
+(function ($) {
+    $(document).ready(function () {
+        //渠道来源
+        var source = getParmas('utm_content');//20001
+        var cookie = Cookies.get('chl_id');
+        if (cookie != null){
+            jQuery('input[name="chl_id"]').val(cookie);
+        }else if (source != null){
+            jQuery.ajax({
+                url: '/uk/zh/cmlink_direct/getChannelId',
+                type: "post",
+                dataType: 'json',
+                data: { "source": source },
+                success: function (data) {
+                    Cookies.set('chl_id',data.chl_id);
+                    jQuery('input[name="chl_id"]').val(data.chl_id);
+                }
+            });
+
+        }
+        $('[name="topupamount"]').prop('checked', false).parents('.radio.form-group').removeClass('enter-amount-show has-error has-danger');
+        openTopUpStep("allStepHide");
+        openTopUpStep("step1+3");
+        $('.topup-header-payment').hide();
+        $("div#SapiVaild").hide();
+        $("div#SapiVaild_1").hide();
+        $("div#SapiVaild_4").hide();
+        $("div#AmountVaild").hide();
+        $("input[name='otheramount']").on('keyup', function (e) {
+            updateOtherAmount($(this).val());
+            if (!$(this).attr('data-val')) {
+                return
+            }
+            var valList = $(this).attr('data-val').split(',');
+            var earnList = $(this).attr('data-earn').split(',');
+            var ind = valList.indexOf($(this).val());
+            if (ind >= 0) {
+                $('.add-earn-more.earn-more-num').css('left', $(this).val().split('').length * 35 + 'px').show();
+                $('.add-earn-more.earn-more-num .rectangle').text('+ £' + earnList[ind]);
+            } else {
+                $('.add-earn-more.earn-more-num').hide();
+            }
+        });
+
+        $("#phoneField").on('keyup', function () {
+            //$("#phoneVaild").hide().parents(".form-group").removeClass("has-error");
+        });
+        $('#phoneField').keypress(function (event) {
+
+            if (event.keyCode == 10 || event.keyCode == 13)
+                event.preventDefault();
+        });
+
+        // 获取套餐优惠信息
+        jQuery.ajax({
+            url: '/uk/cmlink_direct/getEarn',
+            type: "post",
+            dataType: 'json',
+            success: function (res) {
+                if (res.data === null || res.data === undefined || res.data.length <= 0) {
+                    $('.earn-more-notice').hide();
+                    return;
+                }
+                $('#optionsRadios4').get(0).checked = true;
+                var earnList = [];
+                var valList = [];
+                res.data.forEach(function(item) {
+                    if (item.promoType === '2') {
+                        // 按返回值
+                        var amount = item.promoCondition;
+                        var val = item.promoValue;
+                        earnList.push(val);
+                        valList.push(amount);
+                        $('#step3 .radio input[name="topupamount"][value='+amount+']').attr('earn', val);
+                        $('#step3 .radio input[name="topupamount"][value='+amount+']').next().append('<div class="earn-more-mark">+ £'+val+'</div>')
+                    } else if (item.promoType === '1') {
+                        // 按比例
+                    }
+                });
+                $('#step3 input[name="otheramount"]').attr('data-earn', earnList.join(','))
+                    .attr('data-val', valList.join(','));
+            }
+        });
+        // 双11文案 双12文案控制
+        showActive();
+        st = setInterval("showActive()",1000);
+        var lang = $('html').attr('lang').substring(0, 2);
+	    var timezone = 0; //目标时区时间，零时区
+	    var offset = new Date().getTimezoneOffset();
+	    var nowDate = new Date().getTime();
+	    var targetDate = new Date(nowDate + offset * 60 * 1000 + timezone * 60 * 60 * 1000);
+        var enTimeoffset = targetDate.getTime();
+        var spring_beginTime = Date.parse(new Date("2020/02/13 00:00:00"));
+        var spring_endTime = Date.parse(new Date("2020/02/14 23:59:00"));
+        if((enTimeoffset > spring_beginTime) && (enTimeoffset < spring_endTime)) {
+        if(lang == 'zh'){
+            $('h2#step1').after('<div style="margin: 5px 0;">英国时间2月14日当天首笔充值£30以上即额外赠送10%话费，7个工作日内到账，每个号码可享赠送一次</div>');
+        }else {
+            $('h2#step1').after('<div style="margin: 5px 0;">Get an extra 10% bonus for first top-up no less than £30 on Feb 14th, bonus will be sent to your account within 7 working days, each number can enjoy the bonus for one time.</div>');
+        }
+    }
+
+    });
+    $('#nextStep1').on('click', function () {
+        validatePhone();
+    });
+    function validatePhone () {
+        if ($('#phoneField').parents('.form-group').hasClass('has-error') || !$('#phoneField').val()) {
+            $('#topup-form').validator('validate');
+        } else {
+        	var val = $('#phoneField').val();
+//      	if (val.length === 10 && val.substring(0,1) != '0') {
+//              val = "0" + val;
+//          } else if (val.length === 12 && val.substring(0, 2) === '44') { // 添加国家码
+//              val = "0" + val.substring(2);
+//          }
+            if (val.length === 12 && val.substring(0, 2) === '44' && val.substring(2,3) != '0') { // 添加国家码
+                val = "0" + val.substring(2);
+            }
+            var data = {phoneNumber: val};
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/uk/cmlink_direct/phoneVaild",
+                data: data,
+                success: function (result) {
+                    validateCallback(result);
+                }
+            });
+            
+            //微信广告投放追踪需求   
+		    try{
+		        gdt('track', 'COMPLETE_ORDER', data);
+		    }catch(e){
+		        //throw '微信广告投放追踪需求报错';  // 只是输出字符串
+		    }
+        }
+    }
+
+    /**
+     * 验证手机号成功回调
+     * */
+    function validateCallback (result) {
+        var resultData = result.code;
+        if (resultData == 0) {
+            // openTopUpStep("allStepHide");
+            // openTopUpStep("step1+3");
+            $("#phoneVaild").hide().parents(".form-group").removeClass("has-error");
+            nextStep2Callback();
+            // document.getElementById("phoneField").readOnly = true;
+        } else if (resultData == 4) {
+            $("#phoneVaild").show().parents(".form-group").addClass("has-error");
+            $("div#SapiVaild_4").show().siblings().hide();
+            backToOffset($('#phoneField').get(0).offsetTop);
+        } else if (resultData == 1) {
+            $("#phoneVaild").show().parents(".form-group").addClass("has-error");
+            $("div#SapiVaild_1").show().siblings().hide();
+            backToOffset($('#phoneField').get(0).offsetTop);
+        } else {
+            $("#phoneVaild").show().parents(".form-group").addClass("has-error");
+            $("div#SapiVaild").show().siblings().hide();
+            backToOffset($('#phoneField').get(0).offsetTop);
+        }
+    }
+
+    /**
+     * 页面滚动到指定位置
+     * */
+    function backToOffset (offset) {
+        window.scroll({
+            top: offset,
+            behavior: 'smooth'
+        });
+    }
+
+    /**
+     * 点击下一步按钮，验证是否选择套餐
+     * */
+    function nextStep2Callback () {
+        $form = $('form[name="topup-form"]');
+        if ($('input[name=topupamount]:checked').val() === 'other amount') {
+            var amount = $form.find("input[name=otheramount]").val();
+            $('#uk-amount').html('£' + $form.find("input[name=otheramount]").val());
+            $('#cn-amount').html('￥' + ($form.find("input[name=otheramount]").val() * $form.find("input[name=curreny]").val()).toFixed());
+            $('#cn-amount-1').html('￥' + ($form.find("input[name=otheramount]").val() * $form.find("input[name=curreny]").val()).toFixed());
+        } else {
+            $('#uk-amount').html('£' + $form.find("input[name=topupamount]:checked").val());
+            $('#cn-amount').html('￥' + ($form.find("input[name=topupamount]:checked").val() * $form.find("input[name=curreny]").val()).toFixed());
+            $('#cn-amount-1').html('￥' + ($form.find("input[name=topupamount]:checked").val() * $form.find("input[name=curreny]").val()).toFixed());
+        }
+
+        if ($form.find("input[name=otheramount]").val() && !$('#topup-form .form-group').hasClass('has-error')) {
+            openTopUpStep("allStepHide");
+            openTopUpStep("step4");
+        } else if ($form.find("input[name=topupamount]:checked").val() && $form.find("input[name=topupamount]:checked").val() != 'other amount') {
+            openTopUpStep("allStepHide");
+            openTopUpStep("step4");
+        }
+
+        $('.topup-header-payment').show();
+    }
+
+    $('#nextStep2').click(function () {
+        validatePhone();
+    });
+
+    $('#backStep1').click(function () {
+        openTopUpStep("allStepHide");
+        openTopUpStep("step1+3");
+        // document.getElementById("phoneField").readOnly = true;
+
+    });
+    $('#edit').click(function () {
+        openTopUpStep("allStepHide");
+        openTopUpStep("step1+2");
+        document.getElementById("phoneField").readOnly = false;
+        $('#edit').hide();
+        $("#phoneVaild").show();
+    });
+    $('#visa-submit, #master-submit, #alipay-submit, #union-submit, #wechat-submit').click(function () {
+        console.log('visa');
+        $form = $('form[name="topup-form"]');
+        if ($('input[name=topupamount]:checked').val() === 'other amount') {
+            var amount = $form.find("input[name=otheramount]").val();
+            console.log(amount);
+        } else {
+            var amount = $form.find("input[name=topupamount]:checked").val();
+        }
+        if (isMobile()) {
+            $form.find("input[name=isMobile]").val('M');
+        } else {
+            $form.find("input[name=isMobile]").val('D');
+        }
+        $form.find("input[name=amount]").val(amount);
+        switch ($(this).attr('id')) {
+            case 'visa-submit':
+                $form.find("input[name=paymentMethod]").val('visa-submit');
+                break;
+            case 'master-submit':
+                $form.find("input[name=paymentMethod]").val('master-submit');
+                break;
+            case 'alipay-submit':
+                $form.find("input[name=paymentMethod]").val('alipay-submit');
+                break;
+            case 'union-submit':
+                $form.find("input[name=paymentMethod]").val('union-submit');
+                break;
+            case 'wechat-submit':
+                $form.find("input[name=paymentMethod]").val('wechat-submit');
+                break;
+        }
+        document.forms["topup-form"].submit();
+    });
+
+    $("input[name=otheramount]").on('change', function () {
+        $form = $('form[name="topup-form"]');
+        var smallestAmount = Number($("input[name=TopUpMinAmount]").val());
+        var biggestAmount = Number($("input[name=TopUpMaxAmount]").val());
+        console.log('smallestAmount-> ' + smallestAmount)
+        console.log('biggestAmount-> ' + biggestAmount)
+        if (Number($form.find("input[name=otheramount]").val()) < smallestAmount || Number($form.find("input[name=otheramount]").val()) > biggestAmount || !Number.isInteger(Number($form.find("input[name=otheramount]").val()))) {
+            console.log('not in range');
+            $("#otherAmountVaild").show().parents(".form-group").addClass("has-error");
+            $("div#AmountVaild").show();
+        } else {
+            $("#otherAmountVaild").show().parents(".form-group").removeClass("has-error");
+            $("div#AmountVaild").hide();
+        }
+        if (!$form.find("input[name=otheramount]").val()) {
+            $("div#AmountVaild").hide();
+        }
+    });
+
+
+// check if other amount is checked, show input
+    $('input[name=topupamount]').on('change', function () {
+        $form = $('form[name="topup-form"]');
+        var earn = $(this).attr('earn');
+        if (earn !== undefined) {
+
+        }
+        if ($('input[name=topupamount]:checked').val() != 'other amount') {
+            $form.find("input[name=otheramount]").val('');
+            $("div#AmountVaild").hide();
+        }
+        console.log($('input[name=topupamount]:checked').val());
+        if ($('input[name=topupamount]:checked').val() === 'other amount') {
+            $(this).parent().parent().addClass('enter-amount-show');
+            $('input[name=otheramount]').fadeIn().focus();
+            $('input[name=otheramount]').attr('required', true);
+
+            $('.button-wrapper a').on('click', function (e) {
+                e.preventDefault();
+
+                var currency = $(this).text().substring(0, 3);
+
+                if (currency == 'GBP') {
+                    $(this).parent().prev().prev().text('£');
+                } else {
+                    $(this).parent().prev().prev().text('¥');
+                }
+
+                if (!$(this).hasClass('active')) {
+                    $('.button-wrapper a').removeClass('active');
+                    $(this).addClass('active');
+                }
+            });
+        } else {
+            $('.radio').removeClass('enter-amount-show');
+            $('input[name=otheramount]').fadeOut();
+            $('input[name=otheramount]').attr('required', false);
+        }
+    });
+// append error msg when invalid
+    $('form[name=topup-amount]').on('invalid.bs.validator', function (e) {
+        $('.wrapper-error').hide();
+        $('.wrapper-error p').text(e.detail[0]);
+    });
+
+    $('form[name=topup-amount]').validator().on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+            showLoader();
+        } else {
+            $('.wrapper-error').show();
+        }
+    });
+
+    var showLoader = function showLoader() {
+        $('.container-loading').show();
+    };
+    var hideLoader = function hideLoader() {
+        $('.container-loading').hide();
+    };
+    
+})(jQuery);
+
+function openTopUpStep(number) {
+    switch (number) {
+        case "allStepHide":
+            jQuery("div#step1").hide();
+            jQuery("div#step2").hide();
+            jQuery("div#step3").hide();
+            jQuery("div#step4").hide();
+            jQuery("div.step4").hide();
+            scrollTo('header');
+            break;
+        case "step1+2":
+            jQuery("div#step1").show();
+            jQuery("div#step2").show();
+            jQuery('div.step3').hide();
+            jQuery('div.step1').show();
+            scrollTo('header');
+            break;
+        case "step1+3":
+            jQuery("div#step1").show();
+            jQuery("div#step3").show();
+            jQuery('div.step1').hide();
+            jQuery('div.step3').show();
+            jQuery('h2#step4').hide();
+            jQuery('h2#step1').show();
+            jQuery('#edit').hide();
+            scrollTo('header');
+            break;
+        case "step4":
+            jQuery("div#step4").show();
+            jQuery("div#step3").hide();
+            jQuery('h2#step4').show();
+            jQuery('h2#step1').hide();
+            jQuery("div.step4").show();
+//			scrollTo('header');
+            break;
+        default:
+            break;
+
+    }
+}
+
+function updateOtherAmount(value) {
+    $jsAutoConversion = jQuery(".jsAutoConversion");
+    var convertedRate = Math.round(value * $jsAutoConversion.attr("GBP_to_CNY"));
+    // var convertedRate = Math.round(value * $jsAutoConversion.attr("GBP_to_HKD"));
+    $jsAutoConversion.html($jsAutoConversion.attr("htmlPrefix") + convertedRate);
+}
+
+function showActive(){
+    var lang = $('html').attr('lang').substring(0, 2);
+    var timezone = 0; //目标时区时间，零时区
+    var offset = new Date().getTimezoneOffset();
+    var nowDate = new Date().getTime();
+    var targetDate = new Date(nowDate + offset * 60 * 1000 + timezone * 60 * 60 * 1000);
+    var enTimeoffset = targetDate.getTime();
+    var ele_beginTime = Date.parse(new Date("2019/11/10 00:00:00"));
+    var ele_endTime = Date.parse(new Date("2019/11/11 23:59:00"));
+    var twelve_beginTime = Date.parse(new Date("2019/12/11 00:00:00"));
+    var twelve_endTime = Date.parse(new Date("2019/12/12 23:59:00"));
+    if((enTimeoffset > ele_beginTime) && (enTimeoffset < ele_endTime)){
+        if(lang == 'zh'){
+            $('.form-group div:eq(0)').show();
+            $('.form-group div:eq(0) p:eq(1)').replaceWith("<p id='ele-active'>英国时间11月11日当天充值£30以上即额外赠送20%话费，本月到账，每个号码可享赠送一次</p>");
+        }else{
+            $('.form-group div:eq(0)').show();
+            $('.form-group div:eq(0) p:eq(1)').replaceWith("<p id='ele-active'>Get an extra 20% bonus for top-up no less than £30 on Nov 11th, bonus will be sent to your account within this month, each number can enjoy the bonus for one time.</p>");
+        }
+    }else if(enTimeoffset >= ele_endTime){
+        if((enTimeoffset > twelve_beginTime) && (enTimeoffset < twelve_endTime)){
+            if(lang == 'zh'){
+                $('.form-group div:eq(0)').show();
+                $('.form-group div:eq(0) p:eq(1)').replaceWith("<p id='ele-active'>英国时间12月12日当天充值£30以上即额外赠送10%话费，本月到账，每个号码可享赠送一次</p>");
+            }else{
+                $('.form-group div:eq(0)').show();
+                $('.form-group div:eq(0) p:eq(1)').replaceWith("<p id='ele-active'>Get an extra 10% bonus for top-up no less than £30 on Dec 12th, bonus will be sent to your account within this month, each number can enjoy the bonus for one time.</p>");
+            }
+        }else if( enTimeoffset >= twelve_endTime){
+                clearInterval(st);
+                $('.form-group div:eq(0)').hide();
+        }else{
+              $('.form-group div:eq(0)').hide();
+        }
+    }
+    
+}
+
+
+							
