@@ -1,0 +1,574 @@
+$(".form-group input[type=checkbox]").after("<span class='cr'><i class='cr-icon'></i></span>");
+
+function getParmas(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = decodeURI(window.location.search).substr(1).match(reg);
+    if (r != null) return unescape(r[2]).replace("$BM$", "&");
+    return null;
+}
+function validatePassport (value) {
+    if (value === '') { // 输入值为空
+        $('#edit-passport').addClass('input-required');
+        $('.passport-required').removeClass('hidden');
+        $('.file-required').addClass('hidden');
+        $('.passport-valid-required').addClass('hidden');
+    } else { // 输入不为空
+        var result = checkPassport(value);
+        if (result.regCode === true) {
+            $('#edit-passport').removeClass('input-required');
+            $('.passport-required').addClass('hidden');
+            $('.file-required').addClass('hidden');
+            $('.passport-valid-required').addClass('hidden');
+            return true
+        } else {
+            $('#edit-passport').addClass('input-required');
+            $('.passport-required').addClass('hidden');
+            $('.file-required').addClass('hidden');
+            $('.passport-valid-required').removeClass('hidden');
+        }
+    }
+    return false
+}
+function checkPassport(code){
+    var tip = "OK";
+    var pass= true;
+    // /^((1[45]\d{7})|(G\d{8})|(P\d{7})|(S\d{7,8}))?$/
+    // /^([A-Za-z\d]){6,18}$/
+    // var reg = /^(1[45][0-9]{7}|([P|p|S|sD|D|d|E|e|G|g]\d{7})|([H|h|M|m]\d{8，10}))?$/;
+    var reg = /^([A-Za-z\d]){0,30}$/;
+    if(!code || !reg.test(code)){
+        tip = "护照号码格式错误";
+        pass = false;
+    }
+    return {'regCode':pass, 'errMsg':tip};
+}
+function debouncePassport (time) {
+    var timeCount;
+    return function (event) {
+        if (timeCount) {
+            clearTimeout(timeCount);
+        }
+        setTimeout(function () {
+            validatePassport(event.target.value);
+        }, time);
+    }
+}
+var contactNum = true;
+var arrOptional = [],language; 
+$(document).ready(function () {
+    var mdown = false;
+    var $mcode = $("#edit-contact-number-optional-first3dig");
+    $mcode.after('<div class="help-block with-errors"></div>')
+    // 护照号码校验
+    $('#edit-passport').on('keyup', debouncePassport(1000));
+    $('#edit-passport').on('blur', function () {
+        validatePassport(event.target.value);
+    });
+    language = $('html').attr('lang');
+    var tips1;
+    //启用编辑下拉框组件    
+    $('#edit-contact-number-optional-first3dig').editableSelect({
+        filter: true,
+        effects: 'slide',
+        onShow: function () {
+            var $input = $('#edit-contact-number-optional-first3dig');
+        },
+        onSelect: function () { //选中下拉框后
+            $("#edit-contact-number-optional-first3dig").css("border", "1px solid #cccccc");
+            first3dig_validate();
+        },
+        onHide: function () {
+            if (!mdown) {
+                return
+            }
+            mdown = false;
+            var $mcode = $("#edit-contact-number-optional-first3dig");
+            var country = $("#edit-country-country").val();
+            if ($mcode.val() == "" && (country == '中国' || country == 'China')) {
+                $mcode.css("border", "1px solid #e81111");
+                $("#promoTips").css("display", "block");
+                if(language == 'en'){
+                	tips1 = $mcode.data('error');
+                }else{
+                	tips1 = $mcode.data('error-zh');
+                }
+		        $mcode.parents('.col-xs-4').addClass('has-error has-danger');
+		        $mcode.parents('.col-xs-4').find('.help-block.with-errors').html(tips1);
+                contactNum = false;
+            } else if ($mcode.val() != "") {
+                var $mbn = $("#mobileNumber");
+                var mcodeValue = $(".es-list li[class=selected]").attr("value");
+                if (mcodeValue == undefined) {
+                    $mcode.css("border", "1px solid #e81111");
+                    if(language == 'en'){
+                    	tips1 = $mcode.data('pattern-error');
+                    }else{
+                    	tips1 = $mcode.data('pattern-error-zh');
+                    }
+			        $mcode.parents('.col-xs-4').addClass('has-error has-danger');
+			        $mcode.parents('.col-xs-4').find('.help-block.with-errors').html(tips1);
+                    contactNum = false;
+                    first3dig_validate();
+                    return;
+                }
+                var vvv = $(".es-list li[class=selected]").text();
+                if ($mcode.val() != vvv) { //当用户输入的和下拉框里的值不对应时
+                    $mcode.css("border", "1px solid #e81111");
+                    if(language == 'en'){
+                    	tips1 = $mcode.data('pattern-error');
+                    }else{
+                    	tips1 = $mcode.data('pattern-error-zh');
+                    }
+			        $mcode.parents('.col-xs-4').addClass('has-error has-danger');
+			        $mcode.parents('.col-xs-4').find('.help-block.with-errors').html(tips1);      
+                    contactNum = false;
+                    first3dig_validate(); //直接输入不选择判断
+                    return;
+                }else{
+                	$mcode.parents('.col-xs-4').removeClass('has-error has-danger');
+			        $mcode.parents('.col-xs-4').find('.help-block.with-errors').html('');
+                	contactNum = true;
+                }
+            }else{
+            	$mcode.parents('.col-xs-4').removeClass('has-error has-danger');
+		        $mcode.parents('.col-xs-4').find('.help-block.with-errors').html('');
+            	contactNum = true;
+            }
+        }
+    });
+    var areaData;
+    $.ajax({
+        url: '/uk/themes/chinamobile/js/area.json',
+        type: "get",
+        success: function (data) {
+            areaData = data;
+        },
+        error: function (err) {
+            console.log(err)
+        },
+        dataType: 'json'
+    });
+    //渠道来源
+    var source = getParmas('utm_content');//20001
+    var cookie = Cookies.get('chl_id');
+    //var cookie = localStorage.getItem("cookie");//获取cookie值 没有就NULL
+    if (cookie != null){
+        jQuery('input[name="chl_id"]').val(cookie);
+    }else if (source != null){
+        jQuery.ajax({
+            url: '/uk/zh/cmlink_direct/getChannelId',
+            type: "post",
+            dataType: 'json',
+            data: {
+                "source": source
+            },
+            success: function (data) {
+                Cookies.set('chl_id',data.chl_id);
+                //localStorage.setItem("cookie", data.chl_id);//保存cookie
+                //localStorage.removeItem("cookie");//清除cookie值
+                jQuery('input[name="chl_id"]').val(data.chl_id);
+            }
+        });
+
+    }
+
+    jQuery("select[name=contact_number_optional_first3dig]").change(function () {
+        $contactNumber = jQuery("#edit-contact-number-optional");
+        $contactNumber.attr("pattern", "^[0-9]+$");
+        if (jQuery(this).val() == "+44") {
+            $contactNumber.attr("pattern", "^[0-9]{10}$");
+        } else if (jQuery(this).val() == "+86") {
+            $contactNumber.attr("pattern", "^[1]{1}[0-9]{10}$");
+        }
+        $contactNumber.focusout();
+    });
+    var $mcode = $("#edit-contact-number-optional-first3dig");
+    jQuery('input[id=edit-contact-number-optional-first3dig]').on('focus', function () {
+        mdown = true;
+        $mcode.css("border", "1px solid #cccccc");
+    	$("#edit-contact-number-optional-first3dig").parents('.col-xs-4').removeClass('has-error has-danger');
+        $("#edit-contact-number-optional-first3dig").parents('.col-xs-4').find('.help-block.with-errors').html('');   	
+    });
+	$(".es-list li").map(function(value){
+		var options = $(".es-list li").eq(value).text();
+		if(!(options == '' || options == undefined)){
+			arrOptional.push(options);
+		}
+	});
+    jQuery('input[id=edit-contact-number-optional-first3dig]').on('blur change', function () {
+    	var v = $(this).val().trim();
+    	if(v != ''){
+    		if(arrOptional.indexOf(v) == -1){
+		    	$(this).css("border", "1px solid #e81111");
+		        if(language == 'en'){
+		        	tips1 = $(this).data('pattern-error');
+		        }else{
+		        	tips1 = $(this).data('pattern-error-zh');
+		        }
+		        $(this).parents('.col-xs-4').addClass('has-error has-danger');
+		        $(this).parents('.col-xs-4').find('.help-block.with-errors').html(tips1);
+		    	contactNum = false;
+		    }else{
+		    	$(this).css("border", "1px solid #cccccc");
+			   	$(this).parents('.col-xs-4').removeClass('has-error has-danger');
+			    $(this).parents('.col-xs-4').find('.help-block.with-errors').html('');
+		    	contactNum = true;
+		    }
+    	}
+    })
+    function first3dig_validate(){
+    	var dom_first3dig = $('#edit-contact-number-optional-first3dig');
+		var v = dom_first3dig.val().trim();
+		if(v != ''){
+			if(arrOptional.indexOf(v) == -1){
+		    	dom_first3dig.css("border", "1px solid #e81111");
+		        if(language == 'en'){
+		        	tips1 = dom_first3dig.data('pattern-error');
+		        }else{
+		        	tips1 = dom_first3dig.data('pattern-error-zh');
+		        }
+		        dom_first3dig.parents('.col-xs-4').addClass('has-error has-danger');
+		        dom_first3dig.parents('.col-xs-4').find('.help-block.with-errors').html(tips1);
+		    	contactNum = false;
+		    }else{
+		    	dom_first3dig.css("border", "1px solid #cccccc");
+			   	dom_first3dig.parents('.col-xs-4').removeClass('has-error has-danger');
+			    dom_first3dig.parents('.col-xs-4').find('.help-block.with-errors').html('');
+		    	contactNum = true;
+		    }
+		}
+	}
+    function setField() {
+        $mcode.val($(this).text());
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $("#edit-contact-number-optional-first3dig").css("border", "1px solid #cccccc");
+       	$("#edit-contact-number-optional-first3dig").parents('.col-xs-4').removeClass('has-error has-danger');
+        $("#edit-contact-number-optional-first3dig").parents('.col-xs-4').find('.help-block.with-errors').html('');
+    }
+
+    jQuery('select[id=edit-country-country]').change(function () {
+        var lang = $('html').attr('lang').substring(0, 2);
+        var val = $(this).val();
+        var value = "";
+        value = areaData[1][areaData[0][val]];
+        if (areaData[0][val] === "") {
+            value = "+86"
+        }
+        $('#edit-contact-number-optional-first3dig').val(value)
+        var matchList = $('.es-list li:contains(' + value + ')').filter(function (index, item) {
+            return $(item).text() === value
+        });
+        setField.call(matchList[0])
+        $zipCode = jQuery("#edit-zip-postal-code");
+        $zipCode.removeAttr('required');
+
+        if (jQuery(this).val() == 'United Kingdom' || jQuery(this).val() == '英国') {
+            $zipCode.attr("required", "true");
+            $zipCode.attr("pattern", "^[A-Za-z]{1,2}[0-9][0-9A-Za-z]?\\s?[0-9][A-Za-z]{2}$")
+        } else {
+            $zipCode.removeAttr('required');
+            $zipCode.removeAttr('pattern');
+        }
+        $zipNumber = $('#edit-contact-number-optional');
+        if ($(this).val() == '中国' || $(this).val() == 'China') {
+            $zipNumber.attr("required", "true");
+        } else {
+            $zipNumber.removeAttr("required");
+        }
+        $zipNumber.focusout();
+        $zipCode.focusout();
+        // 判断是否是中国大陆及港澳台地区
+        var arr = ['China',"Hong Kong SAR China","Macau SAR China","Taiwan China", '中国', '中国香港', '中国澳门', '中国台湾'];
+        if (lang === 'zh') {
+            if(arr.indexOf(val) >= 0){
+                $(".region-des").hide();
+                $('label[for="edit-adress-address"]').html('街区地址');
+                $('#edit-adress-address').attr('placeholder', '地址第一行');
+                $('label[for="edit-first-name"]').html('名字');
+                $('#edit-first-name').attr('placeholder', '填写名字');
+                $('label[for="edit-last-name"]').html('姓氏');
+                $('#edit-last-name').attr('placeholder', '填写姓氏');
+            }else{
+                $(".region-des").show();
+                $('label[for="edit-adress-address"]').html('Room No., Flat No./House, Street<span class="add-des">*Example: Room 1, Flat 1, 90 Cannon Street</span>');
+                $('#edit-adress-address').attr('placeholder', 'Eg. Room 1, Flat 1, 90 Cannon Street');
+                $('label[for="edit-first-name"]').append('<span class="add-des">*Example: San</span>');
+                $('#edit-first-name').attr('placeholder', 'Example: San');
+                $('label[for="edit-last-name"]').append('<span class="add-des">*Example: Zhang</span>');
+                $('#edit-last-name').attr('placeholder', 'Example: Zhang');
+            }
+        }
+        // if (val === "中国" || val === "China") {
+        //     $('#edit-passport-information').removeClass('hidden');
+        //     $('#passportFile').removeClass('hidden');
+        //     $('#edit-passport-msg').removeClass('hidden');
+        // } else {
+        //     $('#edit-passport-information').addClass('hidden');
+        //     $('#passportFile').addClass('hidden');
+        //     $('#edit-passport-msg').addClass('hidden');
+        // }
+
+    });
+
+    jQuery("input[name='captcha_response']").attr('data-error', trans_ordersim['catpcha_required']);
+
+    var countrySelect = document.getElementById("edit-country-country");
+    var numCountriesMoved = 1;
+
+    if (countriesToBump.length > 0) {
+        countriesToBump.forEach(function (countryName, index, arr) {
+            $findCountry = $("#edit-country-country option[value='" + countryName + "' i]");
+            var foundCountry = $findCountry.val();
+            console.log("[" + countryName + "]=>" + foundCountry);
+            if (typeof foundCountry != 'undefined') {
+                var opt = document.createElement("option");
+                opt.value = foundCountry;
+                opt.text = foundCountry;
+                countrySelect.add(opt, countrySelect.options[1]);
+                numCountriesMoved++;
+                $findCountry.remove();
+            }
+
+        });
+        var optgroup = document.createElement("optgroup");
+        optgroup.label = '-------------------';
+        countrySelect.add(optgroup, countrySelect.options[numCountriesMoved]);
+    }
+
+    $('input[name="promo_code_checking_hidden_field"]').val('0');
+    $('input[name="promo_code_checking_hidden_field"]').attr("required", "true");
+    $('input[name="promo_code_checking_hidden_field"]').attr("pattern", "[0]");
+    $('input[name="promo_code_checking_hidden_field"]').parent('.js-form-item ').css('display', 'none');
+
+    // 优惠码按钮文案
+    document.getElementsByClassName("apply-promote-button")[0].innerHTML = trans_ordersim['apply'];
+    // 推荐人按钮文案
+    document.getElementsByClassName("apply-recommend-button")[0].innerHTML = trans_ordersim['apply'];
+
+    $(document).on('blur', '#edit-referral-code', function () {
+        validateReferralCode();
+        valBefore = $('#edit-referral-code').val();
+    }).on('click', '.apply-recommend-button', function () {
+        validateReferralCode();
+    })
+});
+
+var valBefore = '';
+var lang = $('html').attr('lang').substring(0, 2);
+var errorMsg = lang == 'en' ? "Please enter a valid CMLink Number, e.g. 07973000186" : "请输入正确的CMLink手机号码，如：07973000186";
+var successMsg = lang == 'en' ? "Referrer's number verified successfully" : "推荐人号码校验成功";
+function validateReferralCode () {
+    var val = $('#edit-referral-code').val().trim();
+    var res = false;
+    if (val.trim() == '') {
+        $('#edit-referral-code').parent().parent().removeClass('has-error');
+        $('#edit-referral-code').parent().next().text('');
+        $('#edit-referral-code').parent().next().hide();
+        res = true;
+    } else {
+        if (valBefore == val) {
+            if ($('#edit-referral-code').parent().next().text() == successMsg) {
+                res = true;
+            } else {
+                res = false;
+            }
+        } else {
+            /*if (val.length === 10 && val.substring(0,1) != '0') {
+                val = "0" + val;
+            } else */
+            if (val.length === 12 && val.substring(0, 2) === '44' && val.substring(2,3) != '0') { // 添加国家码
+                val = "0" + val.substring(2);
+            }
+            var data = {
+                phoneNumber: val
+            };
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/uk/cmlink_direct/recommendPhoneVaild",
+                data: data,
+                async: false,
+                success: function (data) {
+                    if (data.code == '0') {
+                        $('#edit-referral-code').parent().parent().removeClass('has-error');
+                        $('#edit-referral-code').parent().next().text(successMsg);
+                        $('#edit-referral-code').parent().next().show();
+                        res = true;
+                    } else {
+                        if (!$('#edit-referral-code').parent().parent().hasClass('has-error')) {
+                            $('#edit-referral-code').parent().parent().addClass('has-error');
+                            $('#edit-referral-code').parent().next().text(errorMsg);
+                            $('#edit-referral-code').parent().next().show();
+                        }
+                        res = false;
+                    }
+                }
+            });
+        }
+    }
+    return res;
+}
+
+$(document).on('click', '.apply-promote-button', function () {
+    console.log('apply-promote-button click');
+    var promoCode = $('input[name="promo_code_input"]').val();
+    console.log($('input[name="csrf-token"]').val());
+    if (promoCode != null && typeof promoCode != 'undefined' && promoCode != '') {
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            async: false,
+            url: "./cmlink_direct/promoCodeChecking?token=" + $('input[name="csrf-token"]').val(),
+            data: {
+                promoCode: promoCode,
+            },
+            success: function (resultData) {
+                switch (JSON.parse(resultData).responseCode) {
+                    case 0:
+                        $('input[name="promo_code_checking_hidden_field"]').val('0');
+                        $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').css('color', '#0085D0');
+                        $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').html(trans_ordersim['promo_code_no_error'])
+                        break;
+                    case 1:
+                        $('input[name="promo_code_checking_hidden_field"]').val('1');
+                        $('input[name="promo_code_input"]').parents('.form-group').addClass('has-error has-danger');
+                        $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').html(trans_ordersim['promo_code_has_error_case_1'])
+                        break;
+                    case 2:
+                        $('input[name="promo_code_checking_hidden_field"]').val('1');
+                        $('input[name="promo_code_input"]').parents('.form-group').addClass('has-error has-danger');
+                        $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').html(trans_ordersim['promo_code_has_error_case_2'])
+                        break;
+                    case 3:
+                        $('input[name="promo_code_checking_hidden_field"]').val('1');
+                        $('input[name="promo_code_input"]').parents('.form-group').addClass('has-error has-danger');
+                        $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').html(trans_ordersim['promo_code_has_error_case_3'])
+                        break;
+                }
+            }
+        });
+    }
+});
+
+$('input[name="promo_code_input"]').on('keyup change', function () {
+    if ($(this).val() == null || typeof $(this).val() == 'undefined' || $(this).val() == '') {
+        $('input[name="promo_code_checking_hidden_field"]').val('0');
+    } else {
+        $('input[name="promo_code_checking_hidden_field"]').val('1');
+    }
+    $('input[name="promo_code_input"]').parents('.form-group').removeClass('has-error has-danger');
+    $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').html('');
+    $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').css('color', '')
+});
+//提交订单
+$(document).on('click', '#edit-actions-submit', function (event) {
+    if ($('#edit-contact-number-optional-first3dig').val().trim() == "") {
+    	if($("#edit-country-country").val() == '中国' || $("#edit-country-country").val() == 'China'){ 		
+	        $('#edit-contact-number-optional-first3dig').css("border", "1px solid #e81111");
+	        if(language == 'en'){
+            	tips1 = $('#edit-contact-number-optional-first3dig').data('error');
+            }else{
+            	tips1 = $('#edit-contact-number-optional-first3dig').data('error-zh');
+            }
+	        $('#edit-contact-number-optional-first3dig').parents('.col-xs-4').addClass('has-error has-danger');
+	        $('#edit-contact-number-optional-first3dig').parents('.col-xs-4').find('.help-block.with-errors').html(tips1);
+	        $("#promoTips").css("display", "block");
+   			return false;
+    	}
+    }else{
+    	var v = $('#edit-contact-number-optional-first3dig').val().trim();
+    	if(arrOptional.indexOf(v) == -1){
+    		$('#edit-contact-number-optional-first3dig').css("border", "1px solid #e81111");
+	        if(language == 'en'){
+            	tips1 = $('#edit-contact-number-optional-first3dig').data('pattern-error');
+            }else{
+            	tips1 = $('#edit-contact-number-optional-first3dig').data('pattern-error-zh');
+            }
+	        $('#edit-contact-number-optional-first3dig').parents('.col-xs-4').addClass('has-error has-danger');
+	        $('#edit-contact-number-optional-first3dig').parents('.col-xs-4').find('.help-block.with-errors').html(tips1);
+    		return false;
+    	}else{
+    		$('#edit-contact-number-optional-first3dig').parents('.col-xs-4').removeClass('has-error has-danger');
+	        $('#edit-contact-number-optional-first3dig').parents('.col-xs-4').find('.help-block.with-errors').html('');
+    	}
+    }
+	//区号判断
+    if(contactNum == false){
+    	return false;
+	}
+    //街区地址两栏填一栏就行
+    if (!$('#edit-adress-address').val()) {
+        $("#edit-adress-address-2").attr("required", "true");
+    } else {
+        $("#edit-adress-address-2").removeAttr('required');
+    }
+    if ($('input[name="promo_code_checking_hidden_field"]').val() == '1') {
+        event.preventDefault();
+        $('input[name="promo_code_input"]').parents('.form-group').addClass('has-error has-danger');
+        $('input[name="promo_code_input"]').parents('.form-group').addClass('has-error has-danger');
+        $('.apply-promote-button').parents('.order-sim-form-contact').find('.help-block.with-errors').html(trans_ordersim['promo_code_error_reminder'])
+    }
+    //if ($('#edit-passport').is(':visible') === true) {
+    //    var value = $('#edit-passport').val();
+    //    var checkPassportValid = validatePassport(value);
+    //    if (checkPassportValid === true) {
+            // 验证护照是否上传
+    //        if ($('#fileList .file-item-wrapper[data-code="0"]').length <= 0) {
+    //            $('.file-required').removeClass('hidden');
+    //            backToOffset($('#edit-passport-information').get(0).offsetTop);
+    //            return false;
+    //        }
+    //    } else {
+    //        backToOffset($('#edit-passport-information').get(0).offsetTop);
+    //        return false;
+    //    }
+    //}
+    var referral = validateReferralCode();
+    if (referral == false) {
+        backToOffset($('#edit-recommend').get(0).offsetTop);
+        return false;
+    }
+    var data = {
+    	'country': $("#edit-country-country").val(),  //国家
+    	'address': $("#edit-adress-address").val(),  //街区地址
+    	'address_2': $("#edit-adress-address-2").val(),
+    	'town_city': $("#edit-town-city").val(), //省／城市／镇
+    	'zip_postal_code': $("#edit-zip-postal-code").val(), //邮编
+    	'first_name': $("#edit-first-name").val(),  //名字
+    	'last_name': $("#edit-last-name").val(),  //姓氏
+    	'email_address': $("#edit-email-address").val(),   //电邮地址
+    	'contact_number_optional_first3dig': $("#edit-contact-number-optional-first3dig").val(),
+    	'contact_number_optional': $("#edit-contact-number-optional").val(),
+    	'promo_code_input': $("#edit-promo-code-input").val(),  //优惠码
+    	'captcha_response': $("#edit-captcha-response").val(),  //验证码
+    }
+    //微信广告投放追踪需求
+    try{
+        gdt('track', 'COMPLETE_ORDER', data);
+    }catch(e){
+        //throw '微信广告投放追踪需求报错'; 
+    }
+});
+function backToOffset (offset) {
+    window.scroll({
+        top: offset,
+        behavior: 'smooth'
+    });
+}
+//点击‘CMLink总部’弹出层
+$(document).on('click', '#divAlert', function (event) {
+    $('.Shade').css('display', 'block');
+    $('.lightBox').css('display', 'block');
+    return false;
+});
+//点击遮罩层关闭
+$(document).on('click', '.Shade', function (event) {
+    $('.Shade').css('display', 'none');
+    $('.lightBox').css('display', 'none');
+});
+//点击关闭按钮关闭
+$(document).on('click', '.colseBtn', function (event) {
+    $('.Shade').css('display', 'none');
+    $('.lightBox').css('display', 'none');
+});
+
