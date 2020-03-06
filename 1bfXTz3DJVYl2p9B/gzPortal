@@ -1,0 +1,30 @@
+
+
+<link rel="shortcut icon" href="/images/fx-ico.ico" type="image/x-icon" />
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>企业案例-中国移动和飞信</title>
+<meta name="keywords" content="和飞信,企业案例">
+<meta name="description" content="中国移动和飞信，满足高效沟通需求，实现企业智能管理。">
+<link rel="shortcut icon" href="images/fx-ico.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="https://117.136.240.6/company/css/global.css">
+<link href="style_new/reset.css" rel="stylesheet" type="text/css" />
+<link href="style_new/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<iframe id="mainFrame" name="mainFrame"  src="https://gz.feixin.10086.cn/Home/Nav/index" frameborder="0" ></iframe>
+<script type="text/javascript" language="javascript">
+var iframe = document.getElementById("mainFrame");
+if(iframe){
+	document.getElementsByTagName("body")[0].style.cssText = 'overflow-y:hidden';
+}
+</script> 
+</body>
+</html>
