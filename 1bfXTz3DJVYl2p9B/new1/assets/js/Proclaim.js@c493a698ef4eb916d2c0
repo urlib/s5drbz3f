@@ -1,0 +1,292 @@
+/*! 中国移动和飞信官网:2019-11-7 14:29:46 */
+!function (t) {
+    function e(e) {
+        for (var r, i, d = e[0], l = e[1], s = e[2], u = 0, f = []; u < d.length; u++) i = d[u], Object.prototype.hasOwnProperty.call(o, i) && o[i] && f.push(o[i][0]), o[i] = 0;
+        for (r in l) Object.prototype.hasOwnProperty.call(l, r) && (t[r] = l[r]);
+        for (c && c(e); f.length;) f.shift()();
+        return a.push.apply(a, s || []), n()
+    }
+
+    function n() {
+        for (var t, e = 0; e < a.length; e++) {
+            for (var n = a[e], r = !0, d = 1; d < n.length; d++) {
+                var l = n[d];
+                0 !== o[l] && (r = !1)
+            }
+            r && (a.splice(e--, 1), t = i(i.s = n[0]))
+        }
+        return t
+    }
+
+    var r = {}, o = {11: 0}, a = [];
+
+    function i(e) {
+        if (r[e]) return r[e].exports;
+        var n = r[e] = {i: e, l: !1, exports: {}};
+        return t[e].call(n.exports, n, n.exports, i), n.l = !0, n.exports
+    }
+
+    i.m = t, i.c = r, i.d = function (t, e, n) {
+        i.o(t, e) || Object.defineProperty(t, e, {enumerable: !0, get: n})
+    }, i.r = function (t) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(t, "__esModule", {value: !0})
+    }, i.t = function (t, e) {
+        if (1 & e && (t = i(t)), 8 & e) return t;
+        if (4 & e && "object" == typeof t && t && t.__esModule) return t;
+        var n = Object.create(null);
+        if (i.r(n), Object.defineProperty(n, "default", {
+                enumerable: !0,
+                value: t
+            }), 2 & e && "string" != typeof t) for (var r in t) i.d(n, r, function (e) {
+            return t[e]
+        }.bind(null, r));
+        return n
+    }, i.n = function (t) {
+        var e = t && t.__esModule ? function () {
+            return t.default
+        } : function () {
+            return t
+        };
+        return i.d(e, "a", e), e
+    }, i.o = function (t, e) {
+        return Object.prototype.hasOwnProperty.call(t, e)
+    }, i.p = "./";
+    var d = window.webpackJsonp = window.webpackJsonp || [], l = d.push.bind(d);
+    d.push = e, d = d.slice();
+    for (var s = 0; s < d.length; s++) e(d[s]);
+    var c = l;
+    a.push([32, 1, 0]), n()
+}({
+    24: function (t, e, n) {
+    }, 32: function (t, e, n) {
+        "use strict";
+        n.r(e);
+        n(24);
+        var r = n(0), o = n.n(r);
+
+        function a(t) {
+            !function (t, e) {
+                if (!t.fn.dotdotdot) {
+                    t.fn.dotdotdot = function (e) {
+                        if (0 == this.length) return t.fn.dotdotdot.debug('No element found for "' + this.selector + '".'), this;
+                        if (this.length > 1) return this.each(function () {
+                            t(this).dotdotdot(e)
+                        });
+                        var r = this, o = r.contents();
+                        r.data("dotdotdot") && r.trigger("destroy.dot"), r.data("dotdotdot-style", r.attr("style") || ""), r.css("word-wrap", "break-word"), "nowrap" === r.css("white-space") && r.css("white-space", "normal"), r.bind_events = function () {
+                            return r.bind("update.dot", function (e, n) {
+                                switch (r.removeClass("is-truncated"), e.preventDefault(), e.stopPropagation(), typeof c.height) {
+                                    case"number":
+                                        c.maxHeight = c.height;
+                                        break;
+                                    case"function":
+                                        c.maxHeight = c.height.call(r[0]);
+                                        break;
+                                    default:
+                                        c.maxHeight = function (t) {
+                                            for (var e = t.innerHeight(), n = ["paddingTop", "paddingBottom"], r = 0, o = n.length; r < o; r++) {
+                                                var a = parseInt(t.css(n[r]), 10);
+                                                isNaN(a) && (a = 0), e -= a
+                                            }
+                                            return e
+                                        }(r)
+                                }
+                                c.maxHeight += c.tolerance, void 0 !== n && (("string" == typeof n || "nodeType" in n && 1 === n.nodeType) && (n = t("<div />").append(n).contents()), n instanceof t && (o = n)), (g = r.wrapInner('<div class="dotdotdot" />').children()).contents().detach().end().append(o.clone(!0)).find("br").replaceWith("  <br />  ").end().css({
+                                    height: "auto",
+                                    width: "auto",
+                                    border: "none",
+                                    padding: 0,
+                                    margin: 0
+                                });
+                                var d = !1, h = !1;
+                                return f.afterElement && ((d = f.afterElement.clone(!0)).show(), f.afterElement.detach()), a(g, c) && (h = "children" == c.wrap ? function (t, e, n) {
+                                    var r = t.children(), o = !1;
+                                    t.empty();
+                                    for (var i = 0, d = r.length; i < d; i++) {
+                                        var l = r.eq(i);
+                                        if (t.append(l), n && t.append(n), a(t, e)) {
+                                            l.remove(), o = !0;
+                                            break
+                                        }
+                                        n && n.detach()
+                                    }
+                                    return o
+                                }(g, c, d) : function e(n, r, o, d, c) {
+                                    var f = !1;
+                                    n.contents().detach().each(function () {
+                                        var h = this, p = t(h);
+                                        if (void 0 === h) return !0;
+                                        if (p.is("script, .dotdotdot-keep")) n.append(p); else {
+                                            if (f) return !0;
+                                            n.append(p), !c || p.is(d.after) || p.find(d.after).length || n[n.is("a, table, thead, tbody, tfoot, tr, col, colgroup, object, embed, param, ol, ul, dl, blockquote, select, optgroup, option, textarea, script, style") ? "after" : "append"](c), a(o, d) && (f = 3 == h.nodeType ? function (e, n, r, o, d) {
+                                                var c = e[0];
+                                                if (!c) return !1;
+                                                var f = s(c), h = -1 !== f.indexOf(" ") ? " " : "　",
+                                                    p = "letter" == o.wrap ? "" : h, g = f.split(p), v = -1, b = -1,
+                                                    m = 0, w = g.length - 1;
+                                                o.fallbackToLetter && 0 == m && 0 == w && (p = "", g = f.split(p), w = g.length - 1);
+                                                for (; m <= w && (0 != m || 0 != w);) {
+                                                    var y = Math.floor((m + w) / 2);
+                                                    if (y == b) break;
+                                                    b = y, l(c, g.slice(0, b + 1).join(p) + o.ellipsis), r.children().each(function () {
+                                                        t(this).toggle().toggle()
+                                                    }), a(r, o) ? (w = b, o.fallbackToLetter && 0 == m && 0 == w && (p = "", g = g[0].split(p), v = -1, b = -1, m = 0, w = g.length - 1)) : (v = b, m = b)
+                                                }
+                                                if (-1 == v || 1 == g.length && 0 == g[0].length) {
+                                                    var x = e.parent();
+                                                    e.detach();
+                                                    var C = d && d.closest(x).length ? d.length : 0;
+                                                    if (x.contents().length > C ? c = u(x.contents().eq(-1 - C), n) : (c = u(x, n, !0), C || x.detach()), c && (f = i(s(c), o), l(c, f), C && d)) {
+                                                        var T = d.parent();
+                                                        t(c).parent().append(d), t.trim(T.html()) || T.remove()
+                                                    }
+                                                } else f = i(g.slice(0, v + 1).join(p), o), l(c, f);
+                                                return !0
+                                            }(p, r, o, d, c) : e(p, r, o, d, c)), f || c && c.detach()
+                                        }
+                                    });
+                                    r.addClass("is-truncated");
+                                    return f
+                                }(g, r, g, c, d)), g.replaceWith(g.contents()), g = null, t.isFunction(c.callback) && c.callback.call(r[0], h, o), f.isTruncated = h, h
+                            }).bind("isTruncated.dot", function (t, e) {
+                                return t.preventDefault(), t.stopPropagation(), "function" == typeof e && e.call(r[0], f.isTruncated), f.isTruncated
+                            }).bind("originalContent.dot", function (t, e) {
+                                return t.preventDefault(), t.stopPropagation(), "function" == typeof e && e.call(r[0], o), o
+                            }).bind("destroy.dot", function (t) {
+                                t.preventDefault(), t.stopPropagation(), r.unwatch().unbind_events().contents().detach().end().append(o).attr("style", r.data("dotdotdot-style") || "").removeClass("is-truncated").data("dotdotdot", !1)
+                            }), r
+                        }, r.unbind_events = function () {
+                            return r.unbind(".dot"), r
+                        }, r.watch = function () {
+                            if (r.unwatch(), "window" == c.watch) {
+                                var e = t(window), n = e.width(), o = e.height();
+                                e.bind("resize.dot" + f.dotId, function () {
+                                    n == e.width() && o == e.height() && c.windowResizeFix || (n = e.width(), o = e.height(), p && clearInterval(p), p = setTimeout(function () {
+                                        r.trigger("update.dot")
+                                    }, 100))
+                                })
+                            } else h = d(r), p = setInterval(function () {
+                                if (r.is(":visible")) {
+                                    var t = d(r);
+                                    h.width == t.width && h.height == t.height || (r.trigger("update.dot"), h = t)
+                                }
+                            }, 500);
+                            return r
+                        }, r.unwatch = function () {
+                            return t(window).unbind("resize.dot" + f.dotId), p && clearInterval(p), r
+                        };
+                        var c = t.extend(!0, {}, t.fn.dotdotdot.defaults, e), f = {}, h = {}, p = null, g = null;
+                        return c.lastCharacter.remove instanceof Array || (c.lastCharacter.remove = t.fn.dotdotdot.defaultArrays.lastCharacter.remove), c.lastCharacter.noEllipsis instanceof Array || (c.lastCharacter.noEllipsis = t.fn.dotdotdot.defaultArrays.lastCharacter.noEllipsis), f.afterElement = function (e, n) {
+                            if (!e) return !1;
+                            if ("string" == typeof e) return !!(e = t(e, n)).length && e;
+                            return !!e.jquery && e
+                        }(c.after, r), f.isTruncated = !1, f.dotId = n++, r.data("dotdotdot", !0).bind_events().trigger("update.dot"), c.watch && r.watch(), r
+                    }, t.fn.dotdotdot.defaults = {
+                        ellipsis: "... ",
+                        wrap: "word",
+                        fallbackToLetter: !0,
+                        lastCharacter: {},
+                        tolerance: 0,
+                        callback: null,
+                        after: null,
+                        height: null,
+                        watch: !1,
+                        windowResizeFix: !0
+                    }, t.fn.dotdotdot.defaultArrays = {
+                        lastCharacter: {
+                            remove: [" ", "　", ",", ";", ".", "!", "?"],
+                            noEllipsis: []
+                        }
+                    }, t.fn.dotdotdot.debug = function (t) {
+                    };
+                    var n = 1, r = t.fn.html;
+                    t.fn.html = function (e) {
+                        return null != e && !t.isFunction(e) && this.data("dotdotdot") ? this.trigger("update", [e]) : r.apply(this, arguments)
+                    };
+                    var o = t.fn.text;
+                    t.fn.text = function (e) {
+                        return null != e && !t.isFunction(e) && this.data("dotdotdot") ? (e = t("<div />").text(e).html(), this.trigger("update", [e])) : o.apply(this, arguments)
+                    }
+                }
+
+                function a(t, e) {
+                    return t.innerHeight() > e.maxHeight
+                }
+
+                function i(e, n) {
+                    for (; t.inArray(e.slice(-1), n.lastCharacter.remove) > -1;) e = e.slice(0, -1);
+                    return t.inArray(e.slice(-1), n.lastCharacter.noEllipsis) < 0 && (e += n.ellipsis), e
+                }
+
+                function d(t) {
+                    return {width: t.innerWidth(), height: t.innerHeight()}
+                }
+
+                function l(t, e) {
+                    t.innerText ? t.innerText = e : t.nodeValue ? t.nodeValue = e : t.textContent && (t.textContent = e)
+                }
+
+                function s(t) {
+                    return t.innerText ? t.innerText : t.nodeValue ? t.nodeValue : t.textContent ? t.textContent : ""
+                }
+
+                function c(t) {
+                    do {
+                        t = t.previousSibling
+                    } while (t && 1 !== t.nodeType && 3 !== t.nodeType);
+                    return t
+                }
+
+                function u(e, n, r) {
+                    var o, a = e && e[0];
+                    if (a) {
+                        if (!r) {
+                            if (3 === a.nodeType) return a;
+                            if (t.trim(e.text())) return u(e.contents().last(), n)
+                        }
+                        for (o = c(a); !o;) {
+                            if ((e = e.parent()).is(n) || !e.length) return !1;
+                            o = c(e[0])
+                        }
+                        if (o) return u(t(o), n)
+                    }
+                    return !1
+                }
+            }(t), t(document).ready(function (t) {
+                t(".dot-ellipsis").each(function () {
+                    var e = t(this).hasClass("dot-resize-update"), n = t(this).hasClass("dot-timer-update"), r = 0,
+                        o = t(this).attr("class").split(/\s+/);
+                    t.each(o, function (t, e) {
+                        var n = e.match(/^dot-height-(\d+)$/);
+                        null !== n && (r = Number(n[1]))
+                    });
+                    var a = new Object;
+                    n && (a.watch = !0), e && (a.watch = "window"), r > 0 && (a.height = r), t(this).dotdotdot(a)
+                })
+            }), t(window).on("load", function () {
+                t(".dot-ellipsis.dot-load-update").trigger("update.dot")
+            })
+        }
+
+        var i = n(1), d = n(2), l = n(3);
+        window, document.addEventListener("DOMContentLoaded", function () {
+            /*o()("#headers").load("./assets/html/Header.html", function () {
+                Object(i.a)(), Object(d.b)() || (o()(".head-item.active").removeClass("active"), o()(".head-submenu-item").each(function (t, e) {
+                    o()(e).prop("href").indexOf(location.pathname) > -1 && o()(e).addClass("active")
+                }))
+            }), o()("#footers").load("./assets/html/Footer.html"), a(o.a), o()(".groups-signs").dotdotdot(), Object(l.a)({
+                items: [{
+                    href: "./Proclaim.html",
+                    target: "_blank",
+                    text: "官网公告",
+                    bgImgClass: "notice"
+                }]
+            })*/
+
+            Object(i.a)(), Object(d.b)() || (o()(".head-item.active").removeClass("active"), o()(".head-submenu-item").each(function (t, e) {
+                o()(e).prop("href").indexOf(location.pathname) > -1 && o()(e).addClass("active")
+            }))
+
+        })
+    }
+});
