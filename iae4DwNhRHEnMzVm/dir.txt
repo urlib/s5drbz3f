@@ -1,0 +1,47 @@
+目录文件	encrypt.J6VxmIFgP7McNCuW.7z
+目录文件	encrypt.J6VxmIFgP7McNCuW.7z
+目录文件	encrypt.J6VxmIFgP7McNCuW.7z
+目录文件	encrypt.J6VxmIFgP7McNCuW.7z
+目录文件	encrypt.J6VxmIFgP7McNCuW.7z
+目录文件	encrypt.J6VxmIFgP7McNCuW.7z
+
+ 驱动器 D 中的卷是 D
+ 卷的序列号是 E429-2E0E
+
+ D:\UPLOAD\Triple 的目录
+
+2020-03-24  21:14    <DIR>          .
+2020-03-24  21:14    <DIR>          ..
+2020-03-24  21:14                 0 dir.txt
+2020-03-24  21:14           363,744 encrypt.J6VxmIFgP7McNCuW.7z
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.001
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.002
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.003
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.004
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.005
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.006
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.007
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.008
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.009
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.010
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.011
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.012
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.013
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.014
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.015
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.016
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.017
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.018
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.019
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.020
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.021
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.022
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.023
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.024
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.025
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.026
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.027
+2020-03-24  21:11        10,485,760 encrypt.J8DNtX6UTBGVdAWz.7z.028
+2020-03-24  21:11         7,341,829 encrypt.J8DNtX6UTBGVdAWz.7z.029
+              31 个文件    301,306,853 字节
+               2 个目录 969,456,152,576 可用字节
